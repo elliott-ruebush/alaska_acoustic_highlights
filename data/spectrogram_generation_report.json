@@ -1,18 +1,18 @@
 {
   "input_root": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio",
   "output_root": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms",
-  "elapsed_s": 570.878,
+  "elapsed_s": 417.076,
   "files": [
     {
       "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENABICR_20130809_020959 Great Grey Owl call with whooping end variation TRIM, NOISE REDUCTION, AMPLIFY.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENABICR_20130809_020959 Great Grey Owl call with whooping end variation TRIM, NOISE REDUCTION, AMPLIFY.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 151.3,
-      "status": "skipped",
+      "duration_s": 17.97,
+      "sample_rate": 44100,
+      "render_time_s": 4.714,
+      "png_size_kb": 162.5,
+      "status": "ok",
       "error": null
     },
     {
@@ -20,11 +20,11 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAFANG_20110708_023655_White-tailed Ptarmigan BESSEL BANDPASS 70 Hz 7000 Hz TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 379.3,
-      "status": "skipped",
+      "duration_s": 16.45,
+      "sample_rate": 44100,
+      "render_time_s": 0.451,
+      "png_size_kb": 520.3,
+      "status": "ok",
       "error": null
     },
     {
@@ -32,11 +32,11 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAHAUK_20140606_035354 Northern Waterthrush song with other chorus members TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 408.5,
-      "status": "skipped",
+      "duration_s": 69.76,
+      "sample_rate": 44100,
+      "render_time_s": 2.072,
+      "png_size_kb": 573.2,
+      "status": "ok",
       "error": null
     },
     {
@@ -44,11 +44,11 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAHAUK_20140607_214150 Varied Thrush song long sequence TRIM BANDPASS 700 - 8000 Hz AMPLIFY +20 dBu TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 357.4,
-      "status": "skipped",
+      "duration_s": 40.64,
+      "sample_rate": 44100,
+      "render_time_s": 1.11,
+      "png_size_kb": 500.8,
+      "status": "ok",
       "error": null
     },
     {
@@ -56,23 +56,23 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAHIG1_20120802_035742 Willow Ptarmigan clear TRIMMED.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 337.4,
-      "status": "skipped",
+      "duration_s": 7.42,
+      "sample_rate": 44100,
+      "render_time_s": 0.218,
+      "png_size_kb": 364.1,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAHOG3_20120601_034833 clear Fox Sparrow song possible calls, chorus background.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAHOG3_20120601_034833 clear Fox Sparrow song possible calls, chorus background.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAHOG3_20120601_034833 clear Fox Sparrow song possible calls, chorus background.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 197.0,
-      "status": "skipped",
+      "duration_s": 207.0,
+      "sample_rate": 44100,
+      "render_time_s": 5.945,
+      "png_size_kb": 237.4,
+      "status": "ok",
       "error": null
     },
     {
@@ -80,23 +80,23 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAHOG3_20120605_074102 American Tree Sparrow song, chorus background.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 298.3,
-      "status": "skipped",
+      "duration_s": 70.35,
+      "sample_rate": 44100,
+      "render_time_s": 1.712,
+      "png_size_kb": 409.1,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAHOTS_20140602_085834 excellent slow Northern Raven 'croak' calls, popping call, and water-droplet with reverberation TRIM BANDPASS 300 - 8000 Hz AMPLIFY _15 dBu.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAHOTS_20140602_085834 excellent slow Northern Raven 'croak' calls, popping call, and water-droplet with reverberation TRIM BANDPASS 300 - 8000 Hz AMPLIFY _15 dBu.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAHOTS_20140602_085834 excellent slow Northern Raven 'croak' calls, popping call, and water-droplet with reverberation TRIM BANDPASS 300 - 8000 Hz AMPLIFY _15 dBu.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 346.2,
-      "status": "skipped",
+      "duration_s": 52.24,
+      "sample_rate": 44100,
+      "render_time_s": 1.303,
+      "png_size_kb": 471.3,
+      "status": "ok",
       "error": null
     },
     {
@@ -104,11 +104,11 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAKICH_20120524_081441 Wandering Tattler with background chorus of GCSP, FOSP TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 292.5,
-      "status": "skipped",
+      "duration_s": 18.75,
+      "sample_rate": 44100,
+      "render_time_s": 0.477,
+      "png_size_kb": 386.6,
+      "status": "ok",
       "error": null
     },
     {
@@ -116,23 +116,23 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAMURI_20150516_050450 Common Loon with robust chorus TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 406.5,
-      "status": "skipped",
+      "duration_s": 23.31,
+      "sample_rate": 44100,
+      "render_time_s": 0.602,
+      "png_size_kb": 554.3,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAMURI_20150519_094517 clear Blackpoll Warbler with dense chorus below TRIM.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAMURI_20150519_094517 clear Blackpoll Warbler with dense chorus below TRIM.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAMURI_20150519_094517 clear Blackpoll Warbler with dense chorus below TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 304.1,
-      "status": "skipped",
+      "duration_s": 100.3,
+      "sample_rate": 44100,
+      "render_time_s": 2.603,
+      "png_size_kb": 409.3,
+      "status": "ok",
       "error": null
     },
     {
@@ -140,11 +140,11 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAMURI_20150523_045418 chorus with Swainson's Thrush, Common Loon TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 415.8,
-      "status": "skipped",
+      "duration_s": 59.91,
+      "sample_rate": 44100,
+      "render_time_s": 1.515,
+      "png_size_kb": 579.0,
+      "status": "ok",
       "error": null
     },
     {
@@ -152,11 +152,11 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAMURI_20150526_060431 very reverberant Sandhill Crane with chorus, TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 305.1,
-      "status": "skipped",
+      "duration_s": 37.35,
+      "sample_rate": 44100,
+      "render_time_s": 0.942,
+      "png_size_kb": 410.4,
+      "status": "ok",
       "error": null
     },
     {
@@ -164,23 +164,23 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAPOL2_20120619_092801 excellent clear Fox Sparrow song TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 330.3,
-      "status": "skipped",
+      "duration_s": 28.45,
+      "sample_rate": 44100,
+      "render_time_s": 0.712,
+      "png_size_kb": 448.9,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENASAN3_20120603_020932 White-crowned Sparrow song with chorus background.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENASAN3_20120603_020932 White-crowned Sparrow song with chorus background.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENASAN3_20120603_020932 White-crowned Sparrow song with chorus background.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 320.8,
-      "status": "skipped",
+      "duration_s": 120.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.322,
+      "png_size_kb": 429.1,
+      "status": "ok",
       "error": null
     },
     {
@@ -188,35 +188,35 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENASUSH_20260610_092353 excellent Northern Raven flight calls with reverberance, preceded by wingbeats (small TRIM).png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 395.1,
-      "status": "skipped",
+      "duration_s": 54.76,
+      "sample_rate": 44100,
+      "render_time_s": 1.477,
+      "png_size_kb": 548.4,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENATOKO_20160512_052310 White-crowned Sparrow song with chorus background.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENATOKO_20160512_052310 White-crowned Sparrow song with chorus background.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENATOKO_20160512_052310 White-crowned Sparrow song with chorus background.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 300.5,
-      "status": "skipped",
+      "duration_s": 61.0,
+      "sample_rate": 44100,
+      "render_time_s": 1.638,
+      "png_size_kb": 401.7,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENATOKO_20160616_053228 Orange-crowned Warbler song background chorus, Tokositna River.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENATOKO_20160616_053228 Orange-crowned Warbler song background chorus, Tokositna River.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENATOKO_20160616_053228 Orange-crowned Warbler song background chorus, Tokositna River.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 321.6,
-      "status": "skipped",
+      "duration_s": 394.0,
+      "sample_rate": 44100,
+      "render_time_s": 12.583,
+      "png_size_kb": 433.9,
+      "status": "ok",
       "error": null
     },
     {
@@ -224,59 +224,59 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENATRLA_20240624_045058 clear American Three-toed Woodpecker drumming with lively chorus SWTH DEJU TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 388.8,
-      "status": "skipped",
+      "duration_s": 68.2,
+      "sample_rate": 44100,
+      "render_time_s": 1.764,
+      "png_size_kb": 538.4,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAWOCR_20150624_202549 Fox Sparrow song with thunder and Swainson's Thrush TRIM.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENAWOCR_20150624_202549 Fox Sparrow song with thunder and Swainson's Thrush TRIM.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENAWOCR_20150624_202549 Fox Sparrow song with thunder and Swainson's Thrush TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 223.4,
-      "status": "skipped",
+      "duration_s": 29.08,
+      "sample_rate": 44100,
+      "render_time_s": 0.84,
+      "png_size_kb": 279.5,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARFLOR_20180615_045829 very clear American Robin song.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARFLOR_20180615_045829 very clear American Robin song.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARFLOR_20180615_045829 very clear American Robin song.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 397.8,
-      "status": "skipped",
+      "duration_s": 90.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.137,
+      "png_size_kb": 547.2,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARFLOR_20180617_125710 chorus with White-crowned Sparrow, Swainson's Thrush, American Red Squirrel.MP3",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARFLOR_20180617_125710 chorus with White-crowned Sparrow, Swainson's Thrush, American Red Squirrel.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARFLOR_20180617_125710 chorus with White-crowned Sparrow, Swainson's Thrush, American Red Squirrel.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 390.3,
-      "status": "skipped",
+      "duration_s": 169.01,
+      "sample_rate": 44100,
+      "render_time_s": 6.135,
+      "png_size_kb": 540.8,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARFLOR_20180618_053001 Common Loon with rich avian chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARFLOR_20180618_053001 Common Loon with rich avian chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARFLOR_20180618_053001 Common Loon with rich avian chorus.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 432.3,
-      "status": "skipped",
+      "duration_s": 102.0,
+      "sample_rate": 44100,
+      "render_time_s": 2.553,
+      "png_size_kb": 599.5,
+      "status": "ok",
       "error": null
     },
     {
@@ -284,59 +284,59 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARMWAL_20140617_064326 Mew Gull with chorus background TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 231.2,
-      "status": "skipped",
+      "duration_s": 73.14,
+      "sample_rate": 44100,
+      "render_time_s": 1.82,
+      "png_size_kb": 300.7,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARNNUT_20140704_072937 clear, punctuated Common Loon, background chorus.MP3",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARNNUT_20140704_072937 clear, punctuated Common Loon, background chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARNNUT_20140704_072937 clear, punctuated Common Loon, background chorus.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 355.5,
-      "status": "skipped",
+      "duration_s": 531.02,
+      "sample_rate": 44100,
+      "render_time_s": 18.894,
+      "png_size_kb": 479.9,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARUPNO_20180606_150920 avian chorus with Savanah Sparrow and occasional insect wingbeats.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARUPNO_20180606_150920 avian chorus with Savanah Sparrow and occasional insect wingbeats.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARUPNO_20180606_150920 avian chorus with Savanah Sparrow and occasional insect wingbeats.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 414.0,
-      "status": "skipped",
+      "duration_s": 236.0,
+      "sample_rate": 44100,
+      "render_time_s": 8.073,
+      "png_size_kb": 553.5,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARUPNO_20180607_025501 Savanah Sparrow song with chorus background.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARUPNO_20180607_025501 Savanah Sparrow song with chorus background.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARUPNO_20180607_025501 Savanah Sparrow song with chorus background.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 401.8,
-      "status": "skipped",
+      "duration_s": 82.0,
+      "sample_rate": 44100,
+      "render_time_s": 2.285,
+      "png_size_kb": 540.6,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GLBABARTC_20200707_111214._Sooty_Grous_near_mic_AMPLIFY_FADEewav.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GLBABARTC_20200707_111214._Sooty_Grous_near_mic_AMPLIFY_FADEewav.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GLBABARTC_20200707_111214._Sooty_Grous_near_mic_AMPLIFY_FADEewav.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 343.1,
-      "status": "skipped",
+      "duration_s": 61.0,
+      "sample_rate": 44100,
+      "render_time_s": 1.654,
+      "png_size_kb": 460.6,
+      "status": "ok",
       "error": null
     },
     {
@@ -344,47 +344,47 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GLBARENDU_20220616_230000 very clear Varied Thrush song background Humpback Whale activity (TRIM).png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 103.9,
-      "status": "skipped",
+      "duration_s": 429.16,
+      "sample_rate": 44100,
+      "render_time_s": 11.836,
+      "png_size_kb": 114.9,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/KATMCROS_20170731_051841 Gray-cheeked Thrush song with diverse, distant riparian background chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/KATMCROS_20170731_051841 Gray-cheeked Thrush song with diverse, distant riparian background chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/KATMCROS_20170731_051841 Gray-cheeked Thrush song with diverse, distant riparian background chorus.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 421.8,
-      "status": "skipped",
+      "duration_s": 78.0,
+      "sample_rate": 44100,
+      "render_time_s": 2.167,
+      "png_size_kb": 577.7,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/KATMJOJO_20160710_221044 excellent Common Loon call chorus.MP3",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/KATMJOJO_20160710_221044 excellent Common Loon call chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/KATMJOJO_20160710_221044 excellent Common Loon call chorus.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 440.7,
-      "status": "skipped",
+      "duration_s": 135.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.95,
+      "png_size_kb": 620.5,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/KATMKABA_20160823_205149 excellent very clear Northern Raven calls, background American Tree Sparrow calls.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/KATMKABA_20160823_205149 excellent very clear Northern Raven calls, background American Tree Sparrow calls.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/KATMKABA_20160823_205149 excellent very clear Northern Raven calls, background American Tree Sparrow calls.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 348.4,
-      "status": "skipped",
+      "duration_s": 66.0,
+      "sample_rate": 44100,
+      "render_time_s": 1.791,
+      "png_size_kb": 477.1,
+      "status": "ok",
       "error": null
     },
     {
@@ -392,35 +392,35 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/LACLHANM_20190829_062559 very clear Common Loon calls with extensive echo and some distortion (TRIM).png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 182.9,
-      "status": "skipped",
+      "duration_s": 59.56,
+      "sample_rate": 44100,
+      "render_time_s": 1.717,
+      "png_size_kb": 231.0,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENAHIG1_20120728_122042 insect and running animal.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENAHIG1_20120728_122042 insect and running animal.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENAHIG1_20120728_122042 insect and running animal.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 308.4,
-      "status": "skipped",
+      "duration_s": 37.0,
+      "sample_rate": 44100,
+      "render_time_s": 0.931,
+      "png_size_kb": 414.8,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENAMOOS_20180814_105458 if a tree falls.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENAMOOS_20180814_105458 if a tree falls.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENAMOOS_20180814_105458 if a tree falls.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 350.4,
-      "status": "skipped",
+      "duration_s": 19.0,
+      "sample_rate": 44100,
+      "render_time_s": 0.488,
+      "png_size_kb": 478.5,
+      "status": "ok",
       "error": null
     },
     {
@@ -428,95 +428,95 @@
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENAPHEN_20160326_044922 Denali Kennels dogs howling TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 414.5,
-      "status": "skipped",
+      "duration_s": 79.37,
+      "sample_rate": 44100,
+      "render_time_s": 1.986,
+      "png_size_kb": 577.5,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENAPHEN_20160326_044922 Denali Kennels dogs howling.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENAPHEN_20160326_044922 Denali Kennels dogs howling.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENAPHEN_20160326_044922 Denali Kennels dogs howling.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 442.4,
-      "status": "skipped",
+      "duration_s": 95.0,
+      "sample_rate": 44100,
+      "render_time_s": 2.451,
+      "png_size_kb": 608.2,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENATHRI_20150630_125351 rain faint chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENATHRI_20150630_125351 rain faint chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENATHRI_20150630_125351 rain faint chorus.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 365.3,
-      "status": "skipped",
+      "duration_s": 154.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.898,
+      "png_size_kb": 506.6,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENATOKO_20160511_070134 long cut of avian chorus with showers.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENATOKO_20160511_070134 long cut of avian chorus with showers TRIM.mp3",
       "outputs": [
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENATOKO_20160511_070134 long cut of avian chorus with showers.png"
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENATOKO_20160511_070134 long cut of avian chorus with showers TRIM.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 340.4,
-      "status": "skipped",
+      "duration_s": 120.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.136,
+      "png_size_kb": 500.3,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENATOKO_20160513_130223 animal movement bird chorus and river.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/DENATOKO_20160513_130223 animal movement bird chorus and river.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/DENATOKO_20160513_130223 animal movement bird chorus and river.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 295.9,
-      "status": "skipped",
+      "duration_s": 127.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.381,
+      "png_size_kb": 394.6,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/GLBABARTC_20210726_194850_curious_natural_sound like child humming TRIM FADE COMPRESS AMPLIFY.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/GLBABARTC_20210726_194850_curious_natural_sound like child humming TRIM FADE COMPRESS AMPLIFY.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/GLBABARTC_20210726_194850_curious_natural_sound like child humming TRIM FADE COMPRESS AMPLIFY.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 417.9,
-      "status": "skipped",
+      "duration_s": 105.42,
+      "sample_rate": 44100,
+      "render_time_s": 2.858,
+      "png_size_kb": 585.3,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/LACLKIJK_20180619_193149 ambience with raindrops and punctuated bird song.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/LACLKIJK_20180619_193149 ambience with raindrops and punctuated bird song.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/LACLKIJK_20180619_193149 ambience with raindrops and punctuated bird song.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 404.4,
-      "status": "skipped",
+      "duration_s": 132.0,
+      "sample_rate": 44100,
+      "render_time_s": 3.639,
+      "png_size_kb": 538.8,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/LACLKIJK_20180619_194318 ambience with raindrops and avian chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GENERAL/LACLKIJK_20180619_194318 ambience with raindrops and avian chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GENERAL/LACLKIJK_20180619_194318 ambience with raindrops and avian chorus.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 413.5,
-      "status": "skipped",
+      "duration_s": 187.0,
+      "sample_rate": 44100,
+      "render_time_s": 5.79,
+      "png_size_kb": 555.9,
+      "status": "ok",
       "error": null
     },
     {
@@ -525,11 +525,11 @@
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABACK_20140609_004008 pronounced rock slide with several phases AMPLIFY +15 dBFS (slight TRIM).png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABACK_20140609_004008 pronounced rock slide with several phases AMPLIFY +15 dBFS (slight TRIM)_lowfreq.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 535.7,
-      "status": "skipped",
+      "duration_s": 99.7,
+      "sample_rate": 44100,
+      "render_time_s": 4.794,
+      "png_size_kb": 682.1,
+      "status": "ok",
       "error": null
     },
     {
@@ -538,11 +538,11 @@
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABACK_20140724_210128 rock slide with large pieces at end.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABACK_20140724_210128 rock slide with large pieces at end_lowfreq.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 514.8,
-      "status": "skipped",
+      "duration_s": 50.18,
+      "sample_rate": 44100,
+      "render_time_s": 2.368,
+      "png_size_kb": 651.9,
+      "status": "ok",
       "error": null
     },
     {
@@ -551,37 +551,37 @@
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABICR_20130707_143335-Thunder And Rain TRIM.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABICR_20130707_143335-Thunder And Rain TRIM_lowfreq.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 454.7,
-      "status": "skipped",
+      "duration_s": 34.66,
+      "sample_rate": 44100,
+      "render_time_s": 1.597,
+      "png_size_kb": 560.5,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENABMUL_20210330_001843 Muldrow surge long cut.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENABMUL_20210330_001843 Muldrow surge long cut TRIM.mp3",
       "outputs": [
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210330_001843 Muldrow surge long cut.png",
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210330_001843 Muldrow surge long cut_lowfreq.png"
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210330_001843 Muldrow surge long cut TRIM.png",
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210330_001843 Muldrow surge long cut TRIM_lowfreq.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 209.2,
-      "status": "skipped",
+      "duration_s": 120.0,
+      "sample_rate": 44100,
+      "render_time_s": 5.547,
+      "png_size_kb": 285.6,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge long cut.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge long cut TRIM.mp3",
       "outputs": [
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge long cut.png",
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge long cut_lowfreq.png"
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge long cut TRIM.png",
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge long cut TRIM_lowfreq.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 155.5,
-      "status": "skipped",
+      "duration_s": 120.0,
+      "sample_rate": 44100,
+      "render_time_s": 5.828,
+      "png_size_kb": 209.9,
+      "status": "ok",
       "error": null
     },
     {
@@ -590,23 +590,23 @@
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge shorter clip.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_051821 Muldrow surge shorter clip_lowfreq.png"
       ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 216.9,
-      "status": "skipped",
+      "duration_s": 85.85,
+      "sample_rate": 44100,
+      "render_time_s": 4.417,
+      "png_size_kb": 221.8,
+      "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENABMUL_20210401_091907 Muldrow surge long cut, extensive low-frequency rumbling features.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENABMUL_20210401_091907 Muldrow surge long cut, extensive low-frequency rumbling features TRIM.mp3",
       "outputs": [
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_091907 Muldrow surge long cut, extensive low-frequency rumbling features.png",
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_091907 Muldrow surge long cut, extensive low-frequency rumbling features_lowfreq.png"
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_091907 Muldrow surge long cut, extensive low-frequency rumbling features TRIM.png",
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENABMUL_20210401_091907 Muldrow surge long cut, extensive low-frequency rumbling features TRIM_lowfreq.png"
       ],
-      "duration_s": 1515.0,
+      "duration_s": 120.0,
       "sample_rate": 44100,
-      "render_time_s": 273.486,
-      "png_size_kb": 194.5,
+      "render_time_s": 7.384,
+      "png_size_kb": 318.3,
       "status": "ok",
       "error": null
     },
@@ -618,34 +618,34 @@
       ],
       "duration_s": 24.93,
       "sample_rate": 44100,
-      "render_time_s": 1.577,
-      "png_size_kb": 621.7,
+      "render_time_s": 1.335,
+      "png_size_kb": 816.5,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAKICH_20120522_100025_Avalanche with bird song.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAKICH_20120522_100025_Avalanche with bird song.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAKICH_20120522_100025_Avalanche with bird song.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAKICH_20120522_100025_Avalanche with bird song_lowfreq.png"
       ],
       "duration_s": 179.0,
       "sample_rate": 44100,
-      "render_time_s": 12.132,
-      "png_size_kb": 539.4,
+      "render_time_s": 9.875,
+      "png_size_kb": 691.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAKICH_20120522_161217 Avalanche loud and sudden AMPLIFY -3 dBFS FADE OUT.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAKICH_20120522_161217 Avalanche loud and sudden AMPLIFY -3 dBFS FADE OUT.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAKICH_20120522_161217 Avalanche loud and sudden AMPLIFY -3 dBFS FADE OUT.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAKICH_20120522_161217 Avalanche loud and sudden AMPLIFY -3 dBFS FADE OUT_lowfreq.png"
       ],
       "duration_s": 54.83,
       "sample_rate": 44100,
-      "render_time_s": 3.808,
-      "png_size_kb": 506.8,
+      "render_time_s": 2.831,
+      "png_size_kb": 636.4,
       "status": "ok",
       "error": null
     },
@@ -657,8 +657,8 @@
       ],
       "duration_s": 157.0,
       "sample_rate": 44100,
-      "render_time_s": 9.831,
-      "png_size_kb": 485.7,
+      "render_time_s": 7.959,
+      "png_size_kb": 606.5,
       "status": "ok",
       "error": null
     },
@@ -670,21 +670,21 @@
       ],
       "duration_s": 66.97,
       "sample_rate": 44100,
-      "render_time_s": 3.957,
-      "png_size_kb": 315.6,
+      "render_time_s": 3.351,
+      "png_size_kb": 356.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENASKGL_20210602_041003 rock slide.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENASKGL_20210602_041003 rock slide.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENASKGL_20210602_041003 rock slide.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENASKGL_20210602_041003 rock slide_lowfreq.png"
       ],
       "duration_s": 268.0,
       "sample_rate": 44100,
-      "render_time_s": 19.532,
-      "png_size_kb": 566.2,
+      "render_time_s": 15.317,
+      "png_size_kb": 705.1,
       "status": "ok",
       "error": null
     },
@@ -696,47 +696,47 @@
       ],
       "duration_s": 36.37,
       "sample_rate": 44100,
-      "render_time_s": 2.341,
-      "png_size_kb": 538.5,
+      "render_time_s": 1.766,
+      "png_size_kb": 688.3,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENATRLA_20240802_081511 a moderate-sized rock slide for this site location, probably from Nenana Ridge to the northeast, ~500 meters.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENATRLA_20240802_081511 a moderate-sized rock slide for this site location, probably from Nenana Ridge to the northeast, ~500 meters.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENATRLA_20240802_081511 a moderate-sized rock slide for this site location, probably from Nenana Ridge to the northeast, ~500 meters.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENATRLA_20240802_081511 a moderate-sized rock slide for this site location, probably from Nenana Ridge to the northeast, ~500 meters_lowfreq.png"
       ],
       "duration_s": 24.0,
       "sample_rate": 44100,
-      "render_time_s": 1.469,
-      "png_size_kb": 620.1,
+      "render_time_s": 1.117,
+      "png_size_kb": 817.6,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENATRLA_20240802_152712 rock slide, probably from Nenana Ridge to northeast about 500 meters.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENATRLA_20240802_152712 rock slide, probably from Nenana Ridge to northeast about 500 meters.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENATRLA_20240802_152712 rock slide, probably from Nenana Ridge to northeast about 500 meters.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENATRLA_20240802_152712 rock slide, probably from Nenana Ridge to northeast about 500 meters_lowfreq.png"
       ],
       "duration_s": 54.0,
       "sample_rate": 44100,
-      "render_time_s": 3.396,
-      "png_size_kb": 603.8,
+      "render_time_s": 2.445,
+      "png_size_kb": 793.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUDAL_20100702_132530 ice bubbles and creaking.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUDAL_20100702_132530 ice bubbles and creaking.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUDAL_20100702_132530 ice bubbles and creaking.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUDAL_20100702_132530 ice bubbles and creaking_lowfreq.png"
       ],
       "duration_s": 86.0,
       "sample_rate": 44100,
-      "render_time_s": 6.989,
-      "png_size_kb": 549.4,
+      "render_time_s": 3.772,
+      "png_size_kb": 709.6,
       "status": "ok",
       "error": null
     },
@@ -748,21 +748,21 @@
       ],
       "duration_s": 65.41,
       "sample_rate": 44100,
-      "render_time_s": 4.258,
-      "png_size_kb": 650.7,
+      "render_time_s": 3.384,
+      "png_size_kb": 870.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUPEL_20130511_232743-RockSlide.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUPEL_20130511_232743-RockSlide.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUPEL_20130511_232743-RockSlide.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUPEL_20130511_232743-RockSlide_lowfreq.png"
       ],
       "duration_s": 78.0,
       "sample_rate": 44100,
-      "render_time_s": 6.609,
-      "png_size_kb": 588.4,
+      "render_time_s": 3.552,
+      "png_size_kb": 762.4,
       "status": "ok",
       "error": null
     },
@@ -774,47 +774,34 @@
       ],
       "duration_s": 11.23,
       "sample_rate": 44100,
-      "render_time_s": 1.166,
-      "png_size_kb": 521.7,
+      "render_time_s": 0.547,
+      "png_size_kb": 596.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUTOK_20190810_082714 rock slide with deep thump.wav",
-      "outputs": [
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUTOK_20190810_082714 rock slide with deep thump.png",
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUTOK_20190810_082714 rock slide with deep thump_lowfreq.png"
-      ],
-      "duration_s": null,
-      "sample_rate": null,
-      "render_time_s": null,
-      "png_size_kb": 521.7,
-      "status": "skipped",
-      "error": null
-    },
-    {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUYEN_20120520_124131 short midground rock slide.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUYEN_20120520_124131 short midground rock slide.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUYEN_20120520_124131 short midground rock slide.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUYEN_20120520_124131 short midground rock slide_lowfreq.png"
       ],
       "duration_s": 27.0,
       "sample_rate": 44100,
-      "render_time_s": 2.808,
-      "png_size_kb": 597.3,
+      "render_time_s": 1.313,
+      "png_size_kb": 779.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUYEN_20120520_180417 avalanche with two major bursts, then a long wash-out.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENAUYEN_20120520_180417 avalanche with two major bursts, then a long wash-out.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUYEN_20120520_180417 avalanche with two major bursts, then a long wash-out.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENAUYEN_20120520_180417 avalanche with two major bursts, then a long wash-out_lowfreq.png"
       ],
       "duration_s": 87.0,
       "sample_rate": 44100,
-      "render_time_s": 7.171,
-      "png_size_kb": 563.5,
+      "render_time_s": 4.204,
+      "png_size_kb": 719.3,
       "status": "ok",
       "error": null
     },
@@ -826,8 +813,8 @@
       ],
       "duration_s": 23.36,
       "sample_rate": 44100,
-      "render_time_s": 2.163,
-      "png_size_kb": 453.8,
+      "render_time_s": 1.234,
+      "png_size_kb": 550.3,
       "status": "ok",
       "error": null
     },
@@ -839,8 +826,8 @@
       ],
       "duration_s": 64.76,
       "sample_rate": 44100,
-      "render_time_s": 5.225,
-      "png_size_kb": 484.8,
+      "render_time_s": 3.107,
+      "png_size_kb": 602.1,
       "status": "ok",
       "error": null
     },
@@ -852,21 +839,21 @@
       ],
       "duration_s": 67.1,
       "sample_rate": 44100,
-      "render_time_s": 5.347,
-      "png_size_kb": 506.5,
+      "render_time_s": 3.331,
+      "png_size_kb": 635.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/GAARARRI_20180624_075645 small rockfall, background avian chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/GAARARRI_20180624_075645 small rockfall, background avian chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/GAARARRI_20180624_075645 small rockfall, background avian chorus.png",
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/GAARARRI_20180624_075645 small rockfall, background avian chorus_lowfreq.png"
       ],
       "duration_s": 105.0,
       "sample_rate": 44100,
-      "render_time_s": 8.06,
-      "png_size_kb": 521.4,
+      "render_time_s": 5.637,
+      "png_size_kb": 664.5,
       "status": "ok",
       "error": null
     },
@@ -878,8 +865,8 @@
       ],
       "duration_s": 41.64,
       "sample_rate": 44100,
-      "render_time_s": 3.168,
-      "png_size_kb": 516.9,
+      "render_time_s": 2.033,
+      "png_size_kb": 654.7,
       "status": "ok",
       "error": null
     },
@@ -891,8 +878,8 @@
       ],
       "duration_s": 40.07,
       "sample_rate": 44100,
-      "render_time_s": 2.491,
-      "png_size_kb": 520.6,
+      "render_time_s": 1.804,
+      "png_size_kb": 660.4,
       "status": "ok",
       "error": null
     },
@@ -904,8 +891,8 @@
       ],
       "duration_s": 40.35,
       "sample_rate": 44100,
-      "render_time_s": 2.423,
-      "png_size_kb": 318.5,
+      "render_time_s": 1.859,
+      "png_size_kb": 360.1,
       "status": "ok",
       "error": null
     },
@@ -917,260 +904,260 @@
       ],
       "duration_s": 31.87,
       "sample_rate": 44100,
-      "render_time_s": 2.346,
-      "png_size_kb": 457.7,
+      "render_time_s": 1.429,
+      "png_size_kb": 560.1,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENACABN_20130714_112628-UnknownOrthopteran.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENACABN_20130714_112628-UnknownOrthopteran.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENACABN_20130714_112628-UnknownOrthopteran.png"
       ],
       "duration_s": 95.0,
       "sample_rate": 44100,
-      "render_time_s": 3.132,
-      "png_size_kb": 459.2,
+      "render_time_s": 2.583,
+      "png_size_kb": 637.3,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMCRI_20120725_151912_Mosquito (clear).wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMCRI_20120725_151912_Mosquito (clear).mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENAMCRI_20120725_151912_Mosquito (clear).png"
       ],
       "duration_s": 35.0,
       "sample_rate": 44100,
-      "render_time_s": 1.126,
-      "png_size_kb": 452.7,
+      "render_time_s": 0.929,
+      "png_size_kb": 624.3,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMCRI_20120810_191000 mosquitos close.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMCRI_20120810_191000 mosquitos close.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENAMCRI_20120810_191000 mosquitos close.png"
       ],
       "duration_s": 126.0,
       "sample_rate": 44100,
-      "render_time_s": 4.074,
-      "png_size_kb": 438.5,
+      "render_time_s": 3.729,
+      "png_size_kb": 603.3,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMOOS_20180719_075149 insect wingbeats with two acoustically distinct behaviors.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMOOS_20180719_075149 insect wingbeats with two acoustically distinct behaviors.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENAMOOS_20180719_075149 insect wingbeats with two acoustically distinct behaviors.png"
       ],
       "duration_s": 237.0,
       "sample_rate": 44100,
-      "render_time_s": 8.514,
-      "png_size_kb": 372.8,
+      "render_time_s": 6.315,
+      "png_size_kb": 481.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20160506_015745 deep insect wingbeats.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20160506_015745 deep insect wingbeats.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENATOKO_20160506_015745 deep insect wingbeats.png"
       ],
       "duration_s": 19.0,
       "sample_rate": 44100,
-      "render_time_s": 0.623,
-      "png_size_kb": 341.1,
+      "render_time_s": 0.494,
+      "png_size_kb": 441.6,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20160507_232954 insect wingbeats with Varied Thrush song.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20160507_232954 insect wingbeats with Varied Thrush song.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENATOKO_20160507_232954 insect wingbeats with Varied Thrush song.png"
       ],
       "duration_s": 35.0,
       "sample_rate": 44100,
-      "render_time_s": 1.114,
-      "png_size_kb": 302.9,
+      "render_time_s": 0.909,
+      "png_size_kb": 404.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20190701_100630 long insect wingbeat tone.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20190701_100630 long insect wingbeat tone.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENATOKO_20190701_100630 long insect wingbeat tone.png"
       ],
       "duration_s": 163.0,
       "sample_rate": 44100,
-      "render_time_s": 5.684,
-      "png_size_kb": 363.3,
+      "render_time_s": 5.137,
+      "png_size_kb": 491.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATRLA_20240629_213201 very clear insect wings close to the windscreen.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATRLA_20240629_213201 very clear insect wings close to the windscreen.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENATRLA_20240629_213201 very clear insect wings close to the windscreen.png"
       ],
       "duration_s": 24.0,
       "sample_rate": 44100,
-      "render_time_s": 0.777,
-      "png_size_kb": 389.7,
+      "render_time_s": 0.623,
+      "png_size_kb": 530.1,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARARRI_20180625_195435 bumble bee and avian chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARARRI_20180625_195435 bumble bee and avian chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARARRI_20180625_195435 bumble bee and avian chorus.png"
       ],
       "duration_s": 59.0,
       "sample_rate": 44100,
-      "render_time_s": 1.88,
-      "png_size_kb": 313.5,
+      "render_time_s": 1.474,
+      "png_size_kb": 419.0,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARARRI_20180723_155006 Grasshoppers stridulating.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARARRI_20180723_155006 Grasshoppers stridulating.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARARRI_20180723_155006 Grasshoppers stridulating.png"
       ],
       "duration_s": 243.0,
       "sample_rate": 44100,
-      "render_time_s": 8.413,
-      "png_size_kb": 320.3,
+      "render_time_s": 7.639,
+      "png_size_kb": 435.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARFLOR_20180612_210329 clear insect buzzing.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARFLOR_20180612_210329 clear insect buzzing.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARFLOR_20180612_210329 clear insect buzzing.png"
       ],
       "duration_s": 76.0,
       "sample_rate": 44100,
-      "render_time_s": 2.424,
-      "png_size_kb": 360.8,
+      "render_time_s": 2.14,
+      "png_size_kb": 491.0,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARFLOR_20180704_185606 moth wingbeats.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARFLOR_20180704_185606 moth wingbeats.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARFLOR_20180704_185606 moth wingbeats.png"
       ],
       "duration_s": 112.0,
       "sample_rate": 44100,
-      "render_time_s": 3.504,
-      "png_size_kb": 324.8,
+      "render_time_s": 3.115,
+      "png_size_kb": 438.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARNNUT_20140705_214919 very clear insect wingbeats.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARNNUT_20140705_214919 very clear insect wingbeats.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARNNUT_20140705_214919 very clear insect wingbeats.png"
       ],
       "duration_s": 114.0,
       "sample_rate": 44100,
-      "render_time_s": 3.881,
-      "png_size_kb": 389.9,
+      "render_time_s": 3.189,
+      "png_size_kb": 535.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARNNUT_20140706_112454 long, horrible insect recording.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARNNUT_20140706_112454 long, horrible insect recording.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARNNUT_20140706_112454 long, horrible insect recording.png"
       ],
       "duration_s": 135.0,
       "sample_rate": 44100,
-      "render_time_s": 3.939,
-      "png_size_kb": 411.5,
+      "render_time_s": 3.749,
+      "png_size_kb": 558.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARPALA_20190615_075733 interesting repeated insect wingbeats with nearly identical harmonic structure each time, avian background.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARPALA_20190615_075733 interesting repeated insect wingbeats with nearly identical harmonic structure each time, avian background.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARPALA_20190615_075733 interesting repeated insect wingbeats with nearly identical harmonic structure each time, avian background.png"
       ],
       "duration_s": 136.0,
       "sample_rate": 44100,
-      "render_time_s": 4.591,
-      "png_size_kb": 244.2,
+      "render_time_s": 3.357,
+      "png_size_kb": 306.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARUPNO_20180726_222040 fly sporadically buzzes.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARUPNO_20180726_222040 fly sporadically buzzes.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARUPNO_20180726_222040 fly sporadically buzzes.png"
       ],
       "duration_s": 101.0,
       "sample_rate": 44100,
-      "render_time_s": 3.235,
-      "png_size_kb": 373.2,
+      "render_time_s": 2.662,
+      "png_size_kb": 517.0,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMDORI_20160811_093232 a long insect event with rich harmonics.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMDORI_20160811_093232 a long insect event with rich harmonics.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/KATMDORI_20160811_093232 a long insect event with rich harmonics.png"
       ],
       "duration_s": 236.0,
       "sample_rate": 44100,
-      "render_time_s": 8.908,
-      "png_size_kb": 360.8,
+      "render_time_s": 7.702,
+      "png_size_kb": 496.5,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMJOJO_20160628_090025 insect wingbeats slowly increase in pitch.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMJOJO_20160628_090025 insect wingbeats slowly increase in pitch.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/KATMJOJO_20160628_090025 insect wingbeats slowly increase in pitch.png"
       ],
       "duration_s": 164.0,
       "sample_rate": 44100,
-      "render_time_s": 5.35,
-      "png_size_kb": 440.9,
+      "render_time_s": 4.778,
+      "png_size_kb": 611.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMKABA_20160730_044150 large insect repeatedly lands on windscreen, background gulls surf.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMKABA_20160730_044150 large insect repeatedly lands on windscreen, background gulls surf.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/KATMKABA_20160730_044150 large insect repeatedly lands on windscreen, background gulls surf.png"
       ],
       "duration_s": 210.0,
       "sample_rate": 44100,
-      "render_time_s": 8.494,
-      "png_size_kb": 436.2,
+      "render_time_s": 6.285,
+      "png_size_kb": 604.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMTACT_20170714_114719 good quality buzzy insect wingbeats.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMTACT_20170714_114719 good quality buzzy insect wingbeats.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/KATMTACT_20170714_114719 good quality buzzy insect wingbeats.png"
       ],
       "duration_s": 90.0,
       "sample_rate": 44100,
-      "render_time_s": 3.352,
-      "png_size_kb": 448.4,
+      "render_time_s": 2.291,
+      "png_size_kb": 620.8,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/DENACATH_20170727_181009 Arctic Ground Squirrel call with reverberation.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/DENACATH_20170727_181009 Arctic Ground Squirrel call with reverberation.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/DENACATH_20170727_181009 Arctic Ground Squirrel call with reverberation.png"
       ],
       "duration_s": 64.0,
       "sample_rate": 44100,
-      "render_time_s": 2.297,
-      "png_size_kb": 374.2,
+      "render_time_s": 1.551,
+      "png_size_kb": 512.5,
       "status": "ok",
       "error": null
     },
@@ -1181,8 +1168,8 @@
       ],
       "duration_s": 46.49,
       "sample_rate": 44100,
-      "render_time_s": 1.653,
-      "png_size_kb": 382.1,
+      "render_time_s": 1.125,
+      "png_size_kb": 521.5,
       "status": "ok",
       "error": null
     },
@@ -1193,8 +1180,8 @@
       ],
       "duration_s": 96.24,
       "sample_rate": 44100,
-      "render_time_s": 3.993,
-      "png_size_kb": 387.9,
+      "render_time_s": 2.397,
+      "png_size_kb": 542.1,
       "status": "ok",
       "error": null
     },
@@ -1205,20 +1192,20 @@
       ],
       "duration_s": 28.27,
       "sample_rate": 44100,
-      "render_time_s": 0.922,
-      "png_size_kb": 379.7,
+      "render_time_s": 0.719,
+      "png_size_kb": 526.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/DENAHAUK_20140617_084002 iron creek west wolves (male 1405) howling interspersed with dawn chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/DENAHAUK_20140617_084002 iron creek west wolves (male 1405) howling interspersed with dawn chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/DENAHAUK_20140617_084002 iron creek west wolves (male 1405) howling interspersed with dawn chorus.png"
       ],
       "duration_s": 101.25,
       "sample_rate": 44100,
-      "render_time_s": 3.29,
-      "png_size_kb": 372.4,
+      "render_time_s": 2.422,
+      "png_size_kb": 514.9,
       "status": "ok",
       "error": null
     },
@@ -1229,8 +1216,8 @@
       ],
       "duration_s": 63.01,
       "sample_rate": 44100,
-      "render_time_s": 2.423,
-      "png_size_kb": 370.0,
+      "render_time_s": 1.527,
+      "png_size_kb": 510.7,
       "status": "ok",
       "error": null
     },
@@ -1241,8 +1228,8 @@
       ],
       "duration_s": 11.94,
       "sample_rate": 44100,
-      "render_time_s": 0.453,
-      "png_size_kb": 250.2,
+      "render_time_s": 0.306,
+      "png_size_kb": 300.7,
       "status": "ok",
       "error": null
     },
@@ -1253,8 +1240,8 @@
       ],
       "duration_s": 80.73,
       "sample_rate": 44100,
-      "render_time_s": 2.329,
-      "png_size_kb": 293.5,
+      "render_time_s": 2.117,
+      "png_size_kb": 382.7,
       "status": "ok",
       "error": null
     },
@@ -1265,8 +1252,8 @@
       ],
       "duration_s": 35.48,
       "sample_rate": 44100,
-      "render_time_s": 1.072,
-      "png_size_kb": 418.9,
+      "render_time_s": 0.906,
+      "png_size_kb": 588.6,
       "status": "ok",
       "error": null
     },
@@ -1277,8 +1264,8 @@
       ],
       "duration_s": 44.1,
       "sample_rate": 44100,
-      "render_time_s": 1.325,
-      "png_size_kb": 332.0,
+      "render_time_s": 1.122,
+      "png_size_kb": 451.1,
       "status": "ok",
       "error": null
     },
@@ -1289,32 +1276,32 @@
       ],
       "duration_s": 25.71,
       "sample_rate": 44100,
-      "render_time_s": 0.807,
-      "png_size_kb": 405.2,
+      "render_time_s": 0.643,
+      "png_size_kb": 571.0,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/DENAVABM_20090729_035000_Bear huffing.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/DENAVABM_20090729_035000_Bear huffing.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/DENAVABM_20090729_035000_Bear huffing.png"
       ],
       "duration_s": 4.93,
-      "sample_rate": 16000,
-      "render_time_s": 0.133,
-      "png_size_kb": 123.6,
+      "sample_rate": 44100,
+      "render_time_s": 0.128,
+      "png_size_kb": 198.6,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/GLBABARTC_20210628_065656 Humpback Whale vocalizations and slapping with Sooty Grouse and avian chorus TRIM COMPRESS AMPLIFY FADE.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/GLBABARTC_20210628_065656 Humpback Whale vocalizations and slapping with Sooty Grouse and avian chorus TRIM COMPRESS AMPLIFY FADE.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/GLBABARTC_20210628_065656 Humpback Whale vocalizations and slapping with Sooty Grouse and avian chorus TRIM COMPRESS AMPLIFY FADE.png"
       ],
       "duration_s": 183.2,
       "sample_rate": 44100,
-      "render_time_s": 6.115,
-      "png_size_kb": 269.5,
+      "render_time_s": 5.881,
+      "png_size_kb": 352.8,
       "status": "ok",
       "error": null
     },
@@ -1325,8 +1312,8 @@
       ],
       "duration_s": 68.17,
       "sample_rate": 44100,
-      "render_time_s": 2.138,
-      "png_size_kb": 298.9,
+      "render_time_s": 1.856,
+      "png_size_kb": 390.5,
       "status": "ok",
       "error": null
     },
@@ -1337,8 +1324,8 @@
       ],
       "duration_s": 74.19,
       "sample_rate": 44100,
-      "render_time_s": 2.528,
-      "png_size_kb": 407.6,
+      "render_time_s": 2.043,
+      "png_size_kb": 571.4,
       "status": "ok",
       "error": null
     },
@@ -1349,20 +1336,20 @@
       ],
       "duration_s": 86.69,
       "sample_rate": 44100,
-      "render_time_s": 2.776,
-      "png_size_kb": 370.5,
+      "render_time_s": 2.208,
+      "png_size_kb": 510.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/GLBARENDU_20220612_162613 low-pitched Humpback Whale calls.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/GLBARENDU_20220612_162613 low-pitched Humpback Whale calls.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/GLBARENDU_20220612_162613 low-pitched Humpback Whale calls.png"
       ],
       "duration_s": 27.0,
       "sample_rate": 44100,
-      "render_time_s": 0.863,
-      "png_size_kb": 341.8,
+      "render_time_s": 0.685,
+      "png_size_kb": 446.6,
       "status": "ok",
       "error": null
     },
@@ -1373,44 +1360,44 @@
       ],
       "duration_s": 115.26,
       "sample_rate": 44100,
-      "render_time_s": 3.751,
-      "png_size_kb": 292.5,
+      "render_time_s": 3.074,
+      "png_size_kb": 388.3,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/GLBARENDU_20220613_234543 varied alarm calls including Hoary Marmot.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/GLBARENDU_20220613_234543 varied alarm calls including Hoary Marmot.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/GLBARENDU_20220613_234543 varied alarm calls including Hoary Marmot.png"
       ],
       "duration_s": 30.0,
       "sample_rate": 44100,
-      "render_time_s": 1.133,
-      "png_size_kb": 379.0,
+      "render_time_s": 0.773,
+      "png_size_kb": 526.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/KATM005_20100915_070024 excellent gutteral bear sounds TRIM.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/KATM005_20100915_070024 excellent gutteral bear sounds TRIM.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/KATM005_20100915_070024 excellent gutteral bear sounds TRIM.png"
       ],
       "duration_s": 34.0,
       "sample_rate": 44100,
-      "render_time_s": 1.034,
-      "png_size_kb": 323.7,
+      "render_time_s": 0.849,
+      "png_size_kb": 434.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/LACLCHBA_20180703_060620 clear coyotes.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/LACLCHBA_20180703_060620 clear coyotes.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/LACLCHBA_20180703_060620 clear coyotes.png"
       ],
       "duration_s": 110.0,
       "sample_rate": 44100,
-      "render_time_s": 3.033,
-      "png_size_kb": 358.7,
+      "render_time_s": 2.815,
+      "png_size_kb": 489.1,
       "status": "ok",
       "error": null
     },
@@ -1421,8 +1408,8 @@
       ],
       "duration_s": 51.6,
       "sample_rate": 44100,
-      "render_time_s": 1.51,
-      "png_size_kb": 392.1,
+      "render_time_s": 1.368,
+      "png_size_kb": 544.2,
       "status": "ok",
       "error": null
     },
@@ -1433,104 +1420,104 @@
       ],
       "duration_s": 228.92,
       "sample_rate": 44100,
-      "render_time_s": 7.054,
-      "png_size_kb": 210.1,
+      "render_time_s": 6.77,
+      "png_size_kb": 276.2,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20150409_103518 Wolves howling - three distinct voices from an individual followed by group chorus.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20150409_103518 Wolves howling - three distinct voices from an individual followed by group chorus.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20150409_103518 Wolves howling - three distinct voices from an individual followed by group chorus.png"
       ],
       "duration_s": 109.0,
       "sample_rate": 44100,
-      "render_time_s": 3.583,
-      "png_size_kb": 366.0,
+      "render_time_s": 2.925,
+      "png_size_kb": 501.6,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20150429_225402 clear Wolves howling.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20150429_225402 clear Wolves howling.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20150429_225402 clear Wolves howling.png"
       ],
       "duration_s": 79.0,
       "sample_rate": 44100,
-      "render_time_s": 2.378,
-      "png_size_kb": 316.5,
+      "render_time_s": 2.018,
+      "png_size_kb": 402.0,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170128_072543 excellent wolf pack howling - beautiful spectrogram - BANDPASS 100 - 4000 Hz AMPLIFY +8 dBFS.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170128_072543 excellent wolf pack howling - beautiful spectrogram - BANDPASS 100 - 4000 Hz AMPLIFY +8 dBFS.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170128_072543 excellent wolf pack howling - beautiful spectrogram - BANDPASS 100 - 4000 Hz AMPLIFY +8 dBFS.png"
       ],
       "duration_s": 94.0,
       "sample_rate": 44100,
-      "render_time_s": 3.179,
-      "png_size_kb": 308.4,
+      "render_time_s": 2.372,
+      "png_size_kb": 393.7,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.png"
       ],
       "duration_s": 306.0,
       "sample_rate": 44100,
-      "render_time_s": 10.75,
-      "png_size_kb": 276.3,
+      "render_time_s": 9.848,
+      "png_size_kb": 357.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group.png"
       ],
       "duration_s": 306.0,
       "sample_rate": 44100,
-      "render_time_s": 10.603,
-      "png_size_kb": 353.9,
+      "render_time_s": 17.303,
+      "png_size_kb": 483.6,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170211_002212 solitary wolf howl leads into group howling.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170211_002212 solitary wolf howl leads into group howling.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170211_002212 solitary wolf howl leads into group howling.png"
       ],
       "duration_s": 160.0,
       "sample_rate": 44100,
-      "render_time_s": 5.173,
-      "png_size_kb": 324.5,
+      "render_time_s": 6.553,
+      "png_size_kb": 421.5,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170322_201312 clear solitary wolf howling, vocal cracking.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170322_201312 clear solitary wolf howling, vocal cracking.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170322_201312 clear solitary wolf howling, vocal cracking.png"
       ],
       "duration_s": 68.0,
       "sample_rate": 44100,
-      "render_time_s": 2.183,
-      "png_size_kb": 402.3,
+      "render_time_s": 2.529,
+      "png_size_kb": 551.4,
       "status": "ok",
       "error": null
     },
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTCOPA_20160313_014852 solitary wolf howl very clear.wav",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTCOPA_20160313_014852 solitary wolf howl very clear.mp3",
       "outputs": [
         "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTCOPA_20160313_014852 solitary wolf howl very clear.png"
       ],
       "duration_s": 57.0,
       "sample_rate": 44100,
-      "render_time_s": 1.734,
-      "png_size_kb": 329.0,
+      "render_time_s": 1.888,
+      "png_size_kb": 425.5,
       "status": "ok",
       "error": null
     },
@@ -1541,8 +1528,8 @@
       ],
       "duration_s": 43.37,
       "sample_rate": 44100,
-      "render_time_s": 1.837,
-      "png_size_kb": 284.4,
+      "render_time_s": 1.459,
+      "png_size_kb": 351.5,
       "status": "ok",
       "error": null
     },
@@ -1553,8 +1540,8 @@
       ],
       "duration_s": 42.91,
       "sample_rate": 44100,
-      "render_time_s": 1.265,
-      "png_size_kb": 424.1,
+      "render_time_s": 1.115,
+      "png_size_kb": 594.4,
       "status": "ok",
       "error": null
     }

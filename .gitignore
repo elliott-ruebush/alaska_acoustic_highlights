@@ -10,6 +10,7 @@ __pycache__/
 site/node_modules/
 site/dist/
 site/.astro/
+site/public/highlights
 
 # Prototype output (deleted; archived separately)
 output/

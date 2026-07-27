@@ -1,0 +1,62 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Soundscapes of Alaska",
+  description = "A searchable library of NPS Alaska soundscape recordings with synchronized spectrograms.",
+} = Astro.props;
+
+const pageTitle = title === "Soundscapes of Alaska" ? title : `${title} · Soundscapes of Alaska`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div>
+          <p class="wordmark"><a href="/">Soundscapes of Alaska</a></p>
+          <p class="tagline">NPS Alaska acoustic highlights</p>
+        </div>
+        <nav class="site-nav" aria-label="Main">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          This is an unofficial project and is not affiliated with or endorsed by the
+          National Park Service or nps.gov.
+        </p>
+        <p>
+          Audio and spectrogram data courtesy of the National Park Service, Alaska Region.
+          <a href="https://www.nps.gov" rel="noopener noreferrer">nps.gov</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

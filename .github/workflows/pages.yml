@@ -1,61 +1,62 @@
-# GitHub Pages deploy — enable after `site/` scaffold exists.
+# GitHub Pages deploy for the Astro site in site/
 # Settings → Pages → Build and deployment → Source: GitHub Actions
 #
-# Uncomment and adapt when the static site is ready.
+# Requires highlights/ to be present in the checkout (committed or via LFS).
 
-# name: Deploy site to GitHub Pages
-#
-# on:
-#   push:
-#     branches: [main]
-#   workflow_dispatch:
-#
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
-#
-# concurrency:
-#   group: pages
-#   cancel-in-progress: true
-#
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#         # with:
-#         #   lfs: true   # only if using Git LFS for highlights/
-#
-#       - uses: actions/setup-node@v4
-#         with:
-#           node-version: "22"
-#           cache: npm
-#           cache-dependency-path: site/package-lock.json
-#
-#       - name: Install and build
-#         working-directory: site
-#         run: |
-#           npm ci
-#           npm run build
-#
-#       - name: Copy media assets into publish dir
-#         run: |
-#           cp -r highlights site/dist/highlights
-#           cp data/highlights_catalog.json site/dist/data/
-#
-#       - name: Upload Pages artifact
-#         uses: actions/upload-pages-artifact@v3
-#         with:
-#           path: site/dist
-#
-#   deploy:
-#     needs: build
-#     runs-on: ubuntu-latest
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
-#     steps:
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v4
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        # with:
+        #   lfs: true   # only if using Git LFS for highlights/
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install and build
+        working-directory: site
+        run: |
+          npm ci
+          npm run build
+
+      - name: Ensure media assets in publish dir
+        run: |
+          if [ ! -d site/dist/highlights/audio ]; then
+            cp -a highlights site/dist/highlights
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

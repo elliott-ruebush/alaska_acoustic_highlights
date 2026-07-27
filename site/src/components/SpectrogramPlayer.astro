@@ -1,0 +1,151 @@
+---
+import type { Clip } from "../lib/catalog";
+
+interface Props {
+  clip: Clip;
+}
+
+const { clip } = Astro.props;
+const audioSrc = "/" + clip.audio_path;
+const specSrc = "/" + clip.spectrogram_path;
+const lowfreqSrc = clip.spectrogram_lowfreq_path ? "/" + clip.spectrogram_lowfreq_path : null;
+---
+
+<div
+  class="player"
+  data-audio-src={audioSrc}
+  data-duration={clip.duration_sec}
+  data-spec-src={specSrc}
+  data-lowfreq-src={lowfreqSrc ?? ""}
+>
+  <div class="waveform" aria-hidden="true"></div>
+  <div class="spectrogram-frame" role="group" aria-label="Spectrogram — click to seek">
+    <img src={specSrc} alt={`Spectrogram: ${clip.description}`} />
+    <div class="cursor" aria-hidden="true"></div>
+  </div>
+  <div class="controls">
+    <button type="button" class="btn play-pause" aria-label="Play">Play</button>
+    {lowfreqSrc && (
+      <button type="button" class="btn btn--secondary toggle-lowfreq">
+        Show low-frequency view
+      </button>
+    )}
+  </div>
+</div>
+
+<script>
+  import WaveSurfer from "wavesurfer.js";
+
+  document.querySelectorAll<HTMLElement>(".player").forEach((el) => {
+    const audioSrc = el.dataset.audioSrc!;
+    const fallbackDuration = parseFloat(el.dataset.duration || "0");
+    const specSrc = el.dataset.specSrc!;
+    const lowfreqSrc = el.dataset.lowfreqSrc || "";
+
+    const waveformEl = el.querySelector<HTMLElement>(".waveform")!;
+    const frame = el.querySelector<HTMLElement>(".spectrogram-frame")!;
+    const img = frame.querySelector("img")!;
+    const cursor = el.querySelector<HTMLElement>(".cursor")!;
+    const playBtn = el.querySelector<HTMLButtonElement>(".play-pause")!;
+    const lowfreqBtn = el.querySelector<HTMLButtonElement>(".toggle-lowfreq");
+
+    const ws = WaveSurfer.create({
+      container: waveformEl,
+      url: audioSrc,
+      height: 48,
+      cursorWidth: 0,
+      waveColor: "#8a5a35",
+      progressColor: "#1b3a2b",
+    });
+
+    function updateCursor() {
+      const duration = ws.getDuration() || fallbackDuration;
+      const pct = duration ? (ws.getCurrentTime() / duration) * 100 : 0;
+      cursor.style.left = `${Math.min(100, Math.max(0, pct))}%`;
+    }
+
+    ws.on("audioprocess", updateCursor);
+    ws.on("seeking", updateCursor);
+    ws.on("timeupdate", updateCursor);
+    ws.on("finish", updateCursor);
+    ws.on("play", () => {
+      playBtn.textContent = "Pause";
+      playBtn.setAttribute("aria-label", "Pause");
+    });
+    ws.on("pause", () => {
+      playBtn.textContent = "Play";
+      playBtn.setAttribute("aria-label", "Play");
+    });
+
+    playBtn.addEventListener("click", () => ws.playPause());
+
+    frame.addEventListener("click", (e) => {
+      const rect = frame.getBoundingClientRect();
+      const pct = (e.clientX - rect.left) / rect.width;
+      ws.seekTo(Math.min(1, Math.max(0, pct)));
+    });
+
+    frame.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        ws.playPause();
+      }
+    });
+    frame.setAttribute("tabindex", "0");
+
+    if (lowfreqBtn && lowfreqSrc) {
+      let showingLow = false;
+      lowfreqBtn.addEventListener("click", () => {
+        showingLow = !showingLow;
+        img.src = showingLow ? lowfreqSrc : specSrc;
+        lowfreqBtn.textContent = showingLow
+          ? "Show full-range view"
+          : "Show low-frequency view";
+      });
+    }
+  });
+</script>
+
+<style>
+  .player {
+    margin: 1.5rem 0;
+  }
+
+  .waveform {
+    margin-bottom: 0.5rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: rgba(27, 58, 43, 0.06);
+  }
+
+  .spectrogram-frame {
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .spectrogram-frame img {
+    width: 100%;
+    display: block;
+  }
+
+  .cursor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-brown);
+    pointer-events: none;
+    left: 0%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+</style>

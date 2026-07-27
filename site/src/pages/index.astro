@@ -1,0 +1,267 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getAllClips, getCategories, getParks } from "../lib/catalog";
+import { formatDuration, categorySlug } from "../lib/format";
+
+const clips = getAllClips();
+const categories = getCategories();
+const parks = getParks();
+---
+
+<BaseLayout>
+  <section class="hero">
+    <h1>Soundscapes of Alaska</h1>
+    <p class="lead">
+      A searchable library of NPS Alaska soundscape recordings — wolf howls, glacier surges,
+      bird choruses, and more, each paired with a spectrogram you can watch as you listen.
+    </p>
+  </section>
+
+  <section class="filters" aria-label="Filter clips">
+    <div class="filter-row chips" role="group" aria-label="Category">
+      <button type="button" class="chip" data-category="all" data-active="true">All ({clips.length})</button>
+      {categories.map((cat) => (
+        <button type="button" class="chip" data-category={cat.name}>
+          {cat.name} ({cat.count})
+        </button>
+      ))}
+    </div>
+
+    <div class="filter-row">
+      <label for="park-filter">Park</label>
+      <select id="park-filter">
+        <option value="all">All parks</option>
+        {parks.map((park) => (
+          <option value={park.code}>{park.code} ({park.count})</option>
+        ))}
+      </select>
+    </div>
+
+    <div class="filter-row">
+      <label for="search-filter">Search</label>
+      <input
+        id="search-filter"
+        type="search"
+        placeholder="Search titles and descriptions… (/regex/ for patterns)"
+        autocomplete="off"
+      />
+    </div>
+  </section>
+
+  <p id="empty-state" class="empty-state" hidden>No clips match your filters.</p>
+
+  <section class="grid" aria-label="Clip gallery">
+    {clips.map((clip) => (
+      <a
+        href={`/clips/${clip.id}/`}
+        class="card"
+        data-category={clip.category}
+        data-park={clip.park_code ?? "unknown"}
+        data-search={`${clip.title} ${clip.description}`}
+      >
+        <img
+          src={`/${clip.spectrogram_path}`}
+          alt={clip.description}
+          loading="lazy"
+          width="1200"
+          height="400"
+        />
+        <div class="card-body">
+          <h2>{clip.title}</h2>
+          <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
+          <p class="meta">
+            {clip.park_code ?? "Unknown park"}
+            <span aria-hidden="true"> · </span>
+            <span>{formatDuration(clip.duration_sec)}</span>
+          </p>
+        </div>
+      </a>
+    ))}
+  </section>
+</BaseLayout>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
+  const parkSelect = document.querySelector<HTMLSelectElement>("#park-filter")!;
+  const searchInput = document.querySelector<HTMLInputElement>("#search-filter")!;
+  const cards = document.querySelectorAll<HTMLElement>(".card");
+  const emptyState = document.querySelector<HTMLElement>("#empty-state")!;
+
+  let activeCategory = "all";
+
+  function matchesSearch(text: string, rawQuery: string): boolean {
+    const query = rawQuery.trim();
+    if (!query) return true;
+
+    const slashMatch = query.match(/^\/(.+)\/([a-z]*)$/);
+    if (slashMatch) {
+      try {
+        const flags = slashMatch[2].includes("i") ? slashMatch[2] : `${slashMatch[2]}i`;
+        return new RegExp(slashMatch[1], flags).test(text);
+      } catch {
+        return text.toLowerCase().includes(query.toLowerCase());
+      }
+    }
+
+    return text.toLowerCase().includes(query.toLowerCase());
+  }
+
+  function applyFilters() {
+    const park = parkSelect.value;
+    const query = searchInput.value;
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const category = card.dataset.category ?? "";
+      const cardPark = card.dataset.park ?? "";
+      const searchText = card.dataset.search ?? "";
+
+      const categoryMatch = activeCategory === "all" || category === activeCategory;
+      const parkMatch = park === "all" || cardPark === park;
+      const searchMatch = matchesSearch(searchText, query);
+
+      const show = categoryMatch && parkMatch && searchMatch;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    emptyState.hidden = visible > 0;
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      activeCategory = chip.dataset.category ?? "all";
+      chips.forEach((c) => c.setAttribute("data-active", c === chip ? "true" : "false"));
+      applyFilters();
+    });
+  });
+
+  parkSelect.addEventListener("change", applyFilters);
+  searchInput.addEventListener("input", applyFilters);
+</script>
+
+<style>
+  .hero h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--color-forest);
+  }
+
+  .lead {
+    margin: 0 0 1.5rem;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 60ch;
+  }
+
+  .filters {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .filter-row label {
+    font-weight: 600;
+    min-width: 4.5rem;
+  }
+
+  .chips {
+    gap: 0.5rem;
+  }
+
+  .chip {
+    border: 1px solid #c4b8a8;
+    background: var(--color-white);
+    color: var(--color-ink);
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .chip[data-active="true"] {
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: var(--color-cream);
+  }
+
+  select,
+  input[type="search"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.45rem 0.65rem;
+    border: 1px solid #c4b8a8;
+    border-radius: var(--radius);
+    font: inherit;
+    background: var(--color-white);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card[hidden] {
+    display: none !important;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    color: inherit;
+  }
+
+  .card img {
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    object-fit: cover;
+    background: #1a1a1a;
+  }
+
+  .card-body {
+    padding: 0.85rem 1rem 1rem;
+  }
+
+  .card h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .meta {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .empty-state {
+    text-align: center;
+    color: var(--color-muted);
+    padding: 2rem 0;
+  }
+</style>

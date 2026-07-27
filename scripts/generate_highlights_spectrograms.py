@@ -114,7 +114,8 @@ def render_spectrogram(
     db = librosa.amplitude_to_db(magnitude, ref=np.max)
 
     fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
-    img = librosa.display.specshow(
+    fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    librosa.display.specshow(
         db,
         sr=sr,
         hop_length=hop_length,
@@ -126,12 +127,9 @@ def render_spectrogram(
     )
     if fmax is not None:
         ax.set_ylim(20, fmax)
-    ax.set_xlabel("Time (s)")
-    ax.set_ylabel("Frequency (Hz)")
-    fig.colorbar(img, ax=ax, format="%+2.0f dB", pad=0.01)
-    fig.tight_layout()
+    ax.axis("off")
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_path, dpi=DPI, bbox_inches="tight", facecolor="white")
+    fig.savefig(out_path, dpi=DPI, facecolor="white")
     plt.close(fig)
 
     return time.perf_counter() - t0

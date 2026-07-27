@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About" description="About Soundscapes of Alaska — an unofficial showcase of NPS Alaska acoustic monitoring highlights.">
+  <h1>About Soundscapes of Alaska</h1>
+
+  <h2>Project Background</h2>
+  <div class="placeholder-box">
+    <!-- TODO: write project background -->
+    <ul>
+      <li>Why this project exists</li>
+      <li>What the source collection is (NPS Alaska acoustic highlights)</li>
+      <li>How this 126-clip set was curated</li>
+    </ul>
+  </div>
+
+  <h2>How to Read a Spectrogram</h2>
+  <div class="placeholder-box">
+    <!-- TODO: write spectrogram guide -->
+    <ul>
+      <li>Time on the x-axis, frequency on the y-axis, brightness = loudness</li>
+      <li>Why some clips have a low-frequency view (geophony rumble)</li>
+    </ul>
+  </div>
+
+  <h2>How NPS Finds These Sounds</h2>
+  <div class="placeholder-box">
+    <!-- TODO: write SPLAT / monitoring overview -->
+    <ul>
+      <li>SPLAT tool — sound pressure level + spectrogram monitoring</li>
+      <li>From noise-event detection to clip extraction</li>
+    </ul>
+  </div>
+
+  <h2>About This Site</h2>
+  <p>
+    Soundscapes of Alaska is an unofficial, independently built project. It is not affiliated
+    with or endorsed by the National Park Service or nps.gov. This site was created to showcase
+    recordings from NPS Alaska's acoustic monitoring program, using a curated set of publicly
+    available highlight clips. All underlying audio and spectrogram data are courtesy of the
+    National Park Service, Alaska Region.
+  </p>
+</BaseLayout>
+
+<style>
+  h1 {
+    color: var(--color-forest);
+    margin-top: 0;
+  }
+
+  h2 {
+    margin-top: 1.75rem;
+    color: var(--color-forest);
+  }
+
+  .placeholder-box ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SpectrogramPlayer from "../../components/SpectrogramPlayer.astro";
+import { getAllClips } from "../../lib/catalog";
+import { formatDuration, formatFileSize, categorySlug } from "../../lib/format";
+
+export async function getStaticPaths() {
+  return getAllClips().map((clip) => ({
+    params: { id: clip.id },
+    props: { clip },
+  }));
+}
+
+const { clip } = Astro.props;
+---
+
+<BaseLayout title={clip.title} description={clip.description}>
+  <p><a href="/">&larr; Back to all clips</a></p>
+
+  <article class="clip-detail">
+    <h1>{clip.title}</h1>
+
+    <div class="meta-row">
+      <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
+      {clip.park_code && <span>{clip.park_code}</span>}
+      {clip.site_code && <span>Site {clip.site_code}</span>}
+      {clip.recorded_date && <span>{clip.recorded_date}</span>}
+      <span>{formatDuration(clip.duration_sec)}</span>
+    </div>
+
+    <p class="description">{clip.description}</p>
+
+    <SpectrogramPlayer clip={clip} />
+
+    <p>
+      <a class="btn" href={`/${clip.audio_path}`} download>
+        Download MP3 ({formatFileSize(clip.file_size_bytes)})
+      </a>
+    </p>
+
+    <p class="credit">
+      Recorded by {clip.artist ?? "National Park Service"}
+      {clip.species_common && (
+        <>
+          <br />
+          Species: {clip.species_common}
+          {clip.species_scientific && <> (<em>{clip.species_scientific}</em>)</>}
+        </>
+      )}
+      {clip.xc_quality && (
+        <>
+          <br />
+          Quality: {clip.xc_quality}
+        </>
+      )}
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .clip-detail h1 {
+    margin: 0.5rem 0 0.75rem;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    color: var(--color-forest);
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .description {
+    font-size: 1.05rem;
+    max-width: 65ch;
+  }
+
+  .credit {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+</style>
