@@ -25,7 +25,7 @@ COPYRIGHT = (
 )
 
 FILENAME_RE = re.compile(
-    r"^([A-Z]{4})([A-Z0-9]+)_(\d{8})_(\d{6})[\s_]+(.*)$",
+    r"^([A-Z]{4})([A-Z0-9]+)_(\d{8})_(\d{6})[\s._-]+(.*)$",
     re.IGNORECASE,
 )
 PREFIX_RE = re.compile(
