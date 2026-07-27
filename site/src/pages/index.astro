@@ -20,9 +20,9 @@ const parks = getParks();
 
   <section class="filters" aria-label="Filter clips">
     <div class="filter-row chips" role="group" aria-label="Category">
-      <button type="button" class="chip" data-category="all" data-active="true">All ({clips.length})</button>
+      <button type="button" class="chip" data-category="all" data-active="true" aria-pressed="true">All ({clips.length})</button>
       {categories.map((cat) => (
-        <button type="button" class="chip" data-category={cat.name}>
+        <button type="button" class="chip" data-category={cat.name} data-active="false" aria-pressed="false">
           {cat.name} ({cat.count})
         </button>
       ))}
@@ -33,7 +33,7 @@ const parks = getParks();
       <select id="park-filter">
         <option value="all">All parks</option>
         {parks.map((park) => (
-          <option value={park.code}>{park.code} ({park.count})</option>
+          <option value={park.code}>{park.name} ({park.code}) ({park.count})</option>
         ))}
       </select>
     </div>
@@ -48,6 +48,8 @@ const parks = getParks();
       />
     </div>
   </section>
+
+  <p id="filter-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
 
   <p id="empty-state" class="empty-state" hidden>No clips match your filters.</p>
 
@@ -90,10 +92,12 @@ const parks = getParks();
   const searchInput = document.querySelector("#search-filter");
   const cards = document.querySelectorAll(".card");
   const emptyState = document.querySelector("#empty-state");
+  const filterStatus = document.querySelector("#filter-status");
 
   const PARAM_CATEGORY = "category";
   const PARAM_PARK = "park";
   const PARAM_SEARCH = "q";
+  const totalClips = cards.length;
 
   const validCategories = new Set(
     [...chips].map((chip) => chip.getAttribute("data-category") ?? "all"),
@@ -104,6 +108,29 @@ const parks = getParks();
 
   let activeCategory = "all";
   let searchDebounce: ReturnType<typeof setTimeout> | undefined;
+  let announceDebounce: ReturnType<typeof setTimeout> | undefined;
+
+  function setChipActiveState(category: string) {
+    chips.forEach((chip) => {
+      const chipCategory = chip.getAttribute("data-category") ?? "all";
+      const isActive = chipCategory === category;
+      chip.setAttribute("data-active", isActive ? "true" : "false");
+      chip.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+  }
+
+  function announceFilterResults(visible: number) {
+    if (!filterStatus) return;
+    filterStatus.textContent =
+      visible === 0
+        ? "No clips match your filters."
+        : `Showing ${visible} of ${totalClips} clips.`;
+  }
+
+  function scheduleFilterAnnouncement(visible: number) {
+    clearTimeout(announceDebounce);
+    announceDebounce = setTimeout(() => announceFilterResults(visible), 300);
+  }
 
   function readFiltersFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -118,10 +145,7 @@ const parks = getParks();
 
   function syncUiFromState(category: string, park: string, search: string) {
     activeCategory = category;
-    chips.forEach((chip) => {
-      const chipCategory = chip.getAttribute("data-category") ?? "all";
-      chip.setAttribute("data-active", chipCategory === category ? "true" : "false");
-    });
+    setChipActiveState(category);
     parkSelect.value = park;
     if (searchInput.value !== search) {
       searchInput.value = search;
@@ -147,7 +171,7 @@ const parks = getParks();
     }
   }
 
-  function applyFilters() {
+  function applyFilters(announce: "now" | "debounce" | "none" = "now") {
     const park = parkSelect.value;
     const query = searchInput.value.trim().toLowerCase();
     let visible = 0;
@@ -167,6 +191,14 @@ const parks = getParks();
     });
 
     emptyState.hidden = visible > 0;
+
+    if (announce === "now") {
+      announceFilterResults(visible);
+    } else if (announce === "debounce") {
+      scheduleFilterAnnouncement(visible);
+    }
+
+    return visible;
   }
 
   function setFiltersFromUrl(updateHistory: "push" | "replace" | "none") {
@@ -181,21 +213,19 @@ const parks = getParks();
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       activeCategory = chip.getAttribute("data-category") ?? "all";
-      chips.forEach((c) =>
-        c.setAttribute("data-active", c === chip ? "true" : "false"),
-      );
-      applyFilters();
+      setChipActiveState(activeCategory);
+      applyFilters("now");
       updateUrl("push");
     });
   });
 
   parkSelect.addEventListener("change", () => {
-    applyFilters();
+    applyFilters("now");
     updateUrl("push");
   });
 
   searchInput.addEventListener("input", () => {
-    applyFilters();
+    applyFilters("debounce");
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(() => updateUrl("replace"), 300);
   });

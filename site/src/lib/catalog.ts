@@ -26,6 +26,19 @@ export interface Clip {
 
 const CATEGORY_ORDER = ["Birds", "Mammals", "Geophony", "Insects", "General"] as const;
 
+const PARK_NAMES: Record<string, string> = {
+  DENA: "Denali",
+  GAAR: "Gates of the Arctic",
+  GLBA: "Glacier Bay",
+  KATM: "Katmai",
+  LACL: "Lake Clark",
+  WRST: "Wrangell-St. Elias",
+};
+
+export function getParkName(code: string): string {
+  return PARK_NAMES[code] ?? code;
+}
+
 function loadCatalog(): Clip[] {
   const catalogPath = path.join(process.cwd(), "..", "data", "highlights_catalog.json");
   const raw = readFileSync(catalogPath, "utf-8");
@@ -56,7 +69,7 @@ export function getCategories(): { name: string; slug: string; count: number }[]
   }));
 }
 
-export function getParks(): { code: string; count: number }[] {
+export function getParks(): { code: string; name: string; count: number }[] {
   const clips = getAllClips();
   const counts = new Map<string, number>();
   for (const clip of clips) {
@@ -64,6 +77,6 @@ export function getParks(): { code: string; count: number }[] {
     counts.set(clip.park_code, (counts.get(clip.park_code) ?? 0) + 1);
   }
   return [...counts.entries()]
-    .map(([code, count]) => ({ code, count }))
+    .map(([code, count]) => ({ code, name: getParkName(code), count }))
     .sort((a, b) => b.count - a.count || a.code.localeCompare(b.code));
 }

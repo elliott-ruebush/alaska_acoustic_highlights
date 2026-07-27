@@ -25,6 +25,7 @@ const pageTitle = title === "Soundscapes of Alaska" ? title : `${title} · Sound
     <title>{pageTitle}</title>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="site-header">
       <div class="container">
         <div>
@@ -38,7 +39,7 @@ const pageTitle = title === "Soundscapes of Alaska" ? title : `${title} · Sound
       </div>
     </header>
 
-    <main class="site-main">
+    <main id="main-content" class="site-main">
       <div class="container">
         <slot />
       </div>

@@ -28,6 +28,7 @@ const { clip } = Astro.props;
         <span>
           <a href={getParkUrl(clip.park_code)} target="_blank" rel="noopener noreferrer">
             {clip.park_code}
+            <span class="sr-only"> (opens in new tab)</span>
           </a>
         </span>
       )}
