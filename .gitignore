@@ -1,0 +1,15 @@
+.venv/
+.matplotlib/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+
+# Static site build artifacts (when site/ exists)
+site/node_modules/
+site/dist/
+site/.astro/
+
+# Prototype output (deleted; archived separately)
+output/
