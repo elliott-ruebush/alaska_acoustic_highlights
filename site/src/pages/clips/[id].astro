@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import SpectrogramPlayer from "../../components/SpectrogramPlayer.astro";
 import { getAllClips } from "../../lib/catalog";
 import { formatDuration, formatFileSize, categorySlug } from "../../lib/format";
+import { withBase } from "../../lib/paths";
 
 export async function getStaticPaths() {
   return getAllClips().map((clip) => ({
@@ -15,7 +16,7 @@ const { clip } = Astro.props;
 ---
 
 <BaseLayout title={clip.title} description={clip.description}>
-  <p><a href="/">&larr; Back to all clips</a></p>
+  <p><a href={withBase("")}>&larr; Back to all clips</a></p>
 
   <article class="clip-detail">
     <h1>{clip.title}</h1>
@@ -33,7 +34,7 @@ const { clip } = Astro.props;
     <SpectrogramPlayer clip={clip} />
 
     <p>
-      <a class="btn" href={`/${clip.audio_path}`} download>
+      <a class="btn" href={withBase(clip.audio_path)} download>
         Download MP3 ({formatFileSize(clip.file_size_bytes)})
       </a>
     </p>

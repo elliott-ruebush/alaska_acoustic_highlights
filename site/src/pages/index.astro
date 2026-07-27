@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getAllClips, getCategories, getParks } from "../lib/catalog";
 import { formatDuration, categorySlug } from "../lib/format";
+import { withBase } from "../lib/paths";
 
 const clips = getAllClips();
 const categories = getCategories();
@@ -53,14 +54,14 @@ const parks = getParks();
   <section class="grid" aria-label="Clip gallery">
     {clips.map((clip) => (
       <a
-        href={`/clips/${clip.id}/`}
+        href={withBase(`clips/${clip.id}/`)}
         class="card"
         data-category={clip.category}
         data-park={clip.park_code ?? "unknown"}
         data-search={`${clip.title} ${clip.description}`}
       >
         <img
-          src={`/${clip.spectrogram_path}`}
+          src={withBase(clip.spectrogram_path)}
           alt={clip.description}
           loading="lazy"
           width="1200"

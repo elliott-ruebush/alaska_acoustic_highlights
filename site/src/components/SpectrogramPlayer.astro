@@ -1,14 +1,15 @@
 ---
 import type { Clip } from "../lib/catalog";
+import { withBase } from "../lib/paths";
 
 interface Props {
   clip: Clip;
 }
 
 const { clip } = Astro.props;
-const audioSrc = "/" + clip.audio_path;
-const specSrc = "/" + clip.spectrogram_path;
-const lowfreqSrc = clip.spectrogram_lowfreq_path ? "/" + clip.spectrogram_lowfreq_path : null;
+const audioSrc = withBase(clip.audio_path);
+const specSrc = withBase(clip.spectrogram_path);
+const lowfreqSrc = clip.spectrogram_lowfreq_path ? withBase(clip.spectrogram_lowfreq_path) : null;
 ---
 
 <div

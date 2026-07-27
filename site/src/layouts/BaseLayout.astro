@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/paths";
+
 interface Props {
   title?: string;
   description?: string;
@@ -16,7 +18,7 @@ const pageTitle = title === "Soundscapes of Alaska" ? title : `${title} · Sound
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={withBase("favicon.png")} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
@@ -26,12 +28,12 @@ const pageTitle = title === "Soundscapes of Alaska" ? title : `${title} · Sound
     <header class="site-header">
       <div class="container">
         <div>
-          <p class="wordmark"><a href="/">Soundscapes of Alaska</a></p>
+          <p class="wordmark"><a href={withBase("")}>Soundscapes of Alaska</a></p>
           <p class="tagline">NPS Alaska acoustic highlights</p>
         </div>
         <nav class="site-nav" aria-label="Main">
-          <a href="/">Home</a>
-          <a href="/about/">About</a>
+          <a href={withBase("")}>Home</a>
+          <a href={withBase("about/")}>About</a>
         </nav>
       </div>
     </header>
