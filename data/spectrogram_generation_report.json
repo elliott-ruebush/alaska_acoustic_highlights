@@ -1,17 +1,126 @@
 {
   "input_root": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio",
   "output_root": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms",
-  "elapsed_s": 4.737,
+  "elapsed_s": 54.443,
   "files": [
     {
-      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20150429_225402 clear Wolves howling.mp3",
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/DENATOKO_20160616_053228 Orange-crowned Warbler song background chorus, Tokositna River.mp3",
       "outputs": [
-        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20150429_225402 clear Wolves howling.png"
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/DENATOKO_20160616_053228 Orange-crowned Warbler song background chorus, Tokositna River.png"
       ],
-      "duration_s": 75.2,
+      "duration_s": 240.0,
+      "sample_rate": 48000,
+      "render_time_s": 14.742,
+      "png_size_kb": 455.9,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/BIRDS/GAARNNUT_20140704_072937 clear, punctuated Common Loon, background chorus.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/BIRDS/GAARNNUT_20140704_072937 clear, punctuated Common Loon, background chorus.png"
+      ],
+      "duration_s": 265.0,
+      "sample_rate": 48000,
+      "render_time_s": 11.289,
+      "png_size_kb": 567.8,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/GEOPHONY/DENASKGL_20210602_041003 rock slide.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENASKGL_20210602_041003 rock slide.png",
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/GEOPHONY/DENASKGL_20210602_041003 rock slide_lowfreq.png"
+      ],
+      "duration_s": 115.0,
+      "sample_rate": 48000,
+      "render_time_s": 8.164,
+      "png_size_kb": 632.3,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENAMOOS_20180719_075149 insect wingbeats with two acoustically distinct behaviors.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENAMOOS_20180719_075149 insect wingbeats with two acoustically distinct behaviors.png"
+      ],
+      "duration_s": 66.0,
       "sample_rate": 44100,
-      "render_time_s": 4.73,
-      "png_size_kb": 393.2,
+      "render_time_s": 2.215,
+      "png_size_kb": 503.8,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/DENATOKO_20190701_100630 long insect wingbeat tone.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/DENATOKO_20190701_100630 long insect wingbeat tone.png"
+      ],
+      "duration_s": 60.0,
+      "sample_rate": 44100,
+      "render_time_s": 2.156,
+      "png_size_kb": 494.0,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/GAARARRI_20180723_155006 Grasshoppers stridulating.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/GAARARRI_20180723_155006 Grasshoppers stridulating.png"
+      ],
+      "duration_s": 43.0,
+      "sample_rate": 44100,
+      "render_time_s": 1.269,
+      "png_size_kb": 477.9,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMDORI_20160811_093232 a long insect event with rich harmonics.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/KATMDORI_20160811_093232 a long insect event with rich harmonics.png"
+      ],
+      "duration_s": 120.0,
+      "sample_rate": 48000,
+      "render_time_s": 3.884,
+      "png_size_kb": 523.6,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/INSECTS/KATMKABA_20160730_044150 large insect repeatedly lands on windscreen, background gulls surf.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/INSECTS/KATMKABA_20160730_044150 large insect repeatedly lands on windscreen, background gulls surf.png"
+      ],
+      "duration_s": 47.0,
+      "sample_rate": 44100,
+      "render_time_s": 1.466,
+      "png_size_kb": 607.1,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.png"
+      ],
+      "duration_s": 138.0,
+      "sample_rate": 48000,
+      "render_time_s": 5.662,
+      "png_size_kb": 524.4,
+      "status": "ok",
+      "error": null
+    },
+    {
+      "source": "/Users/eruebush/dev/nps_acoustic_highlights/highlights/audio/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group pt. 2 BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.mp3",
+      "outputs": [
+        "/Users/eruebush/dev/nps_acoustic_highlights/highlights/spectrograms/MAMMALS/WRSTBLMT_20170204_124537 clear solitary wolf howling occasional background group pt. 2 BANDPASS 200 - 2500 Hz AMPLIFY +15 dBFS.png"
+      ],
+      "duration_s": 106.0,
+      "sample_rate": 48000,
+      "render_time_s": 3.455,
+      "png_size_kb": 529.9,
       "status": "ok",
       "error": null
     }
