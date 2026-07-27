@@ -1,0 +1,127 @@
+id,title,duration_sec,integrated_lufs,rms_db,peak_db,dynamic_range_db,flags,notes
+denabicr_20130809_020959,Great Grey Owl call with whooping end variation,17.97,,-28.31,-7.01,21.3,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denafang_20110708_023655,White-tailed Ptarmigan,16.45,,-50.92,-25.33,25.59,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahauk_20140606_035354,Northern Waterthrush song with other chorus members,69.76,,-54.57,-32.79,21.78,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahauk_20140607_214150,Varied Thrush song long sequence,40.64,,-45.77,-25.23,20.54,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahig1_20120802_035742,Willow Ptarmigan clear TRIMMED,7.42,,-53.3,-29.52,23.78,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahog3_20120601_034833,"clear Fox Sparrow song possible calls, chorus background",207.0,,-33.69,-15.42,18.27,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahog3_20120605_074102,"American Tree Sparrow song, chorus background",70.35,,-28.65,-7.64,21.02,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahots_20140602_085834,"excellent slow Northern Raven 'croak' calls, popping call, and water-droplet with reverberation",52.24,,-35.86,-12.16,23.7,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denakich_20120524_081441,"Wandering Tattler with background chorus of GCSP, FOSP",18.75,,-44.4,-27.61,16.79,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamuri_20150516_050450,Common Loon with robust chorus,23.31,,-51.95,-35.53,16.42,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamuri_20150519_094517,clear Blackpoll Warbler with dense chorus below,100.3,,-44.12,-14.14,29.98,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamuri_20150523_045418,"chorus with Swainson's Thrush, Common Loon",59.91,,-54.41,-33.05,21.36,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamuri_20150526_060431,very reverberant Sandhill Crane with chorus,37.35,,-38.37,-10.68,27.69,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denapol2_20120619_092801,excellent clear Fox Sparrow song,28.45,,-43.97,-23.03,20.94,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denasan3_20120603_020932,White-crowned Sparrow song with chorus background,120.0,,-48.54,-28.29,20.25,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denasush_20260610_092353,"excellent Northern Raven flight calls with reverberance, preceded by wingbeats (small",54.76,,-27.25,-0.46,26.78,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20160512_052310,White-crowned Sparrow song with chorus background,61.0,,-40.47,-20.75,19.72,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20160616_053228,"Orange-crowned Warbler song background chorus, Tokositna River",394.0,,-31.98,-5.36,26.62,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20240624_045058,clear American Three-toed Woodpecker drumming with lively chorus SWTH DEJU,68.2,,-29.63,-3.66,25.97,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denawocr_20150624_202549,Fox Sparrow song with thunder and Swainson's Thrush,29.08,,-24.18,-4.85,19.33,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarflor_20180615_045829,very clear American Robin song,90.0,,-51.2,-32.3,18.9,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarflor_20180617_125710,"chorus with White-crowned Sparrow, Swainson's Thrush, American Red Squirrel",169.01,,-53.02,-31.43,21.59,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarflor_20180618_053001,Common Loon with rich avian chorus,102.0,,-57.93,-38.34,19.59,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarmwal_20140617_064326,Mew Gull with chorus background,73.14,,-55.38,-30.87,24.51,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarnnut_20140704_072937,"clear, punctuated Common Loon, background chorus",531.02,,-56.46,-27.31,29.15,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarupno_20180606_150920,avian chorus with Savanah Sparrow and occasional insect wingbeats,236.0,,-59.32,-33.78,25.53,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarupno_20180607_025501,Savanah Sparrow song with chorus background,82.0,,-58.41,-31.21,27.2,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbabartc_20200707_111214,GLBABARTC_20200707_111214._Sooty_Grous_near_mic_AMPLIFY_FADEewav,61.0,,-28.78,-4.07,24.72,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbarendu_20220616_230000,very clear Varied Thrush song background Humpback Whale activity (TRIM),429.16,,-38.22,-5.95,32.26,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmcros_20170731_051841,"Gray-cheeked Thrush song with diverse, distant riparian background chorus",78.0,,-63.97,-34.67,29.3,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmjojo_20160710_221044,excellent Common Loon call chorus,135.0,,-69.53,-49.96,19.57,quiet_outlier;very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmkaba_20160823_205149,"excellent very clear Northern Raven calls, background American Tree Sparrow calls",66.0,,-46.81,-21.51,25.3,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+laclhanm_20190829_062559,very clear Common Loon calls with extensive echo and some distortion (TRIM),59.56,,-29.88,-11.46,18.42,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahig1_20120728_122042,insect and running animal,37.0,,-39.87,-18.36,21.51,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamoos_20180814_105458,if a tree falls,19.0,,-40.91,-6.61,34.3,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaphen_20160326_044922,Denali Kennels dogs howling,79.37,,-57.67,-38.63,19.05,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaphen_20160326_044922-mp3,Denali Kennels dogs howling,95.0,,-58.61,-38.8,19.81,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denathri_20150630_125351,rain faint chorus,154.0,,-33.78,-0.22,33.56,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20160511_070134,long cut of avian chorus with showers,120.0,,-47.76,-29.69,18.07,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20160513_130223,animal movement bird chorus and river,127.0,,-42.53,-17.08,25.44,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbabartc_20210726_194850,curious_natural_sound like child humming,105.42,,-24.32,-1.84,22.48,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+laclkijk_20180619_193149,ambience with raindrops and punctuated bird song,132.0,,-54.27,-20.87,33.4,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+laclkijk_20180619_194318,ambience with raindrops and avian chorus,187.0,,-56.33,-23.72,32.61,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaback_20140609_004008,pronounced rock slide with several phases,99.7,,-40.74,-10.68,30.06,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaback_20140724_210128,rock slide with large pieces at end,50.18,,-34.57,-6.72,27.86,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denabicr_20130707_143335,DENABICR_20130707_143335-Thunder And Rain,34.66,,-35.03,-10.86,24.17,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denabmul_20210330_001843,Muldrow surge long cut,120.0,,-29.7,-4.3,25.4,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denabmul_20210401_051821,Muldrow surge long cut,120.0,,-32.13,-7.19,24.94,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denabmul_20210401_051821-mp3,Muldrow surge shorter clip,85.85,,-30.79,-6.88,23.9,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denabmul_20210401_091907,"Muldrow surge long cut, extensive low-frequency rumbling features",120.0,,-30.27,-1.96,28.32,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denacath_20120808_064000,"good quality rock slide, slow speed, blocky extrusive igneous chunks",24.93,,-54.71,-13.53,41.17,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denakich_20120522_100025,Avalanche with bird song,179.0,,-32.55,-11.81,20.74,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denakich_20120522_161217,Avalanche loud and sudden,54.83,,-20.07,-3.27,16.8,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaruth_20190526_040919,small avalanche with distinct slab-breaking event,157.0,,-40.48,-15.0,25.48,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaruth_20190529_214609,prominent snow avalanche,66.97,,-40.9,-19.66,21.25,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaskgl_20210602_041003,rock slide,268.0,,-51.61,-29.42,22.19,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denasush_20260612_111248,"clear, crisp thunder",36.37,,-25.54,-0.45,25.08,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20240802_081511,"a moderate-sized rock slide for this site location, probably from Nenana Ridge to the northeast, ~500 meters",24.0,,-32.28,-2.2,30.08,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20240802_152712,"rock slide, probably from Nenana Ridge to northeast about 500 meters",54.0,,-35.78,-2.2,33.58,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaudal_20100702_132530,ice bubbles and creaking,86.0,,-45.09,-25.73,19.36,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaudal_20100702_132533,ice bubbles and creaking,65.41,,-40.66,-19.98,20.68,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denaupel_20130511_232743,DENAUPEL_20130511_232743-RockSlide,78.0,,-50.47,-23.17,27.3,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denautok_20190810_082714,rock slide with deep thump,11.23,,-31.43,-10.2,21.24,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denauyen_20120520_124131,short midground rock slide,27.0,,-43.92,-10.76,33.16,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denauyen_20120520_180417,"avalanche with two major bursts, then a long wash-out",87.0,,-40.13,-18.96,21.16,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denauyen_20120521_144128,"clear, deep rock motion on the glacier",23.36,,-33.66,-5.0,28.66,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denauyen_20120523_075701,quality rock slide audio,64.76,,-29.16,-1.07,28.09,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denauyen_20120524_215113,"excellent, steady rock slide audio",67.1,,-23.31,0.01,23.32,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaararri_20180624_075645,"small rockfall, background avian chorus",105.0,,-41.15,-12.47,28.69,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaararri_20180625_071639,"rockslide, background Golden-crowned Sparrow song",41.64,,-38.91,-15.64,23.27,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaararri_20180628_145728,Thunder and beginning of rain shower,40.07,,-23.82,-2.6,21.22,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaaritki_20190621_150734,thunder,40.35,,-30.29,-6.01,24.28,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarnwal_20140708_140748,thunder no clipping,31.87,,-24.7,-4.21,20.5,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denacabn_20130714_112628,DENACABN_20130714_112628-UnknownOrthopteran,95.0,,-59.77,-44.44,15.33,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamcri_20120725_151912,Mosquito (clear),35.0,,-51.8,-37.98,13.82,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamcri_20120810_191000,mosquitos close,126.0,,-64.77,-37.52,27.25,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denamoos_20180719_075149,insect wingbeats with two acoustically distinct behaviors,237.0,,-55.32,-32.3,23.02,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20160506_015745,deep insect wingbeats,19.0,,-47.25,-31.49,15.76,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20160507_232954,insect wingbeats with Varied Thrush song,35.0,,-45.49,-24.85,20.64,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatoko_20190701_100630,long insect wingbeat tone,163.0,,-49.8,-34.12,15.67,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20240629_213201,very clear insect wings close to the windscreen,24.0,,-22.88,-2.2,20.68,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaararri_20180625_195435,bumble bee and avian chorus,59.0,,-40.29,-23.28,17.01,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaararri_20180723_155006,Grasshoppers stridulating,243.0,,-46.38,-30.51,15.87,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarflor_20180612_210329,clear insect buzzing,76.0,,-51.51,-22.82,28.69,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarflor_20180704_185606,moth wingbeats,112.0,,-47.17,-14.43,32.74,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarnnut_20140705_214919,very clear insect wingbeats,114.0,,-50.6,-26.39,24.21,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarnnut_20140706_112454,"long, horrible insect recording",135.0,,-45.32,-26.44,18.88,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarpala_20190615_075733,"interesting repeated insect wingbeats with nearly identical harmonic structure each time, avian background",136.0,,-52.43,-30.5,21.93,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+gaarupno_20180726_222040,fly sporadically buzzes,101.0,,-38.51,-11.96,26.55,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmdori_20160811_093232,a long insect event with rich harmonics,236.0,,-45.83,-16.06,29.77,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmjojo_20160628_090025,insect wingbeats slowly increase in pitch,164.0,,-72.5,-39.61,32.9,quiet_outlier;very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmkaba_20160730_044150,"large insect repeatedly lands on windscreen, background gulls surf",210.0,,-57.55,-36.12,21.43,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katmtact_20170714_114719,good quality buzzy insect wingbeats,90.0,,-69.33,-44.24,25.1,quiet_outlier;very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denacath_20170727_181009,Arctic Ground Squirrel call with reverberation,64.0,,-57.18,-21.09,36.09,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denafang_20110706_064839,Dall Sheep bleating,46.49,,-41.31,-20.85,20.46,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denafang_20130730_090604,Caribou_Walking-Snorting-Grazing,96.24,,-38.97,-0.11,38.86,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahauk_20140617_084002,iron creek west wolves (male 1405) howling interspersed with dawn chorus,28.27,,-43.1,-23.86,19.24,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahauk_20140617_084002-mp3,iron creek west wolves (male 1405) howling interspersed with dawn chorus,101.25,,-42.95,-18.19,24.75,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denahots_20140601_212218,American Red Squirrel very clear and possible to hear palate or nasal-related sounds,63.01,,-43.94,-19.38,24.55,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denarugl_20060619_043533,Bear attacks audio equipment,11.94,,-24.33,-5.21,19.12,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20170712_233940,very clear reverberant Coyote howls,80.73,,-25.06,-5.85,19.21,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20180809_213355,coyote howls,35.48,,-49.88,-29.87,20.01,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20240618_160107,"clear, relatively undistorted American Red Squirrel calls",44.1,,-32.12,-13.55,18.58,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denatrla_20240719_213623,"very clear, spastic and varied American Red Squirrel alarm calls",25.71,,-28.15,-1.93,26.21,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+denavabm_20090729_035000,Bear huffing,4.93,,-11.89,-8.65,3.24,loud_outlier,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbabartc_20210628_065656,Humpback Whale vocalizations and slapping with Sooty Grouse and avian chorus,183.2,,-27.98,-1.4,26.58,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbabartc_20210628_065656-mp3,Humpback Whale vocalizations and slapping with Sooty Grouse and avian chorus TRIMMED MORE,68.17,,-24.47,-1.13,23.33,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbamcleod_20220611_034405,a long sequence of Humpback Whale breathing,74.19,,-56.42,-33.36,23.07,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbarendu_20220610_213326,Humpback Whale with birdsong in background,86.69,,-39.99,-13.13,26.86,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbarendu_20220612_162613,low-pitched Humpback Whale calls,27.0,,-35.78,-13.74,22.04,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbarendu_20220613_214042,Humpback Whale slapping sounds,115.26,,-28.9,0.09,29.0,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+glbarendu_20220613_234543,varied alarm calls including Hoary Marmot,30.0,,-45.78,-22.13,23.65,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+katm005_20100915_070024,excellent gutteral bear sounds,34.0,,-29.93,-8.29,21.63,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+laclchba_20180703_060620,clear coyotes,110.0,,-21.16,-0.71,20.44,clipping_risk,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20150402_093032,clear wolves howling with Ptarmigan pt. 2,51.6,,-48.08,-22.69,25.39,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20150402_093032-mp3,"clear wolves howling, slowly builds, Ptarmigan joins too!",228.92,,-61.07,-28.93,32.14,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20150409_103518,Wolves howling - three distinct voices from an individual followed by group chorus,109.0,,-39.5,-20.39,19.11,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20150429_225402,clear Wolves howling,79.0,,-37.24,-15.35,21.9,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20170128_072543,excellent wolf pack howling - beautiful spectrogram,94.0,,-33.0,-13.48,19.52,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20170204_124537,clear solitary wolf howling occasional background group,306.0,,-40.03,-14.12,25.9,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20170204_124537-mp3,clear solitary wolf howling occasional background group,306.0,,-50.58,-28.39,22.19,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20170211_002212,solitary wolf howl leads into group howling,160.0,,-46.08,-25.77,20.31,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstblmt_20170322_201312,"clear solitary wolf howling, vocal cracking",68.0,,-54.09,-34.52,19.57,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrstcopa_20160313_014852,solitary wolf howl very clear,57.0,,-35.75,-21.62,14.13,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrsttala_20160229_204005,clear group wolf howls,43.37,,-40.0,-21.42,18.58,,LUFS unavailable (pyloudnorm not installed); using RMS dBFS
+wrsttala_20160401_010659,relatively clear pair of wolves howling with reverberation,42.91,,-47.59,-33.14,14.45,very_quiet,LUFS unavailable (pyloudnorm not installed); using RMS dBFS

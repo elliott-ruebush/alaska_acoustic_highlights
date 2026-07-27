@@ -234,6 +234,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="Process at most N audio files (for testing)",
     )
+    parser.add_argument(
+        "--files",
+        nargs="*",
+        type=Path,
+        default=None,
+        help="Process only these audio file paths (relative to --input or absolute)",
+    )
     return parser.parse_args(argv)
 
 
@@ -273,9 +280,20 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Input directory not found: {input_root}", file=sys.stderr)
         return 2
 
-    audio_files = discover_audio_files(input_root)
-    if args.limit is not None:
-        audio_files = audio_files[: args.limit]
+    if args.files:
+        audio_files = []
+        for file_arg in args.files:
+            candidate = file_arg if file_arg.is_absolute() else (PROJECT_ROOT / file_arg)
+            resolved = candidate.resolve()
+            if not resolved.is_file():
+                print(f"Audio file not found: {resolved}", file=sys.stderr)
+                return 2
+            audio_files.append(resolved)
+        audio_files = sorted(audio_files)
+    else:
+        audio_files = discover_audio_files(input_root)
+        if args.limit is not None:
+            audio_files = audio_files[: args.limit]
 
     if not audio_files:
         print(f"No audio files found under {input_root}", file=sys.stderr)
