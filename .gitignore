@@ -16,3 +16,6 @@ site/public/highlights
 archive/pre_loudness_normalize/
 archive/removed_duplicates/
 archive/trim_backups/
+
+# Personal notes
+elliott_ideas.md
