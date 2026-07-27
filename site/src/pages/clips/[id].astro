@@ -16,6 +16,7 @@ const { clip } = Astro.props;
 ---
 
 <BaseLayout title={clip.title} description={clip.description}>
+  <a href="#audio-player" class="skip-link">Skip to audio player</a>
   <p><a href={withBase("")}>&larr; Back to all clips</a></p>
 
   <article class="clip-detail">
