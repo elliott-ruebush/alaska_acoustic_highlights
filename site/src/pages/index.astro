@@ -43,7 +43,7 @@ const parks = getParks();
       <input
         id="search-filter"
         type="search"
-        placeholder="Search titles and descriptions… (/regex/ for patterns)"
+        placeholder="Search titles, parks, sites, descriptions…"
         autocomplete="off"
       />
     </div>
@@ -58,7 +58,10 @@ const parks = getParks();
         class="card"
         data-category={clip.category}
         data-park={clip.park_code ?? "unknown"}
-        data-search={`${clip.title} ${clip.description}`}
+        data-search={[clip.title, clip.description, clip.park_code, clip.site_code, clip.category, clip.id]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase()}
       >
         <img
           src={withBase(clip.spectrogram_path)}
@@ -71,7 +74,7 @@ const parks = getParks();
           <h2>{clip.title}</h2>
           <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
           <p class="meta">
-            {clip.park_code ?? "Unknown park"}
+            {[clip.park_code, clip.site_code].filter(Boolean).join(" · ") || "Unknown park"}
             <span aria-hidden="true"> · </span>
             <span>{formatDuration(clip.duration_sec)}</span>
           </p>
@@ -82,47 +85,30 @@ const parks = getParks();
 </BaseLayout>
 
 <script>
-  const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
-  const parkSelect = document.querySelector<HTMLSelectElement>("#park-filter")!;
-  const searchInput = document.querySelector<HTMLInputElement>("#search-filter")!;
-  const cards = document.querySelectorAll<HTMLElement>(".card");
-  const emptyState = document.querySelector<HTMLElement>("#empty-state")!;
+  const chips = document.querySelectorAll(".chip");
+  const parkSelect = document.querySelector("#park-filter");
+  const searchInput = document.querySelector("#search-filter");
+  const cards = document.querySelectorAll(".card");
+  const emptyState = document.querySelector("#empty-state");
 
   let activeCategory = "all";
 
-  function matchesSearch(text: string, rawQuery: string): boolean {
-    const query = rawQuery.trim();
-    if (!query) return true;
-
-    const slashMatch = query.match(/^\/(.+)\/([a-z]*)$/);
-    if (slashMatch) {
-      try {
-        const flags = slashMatch[2].includes("i") ? slashMatch[2] : `${slashMatch[2]}i`;
-        return new RegExp(slashMatch[1], flags).test(text);
-      } catch {
-        return text.toLowerCase().includes(query.toLowerCase());
-      }
-    }
-
-    return text.toLowerCase().includes(query.toLowerCase());
-  }
-
   function applyFilters() {
     const park = parkSelect.value;
-    const query = searchInput.value;
+    const query = searchInput.value.trim().toLowerCase();
     let visible = 0;
 
     cards.forEach((card) => {
-      const category = card.dataset.category ?? "";
-      const cardPark = card.dataset.park ?? "";
-      const searchText = card.dataset.search ?? "";
+      const category = card.getAttribute("data-category") ?? "";
+      const cardPark = card.getAttribute("data-park") ?? "";
+      const searchText = card.getAttribute("data-search") ?? "";
 
-      const categoryMatch = activeCategory === "all" || category === activeCategory;
-      const parkMatch = park === "all" || cardPark === park;
-      const searchMatch = matchesSearch(searchText, query);
+      const show =
+        (activeCategory === "all" || category === activeCategory) &&
+        (park === "all" || cardPark === park) &&
+        (!query || searchText.includes(query));
 
-      const show = categoryMatch && parkMatch && searchMatch;
-      card.hidden = !show;
+      card.classList.toggle("is-hidden", !show);
       if (show) visible++;
     });
 
@@ -131,8 +117,10 @@ const parks = getParks();
 
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
-      activeCategory = chip.dataset.category ?? "all";
-      chips.forEach((c) => c.setAttribute("data-active", c === chip ? "true" : "false"));
+      activeCategory = chip.getAttribute("data-category") ?? "all";
+      chips.forEach((c) =>
+        c.setAttribute("data-active", c === chip ? "true" : "false"),
+      );
       applyFilters();
     });
   });
@@ -227,6 +215,7 @@ const parks = getParks();
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
 
+  .card.is-hidden,
   .card[hidden] {
     display: none !important;
   }
