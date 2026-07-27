@@ -14,3 +14,7 @@ export function formatFileSize(bytes: number): string {
 export function categorySlug(category: string): string {
   return category.toLowerCase();
 }
+
+export function getParkUrl(parkCode: string): string {
+  return `https://www.nps.gov/${parkCode.toLowerCase()}`;
+}

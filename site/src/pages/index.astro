@@ -13,8 +13,8 @@ const parks = getParks();
   <section class="hero">
     <h1>Soundscapes of Alaska</h1>
     <p class="lead">
-      A searchable library of NPS Alaska soundscape recordings — wolf howls, glacier surges,
-      bird choruses, and more, each paired with a spectrogram you can watch as you listen.
+      A searchable library of NPS soundscape recordings from Alaska. Howling wolves, glacier surges,
+      bird choruses, and more, each paired with a spectrogram to visualize the audio.
     </p>
   </section>
 
@@ -91,7 +91,61 @@ const parks = getParks();
   const cards = document.querySelectorAll(".card");
   const emptyState = document.querySelector("#empty-state");
 
+  const PARAM_CATEGORY = "category";
+  const PARAM_PARK = "park";
+  const PARAM_SEARCH = "q";
+
+  const validCategories = new Set(
+    [...chips].map((chip) => chip.getAttribute("data-category") ?? "all"),
+  );
+  const validParks = new Set(
+    [...parkSelect.options].map((option) => option.value),
+  );
+
   let activeCategory = "all";
+  let searchDebounce: ReturnType<typeof setTimeout> | undefined;
+
+  function readFiltersFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get(PARAM_CATEGORY) ?? "all";
+    const park = params.get(PARAM_PARK) ?? "all";
+    return {
+      category: validCategories.has(category) ? category : "all",
+      park: validParks.has(park) ? park : "all",
+      search: params.get(PARAM_SEARCH) ?? "",
+    };
+  }
+
+  function syncUiFromState(category: string, park: string, search: string) {
+    activeCategory = category;
+    chips.forEach((chip) => {
+      const chipCategory = chip.getAttribute("data-category") ?? "all";
+      chip.setAttribute("data-active", chipCategory === category ? "true" : "false");
+    });
+    parkSelect.value = park;
+    if (searchInput.value !== search) {
+      searchInput.value = search;
+    }
+  }
+
+  function buildUrl(category: string, park: string, search: string) {
+    const params = new URLSearchParams();
+    if (category !== "all") params.set(PARAM_CATEGORY, category);
+    if (park !== "all") params.set(PARAM_PARK, park);
+    const trimmed = search.trim();
+    if (trimmed) params.set(PARAM_SEARCH, trimmed);
+    const qs = params.toString();
+    return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+  }
+
+  function updateUrl(mode: "push" | "replace") {
+    const url = buildUrl(activeCategory, parkSelect.value, searchInput.value);
+    if (mode === "replace") {
+      history.replaceState(null, "", url);
+    } else {
+      history.pushState(null, "", url);
+    }
+  }
 
   function applyFilters() {
     const park = parkSelect.value;
@@ -115,6 +169,15 @@ const parks = getParks();
     emptyState.hidden = visible > 0;
   }
 
+  function setFiltersFromUrl(updateHistory: "push" | "replace" | "none") {
+    const { category, park, search } = readFiltersFromUrl();
+    syncUiFromState(category, park, search);
+    applyFilters();
+    if (updateHistory !== "none") {
+      updateUrl(updateHistory);
+    }
+  }
+
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       activeCategory = chip.getAttribute("data-category") ?? "all";
@@ -122,11 +185,26 @@ const parks = getParks();
         c.setAttribute("data-active", c === chip ? "true" : "false"),
       );
       applyFilters();
+      updateUrl("push");
     });
   });
 
-  parkSelect.addEventListener("change", applyFilters);
-  searchInput.addEventListener("input", applyFilters);
+  parkSelect.addEventListener("change", () => {
+    applyFilters();
+    updateUrl("push");
+  });
+
+  searchInput.addEventListener("input", () => {
+    applyFilters();
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => updateUrl("replace"), 300);
+  });
+
+  window.addEventListener("popstate", () => {
+    setFiltersFromUrl("none");
+  });
+
+  setFiltersFromUrl("replace");
 </script>
 
 <style>

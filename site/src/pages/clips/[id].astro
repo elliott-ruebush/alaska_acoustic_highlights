@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SpectrogramPlayer from "../../components/SpectrogramPlayer.astro";
 import { getAllClips } from "../../lib/catalog";
-import { formatDuration, formatFileSize, categorySlug } from "../../lib/format";
+import { formatDuration, formatFileSize, categorySlug, getParkUrl } from "../../lib/format";
 import { withBase } from "../../lib/paths";
 
 export async function getStaticPaths() {
@@ -23,7 +23,13 @@ const { clip } = Astro.props;
 
     <div class="meta-row">
       <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
-      {clip.park_code && <span>{clip.park_code}</span>}
+      {clip.park_code && (
+        <span>
+          <a href={getParkUrl(clip.park_code)} target="_blank" rel="noopener noreferrer">
+            {clip.park_code}
+          </a>
+        </span>
+      )}
       {clip.site_code && <span>Site {clip.site_code}</span>}
       {clip.recorded_date && <span>{clip.recorded_date}</span>}
       <span>{formatDuration(clip.duration_sec)}</span>

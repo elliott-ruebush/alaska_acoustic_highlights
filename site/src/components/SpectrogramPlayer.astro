@@ -31,11 +31,40 @@ const lowfreqSrc = clip.spectrogram_lowfreq_path ? withBase(clip.spectrogram_low
         Show low-frequency view
       </button>
     )}
+    <label class="volume-control">
+      <span class="volume-label">Volume</span>
+      <input
+        type="range"
+        class="volume-slider"
+        min="0"
+        max="100"
+        value="50"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="50"
+        aria-label="Playback volume"
+      />
+    </label>
   </div>
 </div>
 
 <script>
   import WaveSurfer from "wavesurfer.js";
+
+  const VOLUME_STORAGE_KEY = "soundscapes-volume";
+  const DEFAULT_VOLUME = 50;
+
+  function readStoredVolume(): number {
+    try {
+      const raw = localStorage.getItem(VOLUME_STORAGE_KEY);
+      if (raw === null) return DEFAULT_VOLUME;
+      const value = Number.parseInt(raw, 10);
+      if (Number.isNaN(value)) return DEFAULT_VOLUME;
+      return Math.min(100, Math.max(0, value));
+    } catch {
+      return DEFAULT_VOLUME;
+    }
+  }
 
   document.querySelectorAll<HTMLElement>(".player").forEach((el) => {
     const audioSrc = el.dataset.audioSrc!;
@@ -49,6 +78,8 @@ const lowfreqSrc = clip.spectrogram_lowfreq_path ? withBase(clip.spectrogram_low
     const cursor = el.querySelector<HTMLElement>(".cursor")!;
     const playBtn = el.querySelector<HTMLButtonElement>(".play-pause")!;
     const lowfreqBtn = el.querySelector<HTMLButtonElement>(".toggle-lowfreq");
+    const volumeSlider = el.querySelector<HTMLInputElement>(".volume-slider")!;
+    const initialVolume = readStoredVolume();
 
     const ws = WaveSurfer.create({
       container: waveformEl,
@@ -57,6 +88,25 @@ const lowfreqSrc = clip.spectrogram_lowfreq_path ? withBase(clip.spectrogram_low
       cursorWidth: 0,
       waveColor: "#8a5a35",
       progressColor: "#1b3a2b",
+    });
+
+    function applyVolume(percent: number) {
+      const clamped = Math.min(100, Math.max(0, percent));
+      ws.setVolume(clamped / 100);
+      volumeSlider.value = String(clamped);
+      volumeSlider.setAttribute("aria-valuenow", String(clamped));
+    }
+
+    applyVolume(initialVolume);
+
+    volumeSlider.addEventListener("input", () => {
+      const percent = Number.parseInt(volumeSlider.value, 10);
+      applyVolume(percent);
+      try {
+        localStorage.setItem(VOLUME_STORAGE_KEY, String(percent));
+      } catch {
+        // ignore private browsing / storage errors
+      }
     });
 
     function updateCursor() {
@@ -146,7 +196,30 @@ const lowfreqSrc = clip.spectrogram_lowfreq_path ? withBase(clip.spectrogram_low
   .controls {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.75rem;
     margin-top: 0.75rem;
+  }
+
+  .volume-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    min-width: min(100%, 12rem);
+    color: var(--color-brown-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .volume-label {
+    flex-shrink: 0;
+  }
+
+  .volume-slider {
+    width: 8rem;
+    max-width: 100%;
+    accent-color: var(--color-brown);
+    cursor: pointer;
   }
 </style>
