@@ -31,9 +31,11 @@ const parks = getParks();
     <div class="filter-row">
       <label for="park-filter">Park</label>
       <select id="park-filter">
-        <option value="all">All parks</option>
+        <option value="all">All parks ({clips.length})</option>
         {parks.map((park) => (
-          <option value={park.code}>{park.name} ({park.code}) ({park.count})</option>
+          <option value={park.code} data-park-name={park.name}>
+            {park.name} ({park.code}) ({park.count})
+          </option>
         ))}
       </select>
     </div>
@@ -171,20 +173,64 @@ const parks = getParks();
     }
   }
 
-  function applyFilters(announce: "now" | "debounce" | "none" = "now") {
-    const park = parkSelect.value;
+  function cardMatchesCategoryAndSearch(
+    card: Element,
+    category: string,
+    query: string,
+  ): boolean {
+    const cardCategory = card.getAttribute("data-category") ?? "";
+    const searchText = card.getAttribute("data-search") ?? "";
+    return (
+      (category === "all" || cardCategory === category) &&
+      (!query || searchText.includes(query))
+    );
+  }
+
+  function updateParkCounts() {
     const query = searchInput.value.trim().toLowerCase();
+    const counts = new Map<string, number>();
+    let total = 0;
+
+    cards.forEach((card) => {
+      if (!cardMatchesCategoryAndSearch(card, activeCategory, query)) return;
+      total++;
+      const code = card.getAttribute("data-park");
+      if (code && code !== "unknown") {
+        counts.set(code, (counts.get(code) ?? 0) + 1);
+      }
+    });
+
+    [...parkSelect.options].forEach((option) => {
+      if (option.value === "all") {
+        option.textContent = `All parks (${total})`;
+        return;
+      }
+      const code = option.value;
+      const name = option.dataset.parkName ?? code;
+      const count = counts.get(code) ?? 0;
+      option.textContent = `${name} (${code}) (${count})`;
+      option.disabled = count === 0;
+    });
+
+    const selected = parkSelect.value;
+    if (selected !== "all" && (counts.get(selected) ?? 0) === 0) {
+      parkSelect.value = "all";
+    }
+  }
+
+  function applyFilters(announce: "now" | "debounce" | "none" = "now") {
+    const query = searchInput.value.trim().toLowerCase();
+    updateParkCounts();
+
+    const park = parkSelect.value;
     let visible = 0;
 
     cards.forEach((card) => {
-      const category = card.getAttribute("data-category") ?? "";
       const cardPark = card.getAttribute("data-park") ?? "";
-      const searchText = card.getAttribute("data-search") ?? "";
 
       const show =
-        (activeCategory === "all" || category === activeCategory) &&
-        (park === "all" || cardPark === park) &&
-        (!query || searchText.includes(query));
+        cardMatchesCategoryAndSearch(card, activeCategory, query) &&
+        (park === "all" || cardPark === park);
 
       card.classList.toggle("is-hidden", !show);
       if (show) visible++;

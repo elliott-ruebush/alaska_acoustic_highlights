@@ -40,58 +40,63 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
     <div class="cursor" aria-hidden="true"></div>
   </div>
 
-  <div class="controls">
-    <button type="button" class="btn play-pause" aria-label="Play" aria-pressed="false" disabled>
-      Play
-    </button>
+  <label class="seek-control">
+    <span class="seek-label">Position</span>
+    <input
+      type="range"
+      class="seek-slider"
+      min="0"
+      max={clip.duration_sec}
+      value="0"
+      step="any"
+      disabled
+      aria-valuemin="0"
+      aria-valuemax={clip.duration_sec}
+      aria-valuenow="0"
+      aria-valuetext={`0:00 of ${durationLabel}`}
+      aria-label="Playback position"
+    />
+  </label>
 
-    <label class="seek-control">
-      <span class="seek-label">Position</span>
-      <input
-        type="range"
-        class="seek-slider"
-        min="0"
-        max={clip.duration_sec}
-        value="0"
-        step="1"
-        disabled
-        aria-valuemin="0"
-        aria-valuemax={clip.duration_sec}
-        aria-valuenow="0"
-        aria-valuetext={`0:00 of ${durationLabel}`}
-        aria-label="Playback position"
-      />
-      <span class="player-time" aria-hidden="true">
-        <span class="time-elapsed">0:00</span>
-        <span class="time-separator">/</span>
-        <span class="time-total">{durationLabel}</span>
-      </span>
-    </label>
+  <div class="controls-bar">
+    <span class="player-time" aria-hidden="true">
+      <span class="time-elapsed">0:00</span>
+      <span class="time-separator"> / </span>
+      <span class="time-total">{durationLabel}</span>
+    </span>
 
-    {lowfreqSrc && (
-      <button
-        type="button"
-        class="btn btn--secondary toggle-lowfreq"
-        aria-pressed="false"
-      >
-        Show low-frequency view
+    <div class="controls">
+      <button type="button" class="btn play-pause" aria-label="Play" aria-pressed="false">
+        Play
       </button>
-    )}
 
-    <label class="volume-control">
-      <span class="volume-label">Volume</span>
-      <input
-        type="range"
-        class="volume-slider"
-        min="0"
-        max="100"
-        value="50"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-valuenow="50"
-        aria-label="Playback volume"
-      />
-    </label>
+      <div class="controls-secondary">
+        {lowfreqSrc && (
+          <button
+            type="button"
+            class="btn btn--secondary toggle-lowfreq"
+            aria-pressed="false"
+          >
+            Show low-frequency view
+          </button>
+        )}
+
+        <label class="volume-control">
+          <span class="volume-label">Volume</span>
+          <input
+            type="range"
+            class="volume-slider"
+            min="0"
+            max="100"
+            value="50"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="50"
+            aria-label="Playback volume"
+          />
+        </label>
+      </div>
+    </div>
   </div>
 
   <p id={shortcutsId} class="player-shortcuts">
@@ -136,11 +141,20 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
     const timeTotal = el.querySelector<HTMLElement>(".time-total")!;
     const volumeSlider = el.querySelector<HTMLInputElement>(".volume-slider")!;
 
+    let ws: WaveSurfer | null = null;
+    let loadPromise: Promise<WaveSurfer> | null = null;
+    let isLoaded = false;
+    let pendingPlay = false;
+    let storedVolume = readStoredVolume();
     let isScrubbing = false;
     let lastAnnouncedSeek = -1;
 
     function getDuration(): number {
-      return ws.getDuration() || fallbackDuration;
+      return ws?.getDuration() || fallbackDuration;
+    }
+
+    function getCurrentTime(): number {
+      return ws?.getCurrentTime() ?? 0;
     }
 
     function announce(message: string) {
@@ -155,7 +169,7 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
 
     function updateTimeDisplay() {
       const duration = getDuration();
-      const current = Math.min(duration, Math.max(0, ws.getCurrentTime()));
+      const current = Math.min(duration, Math.max(0, getCurrentTime()));
       const elapsed = formatDuration(current);
       const total = formatDuration(duration);
 
@@ -163,7 +177,7 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
       timeTotal.textContent = total;
 
       if (!isScrubbing) {
-        seekSlider.value = String(Math.round(current));
+        seekSlider.value = String(current);
         seekSlider.setAttribute("aria-valuenow", String(Math.round(current)));
         seekSlider.setAttribute("aria-valuetext", `${elapsed} of ${total}`);
       }
@@ -171,12 +185,117 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
 
     function updateCursor() {
       const duration = getDuration();
-      const pct = duration ? (ws.getCurrentTime() / duration) * 100 : 0;
+      const pct = duration ? (getCurrentTime() / duration) * 100 : 0;
       cursor.style.left = `${Math.min(100, Math.max(0, pct))}%`;
       updateTimeDisplay();
     }
 
-    function seekToTime(seconds: number, announceSeek = true) {
+    function applyVolume(percent: number) {
+      const clamped = Math.min(100, Math.max(0, percent));
+      storedVolume = clamped;
+      volumeSlider.value = String(clamped);
+      volumeSlider.setAttribute("aria-valuenow", String(clamped));
+      if (!ws) return;
+      ws.setVolume(clamped / 100);
+      if (clamped === 0) {
+        ws.setMuted(true);
+      } else if (ws.getMuted()) {
+        ws.setMuted(false);
+      }
+    }
+
+    function bindWaveSurferEvents(
+      instance: WaveSurfer,
+      onReady: () => void,
+      onError: () => void,
+    ) {
+      instance.on("audioprocess", updateCursor);
+      instance.on("seeking", updateCursor);
+      instance.on("timeupdate", updateCursor);
+      instance.on("finish", () => {
+        updateCursor();
+        setPlayState(false);
+        announce("Finished");
+      });
+      instance.on("play", () => {
+        setPlayState(true);
+        announce("Playing");
+      });
+      instance.on("pause", () => {
+        setPlayState(false);
+        announce("Paused");
+      });
+      instance.on("ready", () => {
+        const duration = getDuration();
+        seekSlider.max = String(duration);
+        seekSlider.setAttribute("aria-valuemax", String(Math.round(duration)));
+        timeTotal.textContent = formatDuration(duration);
+        playBtn.disabled = false;
+        seekSlider.disabled = false;
+        el.classList.remove("player--idle");
+        statusEl.textContent = "";
+        updateTimeDisplay();
+        if (pendingPlay) {
+          pendingPlay = false;
+          void instance.play();
+        }
+        onReady();
+      });
+      instance.on("error", () => {
+        pendingPlay = false;
+        playBtn.disabled = false;
+        seekSlider.disabled = true;
+        announce("Unable to load audio");
+        onError();
+      });
+    }
+
+    function ensureLoaded(): Promise<WaveSurfer> {
+      if (ws) return Promise.resolve(ws);
+      if (loadPromise) return loadPromise;
+
+      loadPromise = new Promise((resolve, reject) => {
+        announce("Loading audio…");
+        playBtn.disabled = true;
+
+        const instance = WaveSurfer.create({
+          container: waveformEl,
+          url: audioSrc,
+          height: 48,
+          cursorWidth: 0,
+          waveColor: "#8a5a35",
+          progressColor: "#1b3a2b",
+          interact: false,
+        });
+
+        ws = instance;
+        bindWaveSurferEvents(
+          instance,
+          () => {
+            isLoaded = true;
+            resolve(instance);
+          },
+          () => {
+            loadPromise = null;
+            ws = null;
+            reject(new Error("audio load failed"));
+          },
+        );
+        applyVolume(storedVolume);
+      }).catch((err) => {
+        loadPromise = null;
+        throw err;
+      });
+
+      return loadPromise;
+    }
+
+    async function seekToTime(seconds: number, announceSeek = true) {
+      if (!isLoaded) {
+        await ensureLoaded();
+      }
+      if (!ws) return;
+
       const duration = getDuration();
       const clamped = Math.min(duration, Math.max(0, seconds));
       ws.setTime(clamped);
@@ -191,43 +310,29 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
       }
     }
 
-    function togglePlayPause() {
-      ws.playPause();
+    async function togglePlayPause() {
+      if (!isLoaded) {
+        pendingPlay = true;
+        try {
+          await ensureLoaded();
+        } catch {
+          pendingPlay = false;
+        }
+        return;
+      }
+      ws?.playPause();
     }
 
     function toggleMute() {
+      if (!ws) return;
       const muted = !ws.getMuted();
       ws.setMuted(muted);
       announce(muted ? "Muted" : "Unmuted");
     }
 
-    const ws = WaveSurfer.create({
-      container: waveformEl,
-      url: audioSrc,
-      height: 48,
-      cursorWidth: 0,
-      waveColor: "#8a5a35",
-      progressColor: "#1b3a2b",
-      interact: false,
-    });
-
-    announce("Loading audio…");
-    playBtn.disabled = true;
+    applyVolume(storedVolume);
+    el.classList.add("player--idle");
     seekSlider.disabled = true;
-
-    function applyVolume(percent: number) {
-      const clamped = Math.min(100, Math.max(0, percent));
-      ws.setVolume(clamped / 100);
-      volumeSlider.value = String(clamped);
-      volumeSlider.setAttribute("aria-valuenow", String(clamped));
-      if (clamped === 0) {
-        ws.setMuted(true);
-      } else if (ws.getMuted()) {
-        ws.setMuted(false);
-      }
-    }
-
-    applyVolume(readStoredVolume());
 
     volumeSlider.addEventListener("input", () => {
       const percent = Number.parseInt(volumeSlider.value, 10);
@@ -249,52 +354,19 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
       isScrubbing = false;
     });
     seekSlider.addEventListener("input", () => {
-      seekToTime(Number.parseFloat(seekSlider.value), true);
+      void seekToTime(Number.parseFloat(seekSlider.value), true);
     });
 
-    ws.on("audioprocess", updateCursor);
-    ws.on("seeking", updateCursor);
-    ws.on("timeupdate", updateCursor);
-    ws.on("finish", () => {
-      updateCursor();
-      setPlayState(false);
-      announce("Finished");
+    playBtn.addEventListener("click", () => {
+      void togglePlayPause();
     });
-
-    ws.on("play", () => {
-      setPlayState(true);
-      announce("Playing");
-    });
-
-    ws.on("pause", () => {
-      setPlayState(false);
-      announce("Paused");
-    });
-
-    ws.on("ready", () => {
-      const duration = getDuration();
-      const max = Math.max(1, Math.round(duration));
-      seekSlider.max = String(max);
-      seekSlider.setAttribute("aria-valuemax", String(max));
-      timeTotal.textContent = formatDuration(duration);
-      playBtn.disabled = false;
-      seekSlider.disabled = false;
-      statusEl.textContent = "";
-      updateTimeDisplay();
-    });
-
-    ws.on("error", () => {
-      playBtn.disabled = true;
-      seekSlider.disabled = true;
-      announce("Unable to load audio");
-    });
-
-    playBtn.addEventListener("click", () => togglePlayPause());
 
     frame.addEventListener("click", (e) => {
       const rect = frame.getBoundingClientRect();
       const pct = (e.clientX - rect.left) / rect.width;
-      seekToTime(pct * getDuration());
+      void seekToTime(pct * fallbackDuration).then(() => {
+        if (ws && !ws.isPlaying()) void ws.play();
+      });
     });
 
     if (lowfreqBtn && lowfreqSrc) {
@@ -314,10 +386,18 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
     }
 
     const keyActions = {
-      togglePlayPause,
-      seekBy: (deltaSec: number) => seekToTime(ws.getCurrentTime() + deltaSec),
-      seekToStart: () => seekToTime(0),
-      seekToEnd: () => seekToTime(getDuration()),
+      togglePlayPause: () => {
+        void togglePlayPause();
+      },
+      seekBy: (deltaSec: number) => {
+        void seekToTime(getCurrentTime() + deltaSec);
+      },
+      seekToStart: () => {
+        void seekToTime(0);
+      },
+      seekToEnd: () => {
+        void seekToTime(getDuration());
+      },
       toggleMute,
     };
 
@@ -375,23 +455,40 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
   }
 
+  .seek-control {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .controls-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+  }
+
+  .player-time {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
   .controls {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0.75rem;
-    margin-top: 0.75rem;
   }
 
-  .seek-control {
-    display: inline-flex;
-    flex: 1 1 12rem;
+  .controls-secondary {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
-    min-width: min(100%, 14rem);
-    color: var(--color-brown-dark);
-    font-size: 0.9rem;
-    font-weight: 600;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-width: min(100%, 12rem);
   }
 
   .seek-label {
@@ -407,21 +504,10 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
   }
 
   .seek-slider {
-    flex: 1;
-    min-width: 6rem;
+    display: block;
+    width: 100%;
     accent-color: var(--color-brown);
     cursor: pointer;
-  }
-
-  .player-time {
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-    font-size: 0.85rem;
-    color: var(--color-muted);
-  }
-
-  .time-separator {
-    margin: 0 0.15rem;
   }
 
   .volume-control {
@@ -429,7 +515,6 @@ const shortcutsId = `player-shortcuts-${clip.id}`;
     align-items: center;
     gap: 0.5rem;
     margin-left: auto;
-    min-width: min(100%, 12rem);
     color: var(--color-brown-dark);
     font-size: 0.9rem;
     font-weight: 600;
