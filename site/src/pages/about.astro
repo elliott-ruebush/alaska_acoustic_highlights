@@ -11,13 +11,13 @@ import ExternalLink from "../components/ExternalLink.astro";
     This site was created to showcase soundscapes from across
     National Parks in the <ExternalLink href="https://www.nps.gov/state/ak/index.htm">Alaska Region</ExternalLink>.
     Raw audio was collected as part of National Park Service <ExternalLink href="https://www.nps.gov/orgs/1050/index.htm">Natural Sounds and Night Skies Division</ExternalLink>
-    (NSNSD) Type 1 acoustic monitoring data. <ExternalLink href="https://www.nps.gov/subjects/sound/measure.htm">How does NSNSD measure sounds?</ExternalLink>. Specific clips were then manually selected and edited.
+    (NSNSD) Type 1 acoustic monitoring data. <ExternalLink href="https://www.nps.gov/subjects/sound/measure.htm">How does NSNSD measure sounds?</ExternalLink>. 
+    
+    Specific clips were then manually selected and edited. Special thanks to Halyn Betchkal for picking out these (and many more) audio highlights over the years.
 
     "If a tree falls in the woods, and no one is around to hear it... it may have been recorded!"
     <br />
-    <small>
-      For example, at <a href={import.meta.env.BASE_URL + 'clips/denamoos_20180814_105458/'}>this Denali monitoring site!</a>.
-    </small>
+    For example, at <a href={import.meta.env.BASE_URL + 'clips/denamoos_20180814_105458/'}>this Denali monitoring site!</a>.
 
   </p>
 
@@ -25,8 +25,11 @@ import ExternalLink from "../components/ExternalLink.astro";
   <div class="placeholder-box">
     <!-- TODO: write spectrogram guide -->
     <ul>
-      <li>Time on the x-axis, frequency on the y-axis, brightness = loudness</li>
-      <li>Why some clips have a low-frequency view (geophony rumble)</li>
+      <li><ExternalLink href="https://www.learngala.com/cases/echoes-of-elevation/6">Introduction to reading spectrograms!</ExternalLink></li>
+
+      <li>Time on the x-axis, frequency aka pitch on the y-axis, brightness = loudness at that time/frequency band</li>
+      <li>Why some clips have a low-frequency view (geophony rumble) </li>
+      <li> (although tbh the low frequency view doesn't really give a ton more detail, can revisit if we want to keep it)</li>
     </ul>
   </div>
 
@@ -34,7 +37,7 @@ import ExternalLink from "../components/ExternalLink.astro";
   <div class="placeholder-box">
     <!-- TODO: write SPLAT / monitoring overview -->
     <ul>
-      <li>SPLAT tool — sound pressure level + spectrogram monitoring</li>
+      <li>SPLAT tool — sound pressure levels + spectrogram monitoring</li>
       <li>From noise-event detection to clip extraction</li>
     </ul>
   </div>
