@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ExternalLink from "../components/ExternalLink.astro";
 ---
 
 <BaseLayout title="About" description="About Soundscapes of Alaska — an unofficial showcase of NPS Alaska acoustic monitoring highlights.">
@@ -8,9 +9,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <h2>About This Site</h2>
   <p>
     This site was created to showcase soundscapes from across
-    National Parks in the <a href="https://www.nps.gov/state/ak/index.htm" target="_blank" rel="noopener">Alaska Region</a>.
-    Raw audio was collected as part of National Park Service <a href="https://www.nps.gov/orgs/1050/index.htm" target="_blank" rel="noopener">Natural Sounds and Night Skies Division</a> 
-    (NSNSD) Type 1 acoustic monitoring data. <a href="https://www.nps.gov/subjects/sound/measure.htm" target="_blank" rel="noopener">How does NSNSD measure sounds?</a>. Specific clips were then manually selected and edited.
+    National Parks in the <ExternalLink href="https://www.nps.gov/state/ak/index.htm">Alaska Region</ExternalLink>.
+    Raw audio was collected as part of National Park Service <ExternalLink href="https://www.nps.gov/orgs/1050/index.htm">Natural Sounds and Night Skies Division</ExternalLink>
+    (NSNSD) Type 1 acoustic monitoring data. <ExternalLink href="https://www.nps.gov/subjects/sound/measure.htm">How does NSNSD measure sounds?</ExternalLink>. Specific clips were then manually selected and edited.
 
     "If a tree falls in the woods, and no one is around to hear it... it may have been recorded!"
     <br />

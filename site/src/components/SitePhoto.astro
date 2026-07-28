@@ -1,0 +1,159 @@
+---
+import type { Clip } from "../lib/catalog";
+import { getParkName } from "../lib/catalog";
+import { withBase } from "../lib/paths";
+
+interface Props {
+  clip: Clip;
+}
+
+const { clip } = Astro.props;
+const photoPath = clip.site_photo_path;
+if (!photoPath) return null;
+
+const parkName = clip.park_code ? getParkName(clip.park_code) : null;
+const siteLabel = [clip.park_code, clip.site_code].filter(Boolean).join(" · ");
+const dialogId = `site-photo-${clip.id}`;
+
+const altParts = [
+  "Composite site photo showing north, east, south, and west views of the acoustic monitoring station",
+  parkName && `at ${parkName}`,
+  clip.site_code && `site ${clip.site_code}`,
+  clip.site_photo_year && `photographed in ${clip.site_photo_year}`,
+].filter(Boolean);
+
+const altText = `${altParts.join(", ")}.`;
+const yearNote = clip.site_photo_year
+  ? `Site photo from ${clip.site_photo_year}.`
+  : null;
+---
+
+<figure class="site-photo">
+  <figcaption>
+    <strong>Recording site</strong>
+    {siteLabel && <> · {siteLabel}</>}
+    {yearNote && <> · {yearNote}</>}
+  </figcaption>
+  <button
+    type="button"
+    class="site-photo__button"
+    data-site-photo-open={dialogId}
+    aria-label={`Enlarge recording site photo${clip.site_photo_year ? ` from ${clip.site_photo_year}` : ""}`}
+  >
+    <img
+      src={withBase(photoPath)}
+      alt={altText}
+      width="1200"
+      height="675"
+      loading="lazy"
+      decoding="async"
+    />
+  </button>
+  <p class="site-photo__caption">
+    Four cardinal views (north, east, south, west) of the recording station.
+    {clip.site_photo_year && <> Photo taken in {clip.site_photo_year}.</>}
+  </p>
+</figure>
+
+<dialog class="site-photo-dialog" id={dialogId} aria-label="Recording site photo">
+  <form method="dialog">
+    <button type="submit" class="site-photo-dialog__close" aria-label="Close enlarged photo">
+      &times;
+    </button>
+  </form>
+  <img src={withBase(photoPath)} alt={altText} />
+</dialog>
+
+<script>
+  document.querySelectorAll("[data-site-photo-open]").forEach((button) => {
+    const dialogId = button.getAttribute("data-site-photo-open");
+    if (!dialogId) return;
+    const dialog = document.getElementById(dialogId);
+    if (!(dialog instanceof HTMLDialogElement)) return;
+
+    button.addEventListener("click", () => dialog.showModal());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>
+
+<style>
+  .site-photo {
+    margin: 1.5rem 0 0;
+    max-width: 48rem;
+  }
+
+  .site-photo figcaption {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-forest);
+  }
+
+  .site-photo__button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid rgba(27, 58, 43, 0.12);
+    border-radius: var(--radius);
+    background: var(--color-white);
+    box-shadow: var(--shadow);
+    cursor: zoom-in;
+    overflow: hidden;
+  }
+
+  .site-photo__button:focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 2px;
+  }
+
+  .site-photo__button img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .site-photo__caption {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .site-photo-dialog {
+    width: min(96vw, 72rem);
+    max-width: none;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+
+  .site-photo-dialog::backdrop {
+    background: rgba(18, 39, 28, 0.82);
+  }
+
+  .site-photo-dialog form {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+  }
+
+  .site-photo-dialog__close {
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--color-forest);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .site-photo-dialog img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+  }
+</style>

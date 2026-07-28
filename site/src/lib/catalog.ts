@@ -22,6 +22,8 @@ export interface Clip {
   species_common: string | null;
   species_scientific: string | null;
   xc_quality: string | null;
+  site_photo_path: string | null;
+  site_photo_year: string | null;
 }
 
 const CATEGORY_ORDER = ["Birds", "Mammals", "Geophony", "Insects", "General"] as const;
