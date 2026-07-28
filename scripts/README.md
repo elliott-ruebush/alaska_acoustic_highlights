@@ -2,7 +2,7 @@
 
 Agent reference for the Python CLIs in this directory. Flat layout — 11 standalone scripts, no subdirectories.
 
-Production assets live in `highlights/audio/`. Curation source of truth is `data/catalog/highlights.json`. See `data/README.md` and `archive/README.md`.
+Production assets live in `highlights/audio/`. Curation source of truth is `data/catalog/highlights.json`. See `data/README.md`.
 
 ## Inventory
 
