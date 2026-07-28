@@ -1,13 +1,18 @@
 # Scripts - FEEL FREE TO READ THIS - BUT IT'S MAINLY INTENDED FOR LLM AGENTS
 
-Agent reference for the Python CLIs in this directory. Flat layout — 11 standalone scripts, no subdirectories.
+Agent reference for the Python CLIs in this directory.
+
+**Adding new clips:** see [ADD_CLIPS.md](../ADD_CLIPS.md). Preferred entry point: `ingest_clips.py` (dry-run by default; `--execute` runs the full pipeline from `ingest/`).
 
 Production assets live in `highlights/audio/`. Curation source of truth is `data/catalog/highlights.json`. See `data/README.md`.
+
+Ingest staging lives in `ingest/` (see `ingest/README.md`). Optional per-clip metadata: `ingest/overrides.json` (see `ingest/overrides.example.json`; applied by `build_highlights_catalog.py`).
 
 ## Inventory
 
 | Script | Purpose |
 |--------|---------|
+| `ingest_clips.py` | **Preferred entry point:** stage audio/photos from `ingest/` → `highlights/`; run spectrogram, transcode, metadata, catalog, and validation pipeline |
 | `build_catalog.py` | Walk external NPS ADSB volume; parse filenames; merge Xeno-Canto Excel metadata → `data/catalog/audio_clips.csv` |
 | `build_highlights_catalog.py` | Build site-facing JSON from `highlights/audio/` (+ spectrograms, CSV enrichment, MP3 tags) → `data/catalog/highlights.json` |
 | `build_site_photos.py` | Match cardinal site photos from external drive (or manual drops); copy WebP → `highlights/site_photos/`; update catalog `site_photo_path` |
@@ -63,6 +68,7 @@ python3 scripts/<script>.py [args]
 
 | Script | Notable args |
 |--------|----------------|
+| `ingest_clips.py` | `--execute`, `--force`, `--skip-photos`, `--photo-source` |
 | `build_catalog.py` | `--root`, `--output` (defaults: NPS volume → `data/catalog/audio_clips.csv`) |
 | `build_highlights_catalog.py` | `--input`, `--output`, `--spectrograms-dir`, `--catalog` |
 | `generate_highlights_spectrograms.py` | `--input`, `--output`, `--force`, `--dry-run`, `--limit`, `--files` |
@@ -105,11 +111,12 @@ site/public/highlights → ../../highlights   site/scripts/link-public-assets.mj
 
 ## Typical workflows
 
-1. **Refresh site catalog after audio changes:** `build_highlights_catalog.py` (re-run `build_site_photos.py --sync-catalog` if photos changed).
-2. **New WAV batch:** `generate_highlights_spectrograms.py` → `transcode_highlights.py --execute` → `fix_highlights_metadata.py` → `build_highlights_catalog.py`.
-3. **QC loop:** `analyze_clip_silence.py` → `trim_leading_silence.py --execute`; `analyze_clip_loudness.py` → `normalize_clip_loudness.py --execute`.
-4. **Manual edit:** `trim_clip_range.py --clip-id ID --start M:SS --end M:SS --execute`.
-5. **Full source inventory** (needs mounted NPS volume): `build_catalog.py`.
+1. **Add new clips:** drop files in `ingest/` → `ingest_clips.py` (preview) → `ingest_clips.py --execute`. See [ADD_CLIPS.md](../ADD_CLIPS.md).
+2. **Refresh site catalog after audio changes:** `build_highlights_catalog.py` (re-run `build_site_photos.py --sync-catalog` if photos changed).
+3. **New WAV batch (manual):** `generate_highlights_spectrograms.py` → `transcode_highlights.py --execute` → `fix_highlights_metadata.py` → `build_highlights_catalog.py`.
+4. **QC loop:** `analyze_clip_silence.py` → `trim_leading_silence.py --execute`; `analyze_clip_loudness.py` → `normalize_clip_loudness.py --execute`.
+5. **Manual edit:** `trim_clip_range.py --clip-id ID --start M:SS --end M:SS --execute`.
+6. **Full source inventory** (needs mounted NPS volume): `build_catalog.py`.
 
 ## Caution
 

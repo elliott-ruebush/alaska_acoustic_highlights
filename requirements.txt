@@ -1,0 +1,11 @@
+# Direct Python dependencies for scripts/ (ingest, catalog, spectrograms, etc.).
+# For reproducible installs, use requirements-lock.txt instead.
+
+pandas
+librosa
+soundfile
+mutagen
+matplotlib
+numpy
+Pillow
+jsonschema

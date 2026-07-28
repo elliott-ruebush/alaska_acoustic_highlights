@@ -24,18 +24,26 @@ from lib.nps_filename import (
     PROCESSING_START_RE,
     split_processing,
 )
+from lib.overrides import apply_overrides_to_clips, load_overrides
+from lib.paths import (
+    CATALOG_AUDIO_CLIPS,
+    CATALOG_HIGHLIGHTS,
+    HIGHLIGHTS_AUDIO,
+    HIGHLIGHTS_SPECTROGRAMS,
+    INGEST_OVERRIDES,
+    PROJECT_ROOT,
+)
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_INPUT = PROJECT_ROOT / "highlights" / "audio"
-DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
-DEFAULT_SPECTROGRAMS = PROJECT_ROOT / "highlights" / "spectrograms"
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "audio_clips.csv"
+DEFAULT_INPUT = HIGHLIGHTS_AUDIO
+DEFAULT_OUTPUT = CATALOG_HIGHLIGHTS
+DEFAULT_SPECTROGRAMS = HIGHLIGHTS_SPECTROGRAMS
+DEFAULT_CATALOG = CATALOG_AUDIO_CLIPS
 DEFAULT_ARTIST = "National Park Service"
 
 AUDIO_EXTENSIONS = {".wav", ".mp3"}
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build JSON catalog for NPS Soundscapes highlight clips.",
     )
@@ -66,7 +74,13 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_CATALOG,
         help=f"Audio clips catalog CSV for enrichment (default: {DEFAULT_CATALOG.relative_to(PROJECT_ROOT)})",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--overrides",
+        type=Path,
+        default=INGEST_OVERRIDES,
+        help=f"Optional per-clip metadata overrides JSON (default: {INGEST_OVERRIDES.relative_to(PROJECT_ROOT)})",
+    )
+    return parser.parse_args(argv)
 
 
 def repo_relative(path: Path) -> str:
@@ -264,6 +278,23 @@ def unique_id(prefix: str, path: Path, used_ids: set[str]) -> str:
     return candidate
 
 
+def dedupe_audio_files(files: list[Path]) -> list[Path]:
+    """When same prefix has both .wav and .mp3, keep .mp3 only."""
+    kept: dict[str, Path] = {}
+    no_prefix: list[Path] = []
+    for path in files:
+        prefix = file_prefix(path.name)
+        if not prefix:
+            no_prefix.append(path)
+            continue
+        current = kept.get(prefix)
+        if current is None:
+            kept[prefix] = path
+        elif path.suffix.lower() == ".mp3":
+            kept[prefix] = path
+    return sorted(list(kept.values()) + no_prefix)
+
+
 def iter_audio_files(input_root: Path) -> list[Path]:
     if not input_root.is_dir():
         return []
@@ -272,7 +303,7 @@ def iter_audio_files(input_root: Path) -> list[Path]:
         for path in input_root.rglob("*")
         if path.is_file() and path.suffix.lower() in AUDIO_EXTENSIONS
     ]
-    return sorted(files)
+    return dedupe_audio_files(sorted(files))
 
 
 def build_clip(
@@ -370,8 +401,8 @@ def print_summary(clips: list[dict[str, Any]], missing_specs: list[str]) -> None
             print(f"  ... and {len(missing_specs) - 20} more")
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     input_root = args.input.resolve()
     output_path = args.output.resolve()
     spectrograms_root = args.spectrograms_dir.resolve()
@@ -397,6 +428,15 @@ def main() -> int:
         for path in audio_files
     ]
     merge_site_photos(clips, existing_site_photos)
+
+    try:
+        overrides = load_overrides(args.overrides.resolve())
+    except ValueError as exc:
+        print(exc, file=sys.stderr)
+        return 1
+    override_count = apply_overrides_to_clips(clips, overrides)
+    if override_count:
+        print(f"Applied metadata overrides to {override_count} clip(s)")
 
     try:
         validate_clips(clips)

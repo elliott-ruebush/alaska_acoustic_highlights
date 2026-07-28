@@ -1,0 +1,8 @@
+{
+  "_comment": "Optional per-clip metadata. Keys: clip id or file prefix (case-insensitive). Gitignored at overrides.json — copy this file to get started.",
+  "denabicr_20130809_020959": {
+    "title": "Great Grey Owl call with whooping end variation",
+    "species_common": "Great Grey Owl",
+    "species_scientific": "Strix nebulosa"
+  }
+}

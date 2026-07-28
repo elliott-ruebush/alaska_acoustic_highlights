@@ -41,7 +41,7 @@ GENRE_MAP = {
 LATITUDE_RE = re.compile(r"^-?\d{1,3}(?:\.\d+)?$")
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Fix ID3 metadata on highlight MP3 copies (no re-encode).",
     )
@@ -78,7 +78,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Also process WAV files (limited tag support via RIFF INFO)",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def genre_from_path(path: Path, input_root: Path) -> str:
@@ -301,8 +301,8 @@ def write_report(report_path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     input_root = args.input.resolve()
     catalog_path = args.catalog.resolve()
 

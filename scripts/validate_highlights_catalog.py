@@ -79,7 +79,7 @@ def validate_catalog(catalog_path: Path) -> list[str]:
     return errors
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Validate highlights catalog JSON and referenced media files."
     )
@@ -89,11 +89,11 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_CATALOG,
         help="Path to highlights catalog JSON (default: data/catalog/highlights.json)",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     catalog_path = args.catalog.resolve()
     errors = validate_catalog(catalog_path)
 

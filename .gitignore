@@ -20,3 +20,12 @@ archive/
 
 # Personal notes
 elliott_ideas.md
+
+# Ingest staging (drop zone; category folders tracked via .gitkeep)
+ingest/audio/**
+!ingest/audio/**/
+!ingest/audio/**/.gitkeep
+ingest/site_photos/**
+!ingest/site_photos/**/
+!ingest/site_photos/**/.gitkeep
+ingest/overrides.json

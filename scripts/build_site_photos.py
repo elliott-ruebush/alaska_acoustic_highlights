@@ -316,7 +316,7 @@ def process_clip(
     )
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build site photo WebPs for highlight clips.")
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
@@ -333,11 +333,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=PROJECT_ROOT / "data" / "reports" / "site_photos_report.json",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     catalog_path = args.catalog.resolve()
     output_root = args.output.resolve()
     catalog = load_catalog(catalog_path)
