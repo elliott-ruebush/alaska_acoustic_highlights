@@ -3,7 +3,7 @@
 Analyze volume balance across NPS acoustic highlight clips.
 
 Measures per-clip loudness (RMS dBFS; LUFS if pyloudnorm is available), peak level,
-and dynamic-range proxy. Writes data/clip_loudness_report.csv and prints summary stats.
+and dynamic-range proxy. Writes data/reports/clip_loudness_report.csv and prints summary stats.
 """
 
 from __future__ import annotations
@@ -19,8 +19,8 @@ import librosa
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "highlights_catalog.json"
-DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "clip_loudness_report.csv"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
+DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "reports" / "clip_loudness_report.csv"
 
 LOUDNESS_STD_THRESHOLD = 2.0
 PEAK_CLIP_THRESHOLD_DB = -1.0

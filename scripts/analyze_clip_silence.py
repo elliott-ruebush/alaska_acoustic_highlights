@@ -27,8 +27,8 @@ import librosa
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "highlights_catalog.json"
-DEFAULT_REPORT = PROJECT_ROOT / "data" / "clip_silence_report.csv"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
+DEFAULT_REPORT = PROJECT_ROOT / "data" / "reports" / "clip_silence_report.csv"
 
 FRAME_LENGTH = 2048
 HOP_LENGTH = 512
@@ -200,7 +200,7 @@ def parse_args() -> argparse.Namespace:
         "--catalog",
         type=Path,
         default=DEFAULT_CATALOG,
-        help="Path to highlights_catalog.json",
+        help="Path to highlights catalog JSON",
     )
     parser.add_argument(
         "--report",

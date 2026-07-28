@@ -35,9 +35,9 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "highlights_catalog.json"
-DEFAULT_REPORT_JSON = PROJECT_ROOT / "data" / "clip_loudness_normalize_report.json"
-DEFAULT_REPORT_CSV = PROJECT_ROOT / "data" / "clip_loudness_normalize_report.csv"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
+DEFAULT_REPORT_JSON = PROJECT_ROOT / "data" / "reports" / "clip_loudness_normalize_report.json"
+DEFAULT_REPORT_CSV = PROJECT_ROOT / "data" / "reports" / "clip_loudness_normalize_report.csv"
 DEFAULT_ARCHIVE_ROOT = PROJECT_ROOT / "archive" / "pre_loudness_normalize"
 DEFAULT_OUTPUT_AUDIO_ROOT = PROJECT_ROOT / "highlights" / "audio_normalized"
 

@@ -7,4 +7,4 @@ Ephemeral local backups from audio processing scripts (gitignored, safe to delet
 - `trim_backups/` — originals before `scripts/trim_leading_silence.py`
 - `removed_duplicates/` — clips removed from the highlights set
 
-Production assets live in `highlights/audio/`. Curation source of truth is `data/highlights_catalog.json`.
+Production assets live in `highlights/audio/`. Curation source of truth is `data/catalog/highlights.json`.

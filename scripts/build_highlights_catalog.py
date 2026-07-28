@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -16,36 +15,24 @@ import soundfile as sf
 from mutagen.id3 import ID3, ID3NoHeaderError
 from mutagen.mp3 import MP3
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lib.catalog_validate import validate_clips
+from lib.nps_filename import (
+    category_from_path,
+    file_prefix,
+    parse_filename,
+    PROCESSING_START_RE,
+    split_processing,
+)
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = PROJECT_ROOT / "highlights" / "audio"
-DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "highlights_catalog.json"
+DEFAULT_OUTPUT = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
 DEFAULT_SPECTROGRAMS = PROJECT_ROOT / "highlights" / "spectrograms"
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "audio_clips_catalog.csv"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "audio_clips.csv"
 DEFAULT_ARTIST = "National Park Service"
 
 AUDIO_EXTENSIONS = {".wav", ".mp3"}
-
-FILENAME_RE = re.compile(
-    r"^([A-Z]{4})([A-Z0-9]+)_(\d{8})_(\d{6})[\s._-]+(.*)$",
-    re.IGNORECASE,
-)
-PREFIX_RE = re.compile(
-    r"^([A-Z]{4}[A-Z0-9]+_\d{8}_\d{6})",
-    re.IGNORECASE,
-)
-PROCESSING_START_RE = re.compile(
-    r"\s+(?:TRIM|BANDPASS|AMPLIFY|FADE(?:\s+OUT)?|COMPRESS|CROP|BESSEL(?:\s+FILTER|\s+BANDPASS)?|"
-    r"NOISE\s+REDUCTION|HIGH\s+PASS|LOW\s+PASS|NOTCH|EQ|NORMALIZE|LIMIT)\b",
-    re.IGNORECASE,
-)
-
-CATEGORY_MAP = {
-    "BIRDS": "Birds",
-    "MAMMALS": "Mammals",
-    "GEOPHONY": "Geophony",
-    "INSECTS": "Insects",
-    "GENERAL": "General",
-}
 
 
 def parse_args() -> argparse.Namespace:
@@ -80,70 +67,6 @@ def parse_args() -> argparse.Namespace:
         help=f"Audio clips catalog CSV for enrichment (default: {DEFAULT_CATALOG.relative_to(PROJECT_ROOT)})",
     )
     return parser.parse_args()
-
-
-def format_date(raw: str) -> str:
-    if len(raw) != 8 or not raw.isdigit():
-        return ""
-    yyyy, mm, dd = raw[:4], raw[4:6], raw[6:8]
-    if mm == "00" or dd == "00":
-        return ""
-    return f"{yyyy}-{mm}-{dd}"
-
-
-def format_time(raw: str) -> str:
-    if len(raw) != 6 or not raw.isdigit():
-        return ""
-    return f"{raw[:2]}:{raw[2:4]}:{raw[4:6]}"
-
-
-def file_prefix(filename: str) -> str:
-    match = PREFIX_RE.match(Path(filename).stem)
-    return match.group(1).upper() if match else ""
-
-
-def parse_filename(filename: str) -> dict[str, str]:
-    stem = Path(filename).stem
-    match = FILENAME_RE.match(stem)
-    if not match:
-        return {
-            "park_code": "",
-            "site_code": "",
-            "recorded_date": "",
-            "recorded_time": "",
-            "description": stem,
-            "prefix": file_prefix(filename),
-        }
-    park, site, date_raw, time_raw, description = match.groups()
-    return {
-        "park_code": park.upper(),
-        "site_code": site.upper(),
-        "recorded_date": format_date(date_raw),
-        "recorded_time": format_time(time_raw),
-        "description": description.strip(),
-        "prefix": f"{park.upper()}{site.upper()}_{date_raw}_{time_raw}".upper(),
-    }
-
-
-def split_processing(description: str) -> tuple[str, str]:
-    match = PROCESSING_START_RE.search(description)
-    if not match:
-        return description.strip(), ""
-    display = description[: match.start()].strip(" ,._-")
-    processing = description[match.start() :].strip()
-    return display or description.strip(), processing
-
-
-def category_from_path(path: Path, input_root: Path) -> tuple[str, str]:
-    try:
-        rel = path.relative_to(input_root)
-    except ValueError:
-        rel = path
-    for part in rel.parts[:-1]:
-        folder = part.upper()
-        if folder in CATEGORY_MAP:
-            return CATEGORY_MAP[folder], folder
-    return "General", "GENERAL"
 
 
 def repo_relative(path: Path) -> str:
@@ -294,6 +217,37 @@ def spectrogram_paths(
     return spectrogram_repo, lowfreq_path
 
 
+def load_existing_site_photos(
+    output_path: Path,
+) -> dict[str, dict[str, str | None]]:
+    if not output_path.is_file():
+        return {}
+    with output_path.open(encoding="utf-8") as handle:
+        catalog = json.load(handle)
+    return {
+        clip["id"]: {
+            "site_photo_path": clip.get("site_photo_path"),
+            "site_photo_year": clip.get("site_photo_year"),
+        }
+        for clip in catalog
+        if "id" in clip
+    }
+
+
+def merge_site_photos(
+    clips: list[dict[str, Any]],
+    existing_photos: dict[str, dict[str, str | None]],
+) -> None:
+    for clip in clips:
+        existing = existing_photos.get(clip["id"])
+        if not existing:
+            continue
+        if existing.get("site_photo_path") is not None:
+            clip["site_photo_path"] = existing["site_photo_path"]
+        if existing.get("site_photo_year") is not None:
+            clip["site_photo_year"] = existing["site_photo_year"]
+
+
 def unique_id(prefix: str, path: Path, used_ids: set[str]) -> str:
     base = prefix.lower()
     if base not in used_ids:
@@ -358,6 +312,8 @@ def build_clip(
         "species_common": species_common(catalog_row),
         "species_scientific": species_scientific(catalog_row),
         "xc_quality": xc_quality_value(catalog_row),
+        "site_photo_path": None,
+        "site_photo_year": None,
     }
 
 
@@ -398,6 +354,14 @@ def print_summary(clips: list[dict[str, Any]], missing_specs: list[str]) -> None
 
     present, expected, _ = summarize_spectrograms(clips)
     print(f"\nSpectrograms present: {present}/{expected}")
+
+    site_photo_count = sum(1 for clip in clips if clip.get("site_photo_path"))
+    print(f"Clips with site photos: {site_photo_count}/{len(clips)}")
+    print(
+        "When adding NEW site photos, run: "
+        "python scripts/build_site_photos.py --sync-catalog"
+    )
+
     if missing_specs:
         print(f"Missing spectrogram files ({len(missing_specs)}):")
         for path in missing_specs[:20]:
@@ -421,6 +385,7 @@ def main() -> int:
         return 1
 
     catalog_index = load_catalog_index(catalog_path)
+    existing_site_photos = load_existing_site_photos(output_path)
     audio_files = iter_audio_files(input_root)
     if not audio_files:
         print(f"No audio files found under {input_root}", file=sys.stderr)
@@ -431,6 +396,13 @@ def main() -> int:
         build_clip(path, input_root, spectrograms_root, catalog_index, used_ids)
         for path in audio_files
     ]
+    merge_site_photos(clips, existing_site_photos)
+
+    try:
+        validate_clips(clips)
+    except ValueError as exc:
+        print(exc, file=sys.stderr)
+        return 1
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as handle:

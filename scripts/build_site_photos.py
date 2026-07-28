@@ -31,7 +31,7 @@ from pathlib import Path
 from PIL import Image
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "highlights_catalog.json"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
 DEFAULT_SOURCE = Path(
     "/Volumes/NPS_ADSB_Data/E_Ruebush_2026_Files/cardinal_photos"
 )
@@ -331,7 +331,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--report",
         type=Path,
-        default=PROJECT_ROOT / "data" / "site_photos_report.json",
+        default=PROJECT_ROOT / "data" / "reports" / "site_photos_report.json",
     )
     return parser.parse_args()
 

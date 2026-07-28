@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Trim leading silence from highlight MP3 clips flagged in clip_silence_report.csv.
+Trim leading silence from highlight MP3 clips flagged in data/reports/clip_silence_report.csv.
 
 Uses the same RMS/silence detection as analyze_clip_silence.py. Backs up originals
 to archive/trim_backups/ (mirroring highlights/audio/) before overwriting in place.
@@ -275,7 +275,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--results-json",
         type=Path,
-        default=PROJECT_ROOT / "data" / "trim_leading_silence_report.json",
+        default=PROJECT_ROOT / "data" / "reports" / "trim_leading_silence_report.json",
         help="JSON report path",
     )
     return parser.parse_args()

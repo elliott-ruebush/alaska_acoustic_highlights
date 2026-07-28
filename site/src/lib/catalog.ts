@@ -1,5 +1,6 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 export interface Clip {
   id: string;
@@ -21,7 +22,7 @@ export interface Clip {
   artist: string;
   species_common: string | null;
   species_scientific: string | null;
-  xc_quality: string | null;
+  xc_quality: number | null;
   site_photo_path: string | null;
   site_photo_year: string | null;
 }
@@ -41,9 +42,21 @@ export function getParkName(code: string): string {
   return PARK_NAMES[code] ?? code;
 }
 
+function resolveCatalogPath(): string {
+  let dir = path.dirname(fileURLToPath(import.meta.url));
+  while (true) {
+    const candidate = path.join(dir, "data", "catalog", "highlights.json");
+    if (existsSync(candidate)) return candidate;
+    const parent = path.dirname(dir);
+    if (parent === dir) {
+      throw new Error("Could not find data/catalog/highlights.json");
+    }
+    dir = parent;
+  }
+}
+
 function loadCatalog(): Clip[] {
-  const catalogPath = path.join(process.cwd(), "..", "data", "highlights_catalog.json");
-  const raw = readFileSync(catalogPath, "utf-8");
+  const raw = readFileSync(resolveCatalogPath(), "utf-8");
   return JSON.parse(raw) as Clip[];
 }
 

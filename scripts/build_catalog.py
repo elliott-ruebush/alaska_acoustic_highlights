@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 
 DEFAULT_ROOT = Path("/Volumes/NPS_ADSB_Data/NPS_Type_1_Acoustic_Audio_Highlights")
-DEFAULT_OUTPUT = Path(__file__).resolve().parent.parent / "data" / "audio_clips_catalog.csv"
+DEFAULT_OUTPUT = Path(__file__).resolve().parent.parent / "data" / "catalog" / "audio_clips.csv"
 
 AUDIO_EXTENSIONS = {".wav", ".mp3", ".aiff"}
 

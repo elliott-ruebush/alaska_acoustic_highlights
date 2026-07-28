@@ -22,7 +22,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = PROJECT_ROOT / "highlights" / "audio"
-DEFAULT_REPORT = PROJECT_ROOT / "data" / "transcode_highlights_report.csv"
+DEFAULT_REPORT = PROJECT_ROOT / "data" / "reports" / "transcode_highlights_report.csv"
 FFMPEG = shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg"
 
 

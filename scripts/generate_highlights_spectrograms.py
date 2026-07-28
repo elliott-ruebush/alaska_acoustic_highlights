@@ -3,7 +3,7 @@
 Batch-generate log-frequency spectrogram PNGs for the NPS acoustic highlights set.
 
 Walks highlights/audio/ recursively, mirrors the folder tree under highlights/spectrograms/,
-and writes a JSON report to data/spectrogram_generation_report.json.
+and writes a JSON report to data/reports/spectrogram_generation_report.json.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = PROJECT_ROOT / "highlights" / "audio"
 DEFAULT_OUTPUT = PROJECT_ROOT / "highlights" / "spectrograms"
-REPORT_PATH = PROJECT_ROOT / "data" / "spectrogram_generation_report.json"
+REPORT_PATH = PROJECT_ROOT / "data" / "reports" / "spectrogram_generation_report.json"
 
 FIGSIZE = (12, 4)  # 1200x400 px at 100 dpi
 DPI = 100

@@ -33,6 +33,9 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
 
+      - name: Validate highlights catalog
+        run: python3 scripts/validate_highlights_catalog.py
+
       - name: Install and build
         working-directory: site
         run: |

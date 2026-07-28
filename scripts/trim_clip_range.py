@@ -22,7 +22,7 @@ import librosa
 import soundfile as sf
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "highlights_catalog.json"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
 DEFAULT_BACKUP_ROOT = PROJECT_ROOT / "archive" / "pre_trim"
 FFMPEG = shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg"
 

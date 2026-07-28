@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "highlights.schema.json",
+  "title": "Highlight clip",
+  "description": "A single audio highlight clip in the NPS Soundscapes catalog.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "category",
+    "category_folder",
+    "park_code",
+    "site_code",
+    "recorded_date",
+    "recorded_time",
+    "description",
+    "audio_path",
+    "spectrogram_path",
+    "spectrogram_lowfreq_path",
+    "duration_sec",
+    "sample_rate",
+    "format",
+    "file_size_bytes",
+    "artist",
+    "species_common",
+    "species_scientific",
+    "xc_quality",
+    "site_photo_path",
+    "site_photo_year"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["Birds", "Mammals", "Geophony", "Insects", "General"]
+    },
+    "category_folder": {
+      "type": "string",
+      "minLength": 1
+    },
+    "park_code": {
+      "type": ["string", "null"]
+    },
+    "site_code": {
+      "type": ["string", "null"]
+    },
+    "recorded_date": {
+      "type": ["string", "null"]
+    },
+    "recorded_time": {
+      "type": ["string", "null"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "audio_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "spectrogram_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "spectrogram_lowfreq_path": {
+      "type": ["string", "null"]
+    },
+    "duration_sec": {
+      "type": "number"
+    },
+    "sample_rate": {
+      "type": "integer"
+    },
+    "format": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file_size_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "artist": {
+      "type": "string"
+    },
+    "species_common": {
+      "type": ["string", "null"]
+    },
+    "species_scientific": {
+      "type": ["string", "null"]
+    },
+    "xc_quality": {
+      "type": ["number", "null"]
+    },
+    "site_photo_path": {
+      "type": ["string", "null"]
+    },
+    "site_photo_year": {
+      "type": ["string", "null"]
+    }
+  }
+}

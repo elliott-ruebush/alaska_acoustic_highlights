@@ -13,30 +13,18 @@ import pandas as pd
 from mutagen.id3 import COMM, ID3, ID3NoHeaderError, TALB, TCON, TCOP, TDRC, TIT2, TPE1, TXXX
 from mutagen.mp3 import MP3
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lib.nps_filename import file_prefix, parse_filename, split_processing
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = PROJECT_ROOT / "highlights" / "audio"
-DEFAULT_CATALOG = PROJECT_ROOT / "data" / "audio_clips_catalog.csv"
-DEFAULT_REPORT = PROJECT_ROOT / "data" / "metadata_fix_report.csv"
+DEFAULT_CATALOG = PROJECT_ROOT / "data" / "catalog" / "audio_clips.csv"
+DEFAULT_REPORT = PROJECT_ROOT / "data" / "reports" / "metadata_fix_report.csv"
 
 ALBUM = "Soundscapes of Alaska"
 DEFAULT_ARTIST = "National Park Service"
 COPYRIGHT = (
     "This work was created by the United States Government and is in the public domain."
-)
-
-FILENAME_RE = re.compile(
-    r"^([A-Z]{4})([A-Z0-9]+)_(\d{8})_(\d{6})[\s._-]+(.*)$",
-    re.IGNORECASE,
-)
-PREFIX_RE = re.compile(
-    r"^([A-Z]{4}[A-Z0-9]+_\d{8}_\d{6})",
-    re.IGNORECASE,
-)
-
-PROCESSING_START_RE = re.compile(
-    r"\s+(?:TRIM|BANDPASS|AMPLIFY|FADE(?:\s+OUT)?|COMPRESS|CROP|BESSEL(?:\s+FILTER|\s+BANDPASS)?|"
-    r"NOISE\s+REDUCTION|HIGH\s+PASS|LOW\s+PASS|NOTCH|EQ|NORMALIZE|LIMIT)\b",
-    re.IGNORECASE,
 )
 
 GENRE_MAP = {
@@ -91,58 +79,6 @@ def parse_args() -> argparse.Namespace:
         help="Also process WAV files (limited tag support via RIFF INFO)",
     )
     return parser.parse_args()
-
-
-def format_date(raw: str) -> str:
-    if len(raw) != 8 or not raw.isdigit():
-        return ""
-    yyyy, mm, dd = raw[:4], raw[4:6], raw[6:8]
-    if mm == "00" or dd == "00":
-        return ""
-    return f"{yyyy}-{mm}-{dd}"
-
-
-def format_time(raw: str) -> str:
-    if len(raw) != 6 or not raw.isdigit():
-        return ""
-    return f"{raw[:2]}:{raw[2:4]}:{raw[4:6]}"
-
-
-def file_prefix(filename: str) -> str:
-    match = PREFIX_RE.match(Path(filename).stem)
-    return match.group(1).upper() if match else ""
-
-
-def parse_filename(filename: str) -> dict[str, str]:
-    stem = Path(filename).stem
-    match = FILENAME_RE.match(stem)
-    if not match:
-        return {
-            "park_code": "",
-            "site_code": "",
-            "recording_date": "",
-            "recording_time": "",
-            "description": stem,
-            "prefix": file_prefix(filename),
-        }
-    park, site, date_raw, time_raw, description = match.groups()
-    return {
-        "park_code": park.upper(),
-        "site_code": site.upper(),
-        "recording_date": format_date(date_raw),
-        "recording_time": format_time(time_raw),
-        "description": description.strip(),
-        "prefix": f"{park.upper()}{site.upper()}_{date_raw}_{time_raw}".upper(),
-    }
-
-
-def split_processing(description: str) -> tuple[str, str]:
-    match = PROCESSING_START_RE.search(description)
-    if not match:
-        return description.strip(), ""
-    display = description[: match.start()].strip(" ,._-")
-    processing = description[match.start() :].strip()
-    return display or description.strip(), processing
 
 
 def genre_from_path(path: Path, input_root: Path) -> str:
@@ -236,7 +172,7 @@ def build_tags(
         "artist": artist,
         "album": ALBUM,
         "genre": genre,
-        "date": parsed["recording_date"],
+        "date": parsed["recorded_date"],
         "comment": comment,
         "copyright": COPYRIGHT,
         "processing": processing,

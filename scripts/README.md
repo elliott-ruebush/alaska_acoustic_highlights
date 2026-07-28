@@ -1,22 +1,22 @@
-# Scripts
+# Scripts - FEEL FREE TO READ THIS - BUT IT'S MAINLY INTENDED FOR LLM AGENTS
 
 Agent reference for the Python CLIs in this directory. Flat layout — 11 standalone scripts, no subdirectories.
 
-Production assets live in `highlights/audio/`. Curation source of truth is `data/highlights_catalog.json`. See also `archive/README.md` for backup folders.
+Production assets live in `highlights/audio/`. Curation source of truth is `data/catalog/highlights.json`. See `data/README.md` and `archive/README.md`.
 
 ## Inventory
 
 | Script | Purpose |
 |--------|---------|
-| `build_catalog.py` | Walk external NPS ADSB volume; parse filenames; merge Xeno-Canto Excel metadata → `data/audio_clips_catalog.csv` |
-| `build_highlights_catalog.py` | Build site-facing JSON from `highlights/audio/` (+ spectrograms, CSV enrichment, MP3 tags) → `data/highlights_catalog.json` |
+| `build_catalog.py` | Walk external NPS ADSB volume; parse filenames; merge Xeno-Canto Excel metadata → `data/catalog/audio_clips.csv` |
+| `build_highlights_catalog.py` | Build site-facing JSON from `highlights/audio/` (+ spectrograms, CSV enrichment, MP3 tags) → `data/catalog/highlights.json` |
 | `build_site_photos.py` | Match cardinal site photos from external drive (or manual drops); copy WebP → `highlights/site_photos/`; update catalog `site_photo_path` |
 | `generate_highlights_spectrograms.py` | Batch log-frequency spectrogram PNGs; mirror `highlights/audio/` → `highlights/spectrograms/` (extra `_lowfreq` for GEOPHONY) |
 | `transcode_highlights.py` | WAV → MP3 via ffmpeg (default dry-run); optional WAV removal after verify |
 | `fix_highlights_metadata.py` | Rewrite ID3 on highlight MP3s (title, artist, album, genre, dates, XC fields) using CSV enrichment |
-| `analyze_clip_silence.py` | QC: leading/trailing silence + internal gaps → `data/clip_silence_report.csv` |
+| `analyze_clip_silence.py` | QC: leading/trailing silence + internal gaps → `data/reports/clip_silence_report.csv` |
 | `trim_leading_silence.py` | Trim leading silence for flagged clips; backs up to `archive/trim_backups/`; imports logic from `analyze_clip_silence.py` |
-| `analyze_clip_loudness.py` | QC: RMS/LUFS (if pyloudnorm), peak, dynamic range → `data/clip_loudness_report.csv` |
+| `analyze_clip_loudness.py` | QC: RMS/LUFS (if pyloudnorm), peak, dynamic range → `data/reports/clip_loudness_report.csv` |
 | `normalize_clip_loudness.py` | Two-pass ffmpeg loudnorm; archives originals → `archive/pre_loudness_normalize/`; writes to `highlights/audio_normalized/` |
 | `trim_clip_range.py` | Manual time-range trim of one clip; backs up to `archive/pre_trim/`; updates catalog durations |
 
@@ -63,7 +63,7 @@ python3 scripts/<script>.py [args]
 
 | Script | Notable args |
 |--------|----------------|
-| `build_catalog.py` | `--root`, `--output` (defaults: NPS volume → `data/audio_clips_catalog.csv`) |
+| `build_catalog.py` | `--root`, `--output` (defaults: NPS volume → `data/catalog/audio_clips.csv`) |
 | `build_highlights_catalog.py` | `--input`, `--output`, `--spectrograms-dir`, `--catalog` |
 | `generate_highlights_spectrograms.py` | `--input`, `--output`, `--force`, `--dry-run`, `--limit`, `--files` |
 | `transcode_highlights.py` | `--bitrate 192k`, `--execute`, `--remove-wav`, `--force` |
@@ -85,19 +85,19 @@ python3 scripts/<script>.py [args]
 ```
 /Volumes/NPS_ADSB_Data/...          build_catalog.py, build_site_photos.py (external)
         ↓
-data/audio_clips_catalog.csv        enrichment for metadata + highlights catalog
+data/catalog/audio_clips.csv        enrichment for metadata + highlights catalog
         ↓
 highlights/audio/                   production MP3s
 highlights/spectrograms/            generate_highlights_spectrograms.py
 highlights/site_photos/             build_site_photos.py
         ↓
-data/highlights_catalog.json        build_highlights_catalog.py (+ build_site_photos updates)
+data/catalog/highlights.json        build_highlights_catalog.py (+ build_site_photos updates)
         ↓
-site/src/lib/catalog.ts             reads ../data/highlights_catalog.json
+site/src/lib/catalog.ts             reads ../data/catalog/highlights.json
 site/public/highlights → ../../highlights   site/scripts/link-public-assets.mjs (Node, not here)
 ```
 
-**`data/` reports** (git-tracked audit outputs): `clip_silence_report.csv`, `clip_loudness_report.csv`, `clip_loudness_normalize_report.{json,csv}`, `spectrogram_generation_report.json`, `transcode_highlights_report.csv`, `metadata_fix_report.csv`, `site_photos_report.json`, `trim_leading_silence_report.json`
+**`data/reports/`** (gitignored audit outputs): `clip_silence_report.csv`, `clip_loudness_report.csv`, `clip_loudness_normalize_report.{json,csv}`, `spectrogram_generation_report.json`, `transcode_highlights_report.csv`, `metadata_fix_report.csv`, `site_photos_report.json`, `trim_leading_silence_report.json`
 
 **`archive/`** (gitignored backups): `pre_loudness_normalize/`, `pre_trim/`, `trim_backups/`
 
