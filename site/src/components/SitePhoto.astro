@@ -1,6 +1,6 @@
 ---
 import type { Clip } from "../lib/catalog";
-import { getParkName } from "../lib/catalog";
+import { formatSiteLabel, getLocationLabelDetailed, getParkName, getSiteName } from "../lib/catalog";
 import { withBase } from "../lib/paths";
 
 interface Props {
@@ -12,13 +12,14 @@ const photoPath = clip.site_photo_path;
 if (!photoPath) return null;
 
 const parkName = clip.park_code ? getParkName(clip.park_code) : null;
-const siteLabel = [clip.park_code, clip.site_code].filter(Boolean).join(" · ");
+const siteName = getSiteName(clip);
+const siteLabel = getLocationLabelDetailed(clip);
 const dialogId = `site-photo-${clip.id}`;
 
 const altParts = [
   "Composite site photo showing north, east, south, and west views of the acoustic monitoring station",
   parkName && `at ${parkName}`,
-  clip.site_code && `site ${clip.site_code}`,
+  siteName && `site ${formatSiteLabel(clip) ?? siteName}`,
   clip.site_photo_year && `photographed in ${clip.site_photo_year}`,
 ].filter(Boolean);
 

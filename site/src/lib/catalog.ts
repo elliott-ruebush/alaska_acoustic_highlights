@@ -25,6 +25,7 @@ export interface Clip {
   xc_quality: number | null;
   site_photo_path: string | null;
   site_photo_year: string | null;
+  site_name: string | null;
 }
 
 const CATEGORY_ORDER = ["Birds", "Mammals", "Geophony", "Insects", "General"] as const;
@@ -40,6 +41,40 @@ const PARK_NAMES: Record<string, string> = {
 
 export function getParkName(code: string): string {
   return PARK_NAMES[code] ?? code;
+}
+
+export function getSiteName(clip: Pick<Clip, "site_code" | "site_name">): string | null {
+  if (clip.site_name) return clip.site_name;
+  return clip.site_code;
+}
+
+function formatWithCode(label: string, code: string | null): string {
+  if (!code || label === code) return label;
+  return `${label} (${code})`;
+}
+
+export function formatParkLabel(parkCode: string): string {
+  return formatWithCode(getParkName(parkCode), parkCode);
+}
+
+export function formatSiteLabel(clip: Pick<Clip, "site_code" | "site_name">): string | null {
+  const site = getSiteName(clip);
+  if (!site) return null;
+  return formatWithCode(site, clip.site_code);
+}
+
+export function getLocationLabel(clip: Pick<Clip, "park_code" | "site_code" | "site_name">): string {
+  const park = clip.park_code ? getParkName(clip.park_code) : null;
+  const site = getSiteName(clip);
+  return [park, site].filter(Boolean).join(" · ") || "Unknown location";
+}
+
+export function getLocationLabelDetailed(
+  clip: Pick<Clip, "park_code" | "site_code" | "site_name">,
+): string {
+  const park = clip.park_code ? formatParkLabel(clip.park_code) : null;
+  const site = formatSiteLabel(clip);
+  return [park, site].filter(Boolean).join(" · ") || "Unknown location";
 }
 
 function resolveCatalogPath(): string {

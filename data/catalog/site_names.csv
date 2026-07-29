@@ -1,0 +1,213 @@
+park_code,site_code,site_name
+DENA,7MIL,Seven Mile
+DENA,BACK,Backside Lake
+DENA,BASE,Kahiltna Base Camp
+DENA,BEAR,Bear Creek
+DENA,BICR,Birch Creek
+DENA,BIGU,Bison Gulch
+DENA,BLCR,Blind Creek
+DENA,BLDR,Research Boulder
+DENA,BMUL,Bend of the Muldrow
+DENA,BULL,Bull River
+DENA,CABN,Cabin Peak
+DENA,CARB,Caribou Creek
+DENA,CARL,Carlson Creek
+DENA,CATH,Cathedral Mountain
+DENA,CEAK,Center Alaska
+DENA,CHCR,Chitsia Creek
+DENA,CNTW,Cantwell Rock
+DENA,DUNK,Dunkle Hills
+DENA,EFK1,East Fork Toklat
+DENA,ESTO,Estok
+DENA,FANG,Fang Mountain
+DENA,FLAT,Flattop
+DENA,FLUM,Flume Creek
+DENA,FOGG,Foggy Pass
+DENA,FRC1,Denali Visitor's Center
+DENA,FRC2,MSLC Roundabout
+DENA,FRC3,Horseshoe Lake Trail
+DENA,FRC4,Horseshoe Lake Trail
+DENA,FRC5,Denali Visitor's Center
+DENA,FRC6,Healy Overlook Trail
+DENA,FRC8,Murie Science and Learning Center
+DENA,FROG,Wonder Lake Frog Ponds
+DENA,HAUK,Hauke Creek
+DENA,HEAL,Healy Ridge
+DENA,HEGL,Herron Glacier
+DENA,HERI,Herron River
+DENA,HICR,Highpower Creek
+DENA,HIDR,Hidden River
+DENA,HIG1,Highway Pass 1
+DENA,HIG2,Highway Pass 2
+DENA,HOG2,Hogan Creek 2
+DENA,HOG3,Hogan Creek 3
+DENA,HOG4,Hogan Creek 4
+DENA,HOTS,Hot Slough
+DENA,IGL1,Igloo Canyon 1
+DENA,INES,Hines Creek
+DENA,K5Z5,Kantishna Airstrip
+DENA,KAHP,Kahiltna Pass
+DENA,KICH,Kichatna Mountains
+DENA,LDAL,Lower Dall Glacier
+DENA,LEFK,Lower East Fork Toklat
+DENA,LELD,Lower Eldridge Glacier
+DENA,LKAR,Lower Kantishna River
+DENA,LMCR,Lower McKinley River
+DENA,LSLC,Lower Slippery Creek
+DENA,MBAR,McKinley Bar Trail
+DENA,MCGO,McGonagall Pass
+DENA,MCLE,McLeod Creek
+DENA,MCRI,McKinley River
+DENA,MLEE,Mount Lee
+DENA,MOOS,Moose Creek
+DENA,MTVI,Mountain Vista
+DENA,MULD,Muldrow Glacier
+DENA,MURI,Muddy River
+DENA,MYRT,Myrtle
+DENA,NERI,Nenana Ridge
+DENA,NTRL,North Triple Lakes Trail
+DENA,PAIN,McKinley Park Airstrip
+DENA,PHEN,HQ Phenology Site
+DENA,PIKA,Pika Glacier
+DENA,POL1,Polychrome Mountain 1
+DENA,POL2,Polychrome Mountain 2
+DENA,POL3,Polychrome Mountain 3
+DENA,POL4,Polychrome Mountain 4
+DENA,PRM1,Primrose Ridge 1
+DENA,PRM2,Primrose Ridge 2
+DENA,PRM3,Savage River
+DENA,PRM4,Primrose Ridge
+DENA,ROCK,Rock Creek
+DENA,RUGL,Toe of the Ruth Glacier
+DENA,RUTH,Ruth Glacier
+DENA,SAN1,Sanctuary River 1
+DENA,SAN3,Sanctuary River 3
+DENA,SAN4,Sanctuary Flats
+DENA,SAVR,Savage River
+DENA,SKGL,SW Fork Kahiltna Glacier
+DENA,STAM,Stampede Airstrip
+DENA,SUSH,Sushana Ridge
+DENA,SYS1,Gravel Pit Firing Range 1
+DENA,SYS2,Gravel Pit Firing Range 2
+DENA,TEK1,Teklanika River 1
+DENA,TEK4,Teklanika Flats
+DENA,TEKP,Teklanika Gravel Pit
+DENA,TETH,Teklanika Thumb
+DENA,THRI,Thorofare River
+DENA,TKAH,Toe of the Kahiltna
+DENA,TKAN,Toe of the Kanikula Glacier
+DENA,TMUL,Toe of the Muldrow
+DENA,TOKL,Toklat Spur Road
+DENA,TOKO,Toe of the Tokositna
+DENA,TRLA,Triple Lakes
+DENA,UDAL,Upper Dall Glacier
+DENA,UEFK,Upper East Fork Toklat
+DENA,UKAH,Upper Kahiltna Glacier
+DENA,UOHI,Upper Ohio Glacier
+DENA,UPEL,Upper Eldridge Glacier
+DENA,UPST,Upper Straightaway Glacier
+DENA,UPWC,Upper Wigand Creek
+DENA,USLC,Upper Slippery Creek
+DENA,USVG,Upper Savage River
+DENA,UTOK,Upper Tokositna
+DENA,UTRA,Upper Traleika
+DENA,UWBT,Upper West Branch Toklat
+DENA,UWFY,Upper West Fork Yenta River
+DENA,UYEN,Upper Yentna Glacier
+DENA,VABM,North VABM
+DENA,WEBU,West Buttress
+DENA,WEKH,West Kantishna Hills
+DENA,WFYR,West Fork Yentna River
+DENA,WOCR,Wolf Creek
+DENA,WOND,Wonder Lake Water Tank
+DENA,YEGL,Yentna-Lacuna Confluence
+GAAR,AMLA,Amiloyak Lake
+GAAR,ANAK,Anaktuvuk Pass
+GAAR,ARRI,Arrigetch Basin
+GAAR,FLOR,Florence Creek Lake
+GAAR,HAMM,Hammond River
+GAAR,ITKI,Itkillik Lake
+GAAR,KURU,Kurupa Lake
+GAAR,MWAL,Walker Lake Swan Island
+GAAR,NARV,Narvak Lake North
+GAAR,NNUT,Nutuvukti Lake North
+GAAR,NUTU,Nutuvukti Lake South
+GAAR,NWAL,Walker Lake North
+GAAR,PALA,Pamitchtuk Lake
+GAAR,SELB,Narvak Lake South
+GAAR,UPNO,Upper Noatak River
+GAAR,WALK,Walker Lake
+GLBA,BARTC,Bartlett Cove
+GLBA,BEARD,Beardsley Entrance
+GLBA,HUNT,Hunter Cove
+GLBA,HUTCH,Hutchins Bay
+GLBA,LSTL,Lower South Tidal Inlet
+GLBA,MCLEOD,Point McLeod
+GLBA,REID,Reid Inlet
+GLBA,RENDU,Rendu Inlet
+GLBA,TARR,Tarr Inlet
+GRSM,004,Purchase Knob
+GRSM,017,Cades Cove III
+GRSM,018,Cherokee Orchard
+KATM,001,Brooks Camp Fish Freezer
+KATM,002,Brooks Camp Generators
+KATM,003,Lake Brooks
+KATM,004,Brooks Camp Lower Platform
+KATM,005,Brooks Camp New Barge Landing
+KATM,006,Brooks Camp Visitor Center
+KATM,007,Brooks Camp Leach Field
+KATM,AMBA,Amalik Bay
+KATM,AMCR,American Creek
+KATM,CROS,Crosswinds Lake
+KATM,DORI,Douglas River
+KATM,DUPO,Dumpling Point
+KATM,EKUL,East Kulik Lake
+KATM,HALO,Hallo Bay
+KATM,JOJO,Jojo Lake
+KATM,KABA,Katmai Bay
+KATM,KAMI,Kamishak River
+KATM,LACA,Lake Camp
+KATM,PFMI,Pfaff Mine
+KATM,SAVO,Savonoski Lake
+KATM,SWLA,Swikshak Lagoon
+KATM,TACT,Contact Lake
+KATM,VTTS,Valley of Ten-Thousand Smokes
+KEFJ,001,Visitor Facilities Zone
+KEFJ,002,Hiker Zone
+KEFJ,003,Pedestrian Zone
+KEFJ,004,Semi-Primitive Zone
+KEFJ,005,Visitor Facilities Zone
+KEFJ,006,Pedestrian Zone
+LACL,CHBA,Chinitna Bay
+LACL,CRES,Cresent Lake
+LACL,CRYS,Crystal Creek
+LACL,HANM,Hanmore Lake
+LACL,KIJK,Kijik Lake
+LACL,KOLA,Kontrashibuna Lake
+LACL,LACP,Lake Clark Pass
+LACL,MEPA,Merrill Pass
+LACL,NEAC,Neacola River
+LACL,NEGL,Neacola Glacier
+LACL,SISA,Silver Salmon Creek
+LACL,SNLA,Snipe Lake
+LACL,SURI,Summit Ridge
+LACL,TELA,Telaquana Lake
+LACL,TLRV,Tlikakila River
+LACL,TUGL,Tuxedni Glacier
+LACL,UPTW,Upper Twin Lake
+MORU,002,Presidential Trail
+NOAT,AGGI,Agashashok River
+NOAT,CUTL,Cutler River
+NOAT,KUGU,Kugururok River
+NOAT,SAPN,Sapun Creek
+SITK,SACR,Sawmill Creek Road
+SITK,TOTR,Totem Trail
+TEST,831A,Sound Level Meter A/B Tests
+WRST,BLMT,Black Mountain
+WRST,COPA,Cooper Creek
+WRST,NIZI,Nizina Chitistone Confluence
+WRST,TALA,Tanada Lake
+YUCH,CHRI,Charley River
+YUCH,THRF,Three Fingers Airstrip
+YUCH,Y057,Yukon River 57.5
+YUCH,Y205,Yukon River 205.5

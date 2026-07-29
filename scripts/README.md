@@ -14,7 +14,8 @@ Ingest staging lives in `ingest/` (see `ingest/README.md`). Optional per-clip me
 |--------|---------|
 | `ingest_clips.py` | **Preferred entry point:** stage audio/photos from `ingest/` → `highlights/`; run spectrogram, transcode, metadata, catalog, and validation pipeline |
 | `build_catalog.py` | Walk external NPS ADSB volume; parse filenames; merge Xeno-Canto Excel metadata → `data/catalog/audio_clips.csv` |
-| `build_highlights_catalog.py` | Build site-facing JSON from `highlights/audio/` (+ spectrograms, CSV enrichment, MP3 tags) → `data/catalog/highlights.json` |
+| `build_highlights_catalog.py` | Build site-facing JSON from `highlights/audio/` (+ spectrograms, CSV enrichment, site names, MP3 tags) → `data/catalog/highlights.json` |
+| `build_site_names.py` | Build `data/catalog/site_names.csv` from `Complete_Metadata_AKR_2001-2025.xlsx` |
 | `build_site_photos.py` | Match cardinal site photos from external drive (or manual drops); copy WebP → `highlights/site_photos/`; update catalog `site_photo_path` |
 | `generate_highlights_spectrograms.py` | Batch log-frequency spectrogram PNGs; mirror `highlights/audio/` → `highlights/spectrograms/` (extra `_lowfreq` for GEOPHONY) |
 | `transcode_highlights.py` | WAV → MP3 via ffmpeg (default dry-run); optional WAV removal after verify |

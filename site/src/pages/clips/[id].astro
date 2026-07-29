@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import SitePhoto from "../../components/SitePhoto.astro";
 import SpectrogramPlayer from "../../components/SpectrogramPlayer.astro";
-import { getAllClips } from "../../lib/catalog";
+import { getAllClips, formatParkLabel, formatSiteLabel } from "../../lib/catalog";
 import { formatDuration, formatFileSize, categorySlug, getParkUrl } from "../../lib/format";
 import { withBase } from "../../lib/paths";
 
@@ -26,14 +26,17 @@ const { clip } = Astro.props;
 
     <div class="meta-row">
       <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
-      {clip.park_code && (
+      {(clip.park_code || formatSiteLabel(clip)) && (
         <span>
-          <ExternalLink href={getParkUrl(clip.park_code)}>
-            {clip.park_code}
-          </ExternalLink>
+          {clip.park_code && (
+            <ExternalLink href={getParkUrl(clip.park_code)}>
+              {formatParkLabel(clip.park_code)}
+            </ExternalLink>
+          )}
+          {clip.park_code && formatSiteLabel(clip) && <> · </>}
+          {formatSiteLabel(clip)}
         </span>
       )}
-      {clip.site_code && <span>Site {clip.site_code}</span>}
       {clip.recorded_date && <span>{clip.recorded_date}</span>}
       <span>{formatDuration(clip.duration_sec)}</span>
     </div>

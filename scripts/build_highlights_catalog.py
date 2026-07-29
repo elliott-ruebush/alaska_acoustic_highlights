@@ -28,11 +28,13 @@ from lib.overrides import apply_overrides_to_clips, load_overrides
 from lib.paths import (
     CATALOG_AUDIO_CLIPS,
     CATALOG_HIGHLIGHTS,
+    CATALOG_SITE_NAMES,
     HIGHLIGHTS_AUDIO,
     HIGHLIGHTS_SPECTROGRAMS,
     INGEST_OVERRIDES,
     PROJECT_ROOT,
 )
+from lib.site_names import apply_site_names_to_clips, load_site_names
 
 DEFAULT_INPUT = HIGHLIGHTS_AUDIO
 DEFAULT_OUTPUT = CATALOG_HIGHLIGHTS
@@ -73,6 +75,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         type=Path,
         default=DEFAULT_CATALOG,
         help=f"Audio clips catalog CSV for enrichment (default: {DEFAULT_CATALOG.relative_to(PROJECT_ROOT)})",
+    )
+    parser.add_argument(
+        "--site-names",
+        type=Path,
+        default=CATALOG_SITE_NAMES,
+        help=(
+            f"Site name lookup CSV (default: "
+            f"{CATALOG_SITE_NAMES.relative_to(PROJECT_ROOT)})"
+        ),
     )
     parser.add_argument(
         "--overrides",
@@ -345,6 +356,7 @@ def build_clip(
         "xc_quality": xc_quality_value(catalog_row),
         "site_photo_path": None,
         "site_photo_year": None,
+        "site_name": None,
     }
 
 
@@ -437,6 +449,11 @@ def main(argv: list[str] | None = None) -> int:
     override_count = apply_overrides_to_clips(clips, overrides)
     if override_count:
         print(f"Applied metadata overrides to {override_count} clip(s)")
+
+    site_names = load_site_names(args.site_names.resolve())
+    site_name_count = apply_site_names_to_clips(clips, site_names)
+    if site_name_count:
+        print(f"Resolved site names for {site_name_count} clip(s)")
 
     try:
         validate_clips(clips)

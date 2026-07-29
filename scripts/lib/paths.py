@@ -14,6 +14,7 @@ HIGHLIGHTS_SITE_PHOTOS = PROJECT_ROOT / "highlights" / "site_photos"
 
 CATALOG_HIGHLIGHTS = PROJECT_ROOT / "data" / "catalog" / "highlights.json"
 CATALOG_AUDIO_CLIPS = PROJECT_ROOT / "data" / "catalog" / "audio_clips.csv"
+CATALOG_SITE_NAMES = PROJECT_ROOT / "data" / "catalog" / "site_names.csv"
 CATALOG_SCHEMA = PROJECT_ROOT / "data" / "catalog" / "highlights.schema.json"
 REPORTS_DIR = PROJECT_ROOT / "data" / "reports"
 

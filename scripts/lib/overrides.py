@@ -22,6 +22,7 @@ OVERRIDABLE_FIELDS = frozenset(
         "recorded_time",
         "park_code",
         "site_code",
+        "site_name",
     }
 )
 

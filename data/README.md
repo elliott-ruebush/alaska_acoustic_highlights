@@ -7,6 +7,7 @@
 | `highlights.json` | Curated highlight set; consumed by the site and most scripts. Media paths are repo-relative (e.g. `highlights/audio/...`). Validated in CI via `scripts/validate_highlights_catalog.py` before site build. |
 | `highlights.schema.json` | JSON Schema for `highlights.json` clip objects; enforced by `scripts/lib/catalog_validate.py` on build and in CI. |
 | `audio_clips.csv` | Upstream NPS archive index for metadata enrichment (not site-facing) |
+| `site_names.csv` | Park/site code → display name lookup (from AKR metadata; see `scripts/build_site_names.py`) |
 
 ## `reports/` — script audit output
 

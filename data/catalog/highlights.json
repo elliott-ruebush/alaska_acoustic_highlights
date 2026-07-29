@@ -21,7 +21,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denabicr_20130809_020959.webp",
-    "site_photo_year": "2013"
+    "site_photo_year": "2013",
+    "site_name": "Birch Creek"
   },
   {
     "id": "denafang_20110708_023655",
@@ -45,7 +46,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denafang_20110708_023655.webp",
-    "site_photo_year": "2011"
+    "site_photo_year": "2011",
+    "site_name": "Fang Mountain"
   },
   {
     "id": "denahauk_20140606_035354",
@@ -69,7 +71,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahauk_20140606_035354.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Hauke Creek"
   },
   {
     "id": "denahauk_20140607_214150",
@@ -93,7 +96,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahauk_20140607_214150.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Hauke Creek"
   },
   {
     "id": "denahig1_20120802_035742",
@@ -117,7 +121,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahig1_20120802_035742.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Highway Pass 1"
   },
   {
     "id": "denahog3_20120601_034833",
@@ -141,7 +146,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahog3_20120601_034833.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Hogan Creek 3"
   },
   {
     "id": "denahog3_20120605_074102",
@@ -165,7 +171,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahog3_20120605_074102.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Hogan Creek 3"
   },
   {
     "id": "denahots_20140602_085834",
@@ -189,7 +196,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahots_20140602_085834.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Hot Slough"
   },
   {
     "id": "denakich_20120524_081441",
@@ -213,7 +221,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denakich_20120524_081441.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Kichatna Mountains"
   },
   {
     "id": "denamuri_20150516_050450",
@@ -237,7 +246,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denamuri_20150516_050450.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Muddy River"
   },
   {
     "id": "denamuri_20150519_094517",
@@ -261,7 +271,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denamuri_20150519_094517.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Muddy River"
   },
   {
     "id": "denamuri_20150523_045418",
@@ -285,7 +296,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denamuri_20150523_045418.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Muddy River"
   },
   {
     "id": "denamuri_20150526_060431",
@@ -309,7 +321,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denamuri_20150526_060431.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Muddy River"
   },
   {
     "id": "denapol2_20120619_092801",
@@ -333,7 +346,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denapol2_20120619_092801.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Polychrome Mountain 2"
   },
   {
     "id": "denasan3_20120603_020932",
@@ -357,7 +371,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denasan3_20120603_020932.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Sanctuary River 3"
   },
   {
     "id": "denasush_20260610_092353",
@@ -381,7 +396,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denasush_20260610_092353.webp",
-    "site_photo_year": "2026"
+    "site_photo_year": "2026",
+    "site_name": "Sushana Ridge"
   },
   {
     "id": "denatoko_20160512_052310",
@@ -405,7 +421,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20160512_052310.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "denatoko_20160616_053228",
@@ -429,7 +446,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20160616_053228.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "denatrla_20240624_045058",
@@ -453,7 +471,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20240624_045058.webp",
-    "site_photo_year": "2024"
+    "site_photo_year": "2024",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denawocr_20150624_202549",
@@ -477,7 +496,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denawocr_20150624_202549.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Wolf Creek"
   },
   {
     "id": "gaarflor_20180615_045829",
@@ -501,7 +521,8 @@
     "species_scientific": "Turdus migratorius",
     "xc_quality": 4.0,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Florence Creek Lake"
   },
   {
     "id": "gaarflor_20180617_125710",
@@ -525,7 +546,8 @@
     "species_scientific": null,
     "xc_quality": 4.0,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Florence Creek Lake"
   },
   {
     "id": "gaarflor_20180618_053001",
@@ -549,7 +571,8 @@
     "species_scientific": "Gavia immer",
     "xc_quality": 3.0,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Florence Creek Lake"
   },
   {
     "id": "gaarmwal_20140617_064326",
@@ -573,7 +596,8 @@
     "species_scientific": "Larus canus",
     "xc_quality": 3.0,
     "site_photo_path": "highlights/site_photos/gaarmwal_20140617_064326.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Walker Lake Swan Island"
   },
   {
     "id": "gaarnnut_20140704_072937",
@@ -597,7 +621,8 @@
     "species_scientific": "Gavia immer",
     "xc_quality": 3.0,
     "site_photo_path": "highlights/site_photos/gaarnnut_20140704_072937.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Nutuvukti Lake North"
   },
   {
     "id": "gaarupno_20180606_150920",
@@ -621,7 +646,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaarupno_20180606_150920.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Upper Noatak River"
   },
   {
     "id": "gaarupno_20180607_025501",
@@ -645,7 +671,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaarupno_20180607_025501.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Upper Noatak River"
   },
   {
     "id": "glbabartc_20200707_111214",
@@ -669,7 +696,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbabartc_20200707_111214.webp",
-    "site_photo_year": "2020"
+    "site_photo_year": "2020",
+    "site_name": "Bartlett Cove"
   },
   {
     "id": "glbarendu_20220616_230000",
@@ -693,7 +721,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbarendu_20220616_230000.webp",
-    "site_photo_year": "2023"
+    "site_photo_year": "2023",
+    "site_name": "Rendu Inlet"
   },
   {
     "id": "katmcros_20170731_051841",
@@ -717,7 +746,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/katmcros_20170731_051841.webp",
-    "site_photo_year": "2017"
+    "site_photo_year": "2017",
+    "site_name": "Crosswinds Lake"
   },
   {
     "id": "katmjojo_20160710_221044",
@@ -741,7 +771,8 @@
     "species_scientific": "Gavia immer",
     "xc_quality": 4.0,
     "site_photo_path": "highlights/site_photos/katmjojo_20160710_221044.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Jojo Lake"
   },
   {
     "id": "katmkaba_20160823_205149",
@@ -765,7 +796,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/katmkaba_20160823_205149.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Katmai Bay"
   },
   {
     "id": "laclhanm_20190829_062559",
@@ -789,7 +821,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/laclhanm_20190829_062559.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Hanmore Lake"
   },
   {
     "id": "denahig1_20120728_122042",
@@ -813,7 +846,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahig1_20120728_122042.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Highway Pass 1"
   },
   {
     "id": "denamoos_20180814_105458",
@@ -837,7 +871,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denamoos_20180814_105458.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Moose Creek"
   },
   {
     "id": "denaphen_20160326_044922",
@@ -861,7 +896,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "HQ Phenology Site"
   },
   {
     "id": "denathri_20150630_125351",
@@ -885,7 +921,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denathri_20150630_125351.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Thorofare River"
   },
   {
     "id": "denatoko_20160511_070134",
@@ -909,7 +946,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20160511_070134.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "denatoko_20160513_130223",
@@ -933,7 +971,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20160513_130223.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "glbabartc_20210726_194850",
@@ -957,7 +996,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbabartc_20210726_194850.webp",
-    "site_photo_year": "2021"
+    "site_photo_year": "2021",
+    "site_name": "Bartlett Cove"
   },
   {
     "id": "laclkijk_20180619_193149",
@@ -981,7 +1021,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/laclkijk_20180619_193149.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Kijik Lake"
   },
   {
     "id": "laclkijk_20180619_194318",
@@ -1005,7 +1046,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/laclkijk_20180619_194318.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Kijik Lake"
   },
   {
     "id": "denaback_20140609_004008",
@@ -1029,7 +1071,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denaback_20140609_004008.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Backside Lake"
   },
   {
     "id": "denaback_20140724_210128",
@@ -1053,7 +1096,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denaback_20140724_210128.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Backside Lake"
   },
   {
     "id": "denabicr_20130707_143335",
@@ -1077,7 +1121,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denabicr_20130707_143335.webp",
-    "site_photo_year": "2013"
+    "site_photo_year": "2013",
+    "site_name": "Birch Creek"
   },
   {
     "id": "denabmul_20210330_001843",
@@ -1101,7 +1146,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denabmul_20210330_001843.webp",
-    "site_photo_year": "2021"
+    "site_photo_year": "2021",
+    "site_name": "Bend of the Muldrow"
   },
   {
     "id": "denabmul_20210401_051821",
@@ -1125,7 +1171,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Bend of the Muldrow"
   },
   {
     "id": "denabmul_20210401_091907",
@@ -1149,7 +1196,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denabmul_20210401_091907.webp",
-    "site_photo_year": "2021"
+    "site_photo_year": "2021",
+    "site_name": "Bend of the Muldrow"
   },
   {
     "id": "denacath_20120808_064000",
@@ -1173,7 +1221,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denacath_20120808_064000.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Cathedral Mountain"
   },
   {
     "id": "denakich_20120522_100025",
@@ -1197,7 +1246,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denakich_20120522_100025.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Kichatna Mountains"
   },
   {
     "id": "denakich_20120522_161217",
@@ -1221,7 +1271,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denakich_20120522_161217.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Kichatna Mountains"
   },
   {
     "id": "denarock_20260724_160815",
@@ -1245,7 +1296,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Rock Creek"
   },
   {
     "id": "denaruth_20190526_040919",
@@ -1269,7 +1321,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denaruth_20190526_040919.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Ruth Glacier"
   },
   {
     "id": "denaruth_20190529_214609",
@@ -1293,7 +1346,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denaruth_20190529_214609.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Ruth Glacier"
   },
   {
     "id": "denaskgl_20210602_041003",
@@ -1317,7 +1371,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denaskgl_20210602_041003.webp",
-    "site_photo_year": "2021"
+    "site_photo_year": "2021",
+    "site_name": "SW Fork Kahiltna Glacier"
   },
   {
     "id": "denasush_20260612_111248",
@@ -1341,7 +1396,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denasush_20260612_111248.webp",
-    "site_photo_year": "2026"
+    "site_photo_year": "2026",
+    "site_name": "Sushana Ridge"
   },
   {
     "id": "denatrla_20240802_081511",
@@ -1365,7 +1421,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20240802_081511.webp",
-    "site_photo_year": "2024"
+    "site_photo_year": "2024",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denatrla_20240802_152712",
@@ -1389,7 +1446,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20240802_152712.webp",
-    "site_photo_year": "2024"
+    "site_photo_year": "2024",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denaudal_20100702_132530",
@@ -1413,7 +1471,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Upper Dall Glacier"
   },
   {
     "id": "denaudal_20100702_132533",
@@ -1437,7 +1496,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Upper Dall Glacier"
   },
   {
     "id": "denaupel_20130511_232743",
@@ -1461,7 +1521,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denaupel_20130511_232743.webp",
-    "site_photo_year": "2013"
+    "site_photo_year": "2013",
+    "site_name": "Upper Eldridge Glacier"
   },
   {
     "id": "denautok_20190810_082714",
@@ -1485,7 +1546,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denautok_20190810_082714.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Upper Tokositna"
   },
   {
     "id": "denauyen_20120520_124131",
@@ -1509,7 +1571,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denauyen_20120520_124131.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Upper Yentna Glacier"
   },
   {
     "id": "denauyen_20120520_180417",
@@ -1533,7 +1596,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denauyen_20120520_180417.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Upper Yentna Glacier"
   },
   {
     "id": "denauyen_20120521_144128",
@@ -1557,7 +1621,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denauyen_20120521_144128.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Upper Yentna Glacier"
   },
   {
     "id": "denauyen_20120523_075701",
@@ -1581,7 +1646,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denauyen_20120523_075701.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Upper Yentna Glacier"
   },
   {
     "id": "denauyen_20120524_215113",
@@ -1605,7 +1671,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denauyen_20120524_215113.webp",
-    "site_photo_year": "2012"
+    "site_photo_year": "2012",
+    "site_name": "Upper Yentna Glacier"
   },
   {
     "id": "gaararri_20180624_075645",
@@ -1629,7 +1696,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaararri_20180624_075645.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Arrigetch Basin"
   },
   {
     "id": "gaararri_20180625_071639",
@@ -1653,7 +1721,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaararri_20180625_071639.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Arrigetch Basin"
   },
   {
     "id": "gaararri_20180628_145728",
@@ -1677,7 +1746,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaararri_20180628_145728.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Arrigetch Basin"
   },
   {
     "id": "gaaritki_20190621_150734",
@@ -1701,7 +1771,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaaritki_20190621_150734.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Itkillik Lake"
   },
   {
     "id": "gaarnwal_20140708_140748",
@@ -1725,7 +1796,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaarnwal_20140708_140748.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Walker Lake North"
   },
   {
     "id": "denacabn_20130714_112628",
@@ -1749,7 +1821,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denacabn_20130714_112628.webp",
-    "site_photo_year": "2013"
+    "site_photo_year": "2013",
+    "site_name": "Cabin Peak"
   },
   {
     "id": "denamcri_20120725_151912",
@@ -1773,7 +1846,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "McKinley River"
   },
   {
     "id": "denamcri_20120810_191000",
@@ -1797,7 +1871,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "McKinley River"
   },
   {
     "id": "denamoos_20180719_075149",
@@ -1821,7 +1896,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denamoos_20180719_075149.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Moose Creek"
   },
   {
     "id": "denatoko_20160506_015745",
@@ -1845,7 +1921,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20160506_015745.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "denatoko_20160507_232954",
@@ -1869,7 +1946,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20160507_232954.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "denatoko_20190701_100630",
@@ -1893,7 +1971,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatoko_20190701_100630.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Toe of the Tokositna"
   },
   {
     "id": "denatrla_20240629_213201",
@@ -1917,7 +1996,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20240629_213201.webp",
-    "site_photo_year": "2024"
+    "site_photo_year": "2024",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "gaararri_20180625_195435",
@@ -1941,7 +2021,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaararri_20180625_195435.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Arrigetch Basin"
   },
   {
     "id": "gaararri_20180723_155006",
@@ -1965,7 +2046,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaararri_20180723_155006.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Arrigetch Basin"
   },
   {
     "id": "gaarflor_20180612_210329",
@@ -1989,7 +2071,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Florence Creek Lake"
   },
   {
     "id": "gaarflor_20180704_185606",
@@ -2013,7 +2096,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Florence Creek Lake"
   },
   {
     "id": "gaarnnut_20140705_214919",
@@ -2037,7 +2121,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaarnnut_20140705_214919.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Nutuvukti Lake North"
   },
   {
     "id": "gaarpala_20190615_075733",
@@ -2061,7 +2146,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaarpala_20190615_075733.webp",
-    "site_photo_year": "2019"
+    "site_photo_year": "2019",
+    "site_name": "Pamitchtuk Lake"
   },
   {
     "id": "gaarupno_20180726_222040",
@@ -2085,7 +2171,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/gaarupno_20180726_222040.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Upper Noatak River"
   },
   {
     "id": "katmdori_20160811_093232",
@@ -2109,7 +2196,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/katmdori_20160811_093232.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Douglas River"
   },
   {
     "id": "katmjojo_20160628_090025",
@@ -2133,7 +2221,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/katmjojo_20160628_090025.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Jojo Lake"
   },
   {
     "id": "katmkaba_20160730_044150",
@@ -2157,7 +2246,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/katmkaba_20160730_044150.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Katmai Bay"
   },
   {
     "id": "katmtact_20170714_114719",
@@ -2181,7 +2271,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/katmtact_20170714_114719.webp",
-    "site_photo_year": "2017"
+    "site_photo_year": "2017",
+    "site_name": "Contact Lake"
   },
   {
     "id": "denacath_20170727_181009",
@@ -2205,7 +2296,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denacath_20170727_181009.webp",
-    "site_photo_year": "2017"
+    "site_photo_year": "2017",
+    "site_name": "Cathedral Mountain"
   },
   {
     "id": "denafang_20110706_064839",
@@ -2229,7 +2321,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denafang_20110706_064839.webp",
-    "site_photo_year": "2011"
+    "site_photo_year": "2011",
+    "site_name": "Fang Mountain"
   },
   {
     "id": "denafang_20130730_090604",
@@ -2253,7 +2346,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denafang_20130730_090604.webp",
-    "site_photo_year": "2013"
+    "site_photo_year": "2013",
+    "site_name": "Fang Mountain"
   },
   {
     "id": "denahauk_20140617_084002",
@@ -2277,7 +2371,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahauk_20140617_084002.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Hauke Creek"
   },
   {
     "id": "denahots_20140601_212218",
@@ -2301,7 +2396,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denahots_20140601_212218.webp",
-    "site_photo_year": "2014"
+    "site_photo_year": "2014",
+    "site_name": "Hot Slough"
   },
   {
     "id": "denarugl_20060619_043533",
@@ -2325,7 +2421,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denarugl_20060619_043533.webp",
-    "site_photo_year": "2017"
+    "site_photo_year": "2017",
+    "site_name": "Toe of the Ruth Glacier"
   },
   {
     "id": "denatrla_20170712_233940",
@@ -2349,7 +2446,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20170712_233940.webp",
-    "site_photo_year": "2017"
+    "site_photo_year": "2017",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denatrla_20180809_213355",
@@ -2373,7 +2471,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20180809_213355.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denatrla_20240618_160107",
@@ -2397,7 +2496,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20240618_160107.webp",
-    "site_photo_year": "2024"
+    "site_photo_year": "2024",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denatrla_20240719_213623",
@@ -2421,7 +2521,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/denatrla_20240719_213623.webp",
-    "site_photo_year": "2024"
+    "site_photo_year": "2024",
+    "site_name": "Triple Lakes"
   },
   {
     "id": "denavabm_20090729_035000",
@@ -2445,7 +2546,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "North VABM"
   },
   {
     "id": "glbabartc_20210628_065656",
@@ -2469,7 +2571,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Bartlett Cove"
   },
   {
     "id": "glbamcleod_20220611_034405",
@@ -2493,7 +2596,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbamcleod_20220611_034405.webp",
-    "site_photo_year": "2021"
+    "site_photo_year": "2021",
+    "site_name": "Point McLeod"
   },
   {
     "id": "glbarendu_20220610_213326",
@@ -2517,7 +2621,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbarendu_20220610_213326.webp",
-    "site_photo_year": "2023"
+    "site_photo_year": "2023",
+    "site_name": "Rendu Inlet"
   },
   {
     "id": "glbarendu_20220612_162613",
@@ -2541,7 +2646,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbarendu_20220612_162613.webp",
-    "site_photo_year": "2023"
+    "site_photo_year": "2023",
+    "site_name": "Rendu Inlet"
   },
   {
     "id": "glbarendu_20220613_214042",
@@ -2565,7 +2671,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbarendu_20220613_214042.webp",
-    "site_photo_year": "2023"
+    "site_photo_year": "2023",
+    "site_name": "Rendu Inlet"
   },
   {
     "id": "glbarendu_20220613_234543",
@@ -2589,7 +2696,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/glbarendu_20220613_234543.webp",
-    "site_photo_year": "2023"
+    "site_photo_year": "2023",
+    "site_name": "Rendu Inlet"
   },
   {
     "id": "katm005_20100915_070024",
@@ -2613,7 +2721,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": null,
-    "site_photo_year": null
+    "site_photo_year": null,
+    "site_name": "Brooks Camp New Barge Landing"
   },
   {
     "id": "laclchba_20180703_060620",
@@ -2637,7 +2746,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/laclchba_20180703_060620.webp",
-    "site_photo_year": "2018"
+    "site_photo_year": "2018",
+    "site_name": "Chinitna Bay"
   },
   {
     "id": "wrstblmt_20150402_093032",
@@ -2661,7 +2771,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20150402_093032.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstblmt_20150409_103518",
@@ -2685,7 +2796,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20150409_103518.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstblmt_20150429_225402",
@@ -2709,7 +2821,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20150429_225402.webp",
-    "site_photo_year": "2015"
+    "site_photo_year": "2015",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstblmt_20170128_072543",
@@ -2733,7 +2846,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20170128_072543.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstblmt_20170204_124537",
@@ -2757,7 +2871,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20170204_124537.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstblmt_20170211_002212",
@@ -2781,7 +2896,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20170211_002212.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstblmt_20170322_201312",
@@ -2805,7 +2921,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstblmt_20170322_201312.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Black Mountain"
   },
   {
     "id": "wrstcopa_20160313_014852",
@@ -2829,7 +2946,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrstcopa_20160313_014852.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Cooper Creek"
   },
   {
     "id": "wrsttala_20160229_204005",
@@ -2853,7 +2971,8 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrsttala_20160229_204005.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Tanada Lake"
   },
   {
     "id": "wrsttala_20160401_010659",
@@ -2877,6 +2996,7 @@
     "species_scientific": null,
     "xc_quality": null,
     "site_photo_path": "highlights/site_photos/wrsttala_20160401_010659.webp",
-    "site_photo_year": "2016"
+    "site_photo_year": "2016",
+    "site_name": "Tanada Lake"
   }
 ]

@@ -42,6 +42,7 @@ REQUIRED_FIELDS = (
     "xc_quality",
     "site_photo_path",
     "site_photo_year",
+    "site_name",
 )
 
 _NULLABLE_STRING_FIELDS = frozenset(
@@ -55,6 +56,7 @@ _NULLABLE_STRING_FIELDS = frozenset(
         "spectrogram_lowfreq_path",
         "site_photo_path",
         "site_photo_year",
+        "site_name",
     }
 )
 

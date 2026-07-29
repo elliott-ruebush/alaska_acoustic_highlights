@@ -27,7 +27,8 @@
     "species_scientific",
     "xc_quality",
     "site_photo_path",
-    "site_photo_year"
+    "site_photo_year",
+    "site_name"
   ],
   "properties": {
     "id": {
@@ -101,6 +102,9 @@
       "type": ["string", "null"]
     },
     "site_photo_year": {
+      "type": ["string", "null"]
+    },
+    "site_name": {
       "type": ["string", "null"]
     }
   }

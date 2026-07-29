@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getAllClips, getCategories, getParks } from "../lib/catalog";
+import { getAllClips, getCategories, getLocationLabel, getParkName, getParks } from "../lib/catalog";
 import { formatDuration, categorySlug } from "../lib/format";
 import { withBase } from "../lib/paths";
 
@@ -63,7 +63,7 @@ const parks = getParks();
         class="card"
         data-category={clip.category}
         data-park={clip.park_code ?? "unknown"}
-        data-search={[clip.title, clip.description, clip.park_code, clip.site_code, clip.category, clip.id]
+        data-search={[clip.title, clip.description, clip.park_code, clip.site_code, clip.site_name, clip.park_code && getParkName(clip.park_code), clip.category, clip.id]
           .filter(Boolean)
           .join(" ")
           .toLowerCase()}
@@ -79,7 +79,7 @@ const parks = getParks();
           <h2>{clip.title}</h2>
           <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
           <p class="meta">
-            {[clip.park_code, clip.site_code].filter(Boolean).join(" · ") || "Unknown park"}
+            {getLocationLabel(clip) || "Unknown location"}
             <span aria-hidden="true"> · </span>
             <span>{formatDuration(clip.duration_sec)}</span>
           </p>
