@@ -16,7 +16,6 @@ export function updateVolumeAria(
 ): void {
   const clamped = clampVolume(percent);
   const muted = clamped === 0;
-  volumeSlider.setAttribute("aria-valuenow", String(clamped));
   volumeSlider.setAttribute("aria-valuetext", muted ? "Muted" : `${clamped}%`);
   volumeSlider.setAttribute(
     "aria-label",
@@ -72,7 +71,6 @@ export function initPlayer(el: HTMLElement): void {
 
   function setPlayState(playing: boolean) {
     playBtn.textContent = playing ? "Pause" : "Play";
-    playBtn.setAttribute("aria-label", playing ? "Pause" : "Play");
   }
 
   function updateTimeDisplay() {
@@ -88,7 +86,6 @@ export function initPlayer(el: HTMLElement): void {
       seekSlider.value = String(current);
       // Avoid updating slider ARIA during playback — some screen readers re-announce it.
       if (!ws?.isPlaying()) {
-        seekSlider.setAttribute("aria-valuenow", String(Math.round(current)));
         seekSlider.setAttribute("aria-valuetext", `${elapsed} of ${total}`);
       }
     }
@@ -143,7 +140,6 @@ export function initPlayer(el: HTMLElement): void {
     instance.on("ready", () => {
       const duration = getDuration();
       seekSlider.max = String(duration);
-      seekSlider.setAttribute("aria-valuemax", String(Math.round(duration)));
       timeTotal.textContent = formatDuration(duration);
       playBtn.disabled = false;
       seekSlider.disabled = false;

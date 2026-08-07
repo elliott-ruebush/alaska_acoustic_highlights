@@ -5,14 +5,12 @@ test.describe("Index filters", () => {
   test("category chip selection updates active state", async ({ page }) => {
     await gotoIndex(page);
 
-    const mammalsChip = page.getByRole("radio", { name: /^Mammals/ });
-    await mammalsChip.click();
+    await page.locator("label.chip", { hasText: /^Mammals/ }).click();
 
-    await expect(mammalsChip).toHaveAttribute("aria-checked", "true");
-    await expect(page.getByRole("radio", { name: /^All/ })).toHaveAttribute(
-      "aria-checked",
-      "false",
-    );
+    const mammalsChip = page.getByRole("radio", { name: /^Mammals/ });
+
+    await expect(mammalsChip).toBeChecked();
+    await expect(page.getByRole("radio", { name: /^All/ })).not.toBeChecked();
 
     const visibleCards = page.locator(".card:not([hidden])");
     await expect(visibleCards.first()).toBeVisible();
@@ -32,7 +30,7 @@ test.describe("Index filters", () => {
     await page.keyboard.press("ArrowRight");
 
     const birdsChip = page.getByRole("radio", { name: /^Birds/ });
-    await expect(birdsChip).toHaveAttribute("aria-checked", "true");
+    await expect(birdsChip).toBeChecked();
     await expect(birdsChip).toBeFocused();
 
     const visibleCards = page.locator(".card:not([hidden])");

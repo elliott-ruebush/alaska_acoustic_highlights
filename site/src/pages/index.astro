@@ -28,7 +28,6 @@ const parks = getParks();
     id="filters"
     class="filters"
     aria-labelledby="filters-heading"
-    aria-controls="recordings-grid"
   >
     <div class="filters-header">
       <h2 id="filters-heading" class="filters-heading">Filter recordings</h2>
@@ -37,35 +36,32 @@ const parks = getParks();
       </button>
     </div>
 
-    <div class="filter-row chips">
-      <span id="category-label" class="filter-label">Category</span>
-      <div class="chip-group" role="radiogroup" aria-labelledby="category-label">
-        <button
-          type="button"
-          class="chip"
-          role="radio"
-          data-category="all"
-          data-active="true"
-          aria-checked="true"
-          tabindex="0"
-        >
+    <fieldset class="filter-row chips chip-fieldset">
+      <legend class="filter-label">Category</legend>
+      <div class="chip-group">
+        <label class="chip">
+          <input
+            type="radio"
+            name="category"
+            class="chip-input"
+            value="all"
+            checked
+          />
           All ({clips.length})
-        </button>
+        </label>
         {categories.map((cat) => (
-          <button
-            type="button"
-            class="chip"
-            role="radio"
-            data-category={cat.name}
-            data-active="false"
-            aria-checked="false"
-            tabindex="-1"
-          >
+          <label class="chip">
+            <input
+              type="radio"
+              name="category"
+              class="chip-input"
+              value={cat.name}
+            />
             {cat.name} ({cat.count})
-          </button>
+          </label>
         ))}
       </div>
-    </div>
+    </fieldset>
 
     <div class="filter-row">
       <label for="park-filter">Park</label>
@@ -219,13 +215,43 @@ const parks = getParks();
     gap: 0.5rem;
   }
 
+  .chip-fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .chip-fieldset .filter-label {
+    padding: 0;
+    margin: 0;
+  }
+
   .chip-group {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
+  .chip-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .chip {
+    position: relative;
+    display: inline-block;
     border: 1px solid #c4b8a8;
     background: var(--color-white);
     color: var(--color-ink);
@@ -236,10 +262,15 @@ const parks = getParks();
     cursor: pointer;
   }
 
-  .chip[data-active="true"] {
+  .chip:has(.chip-input:checked) {
     background: var(--color-forest);
     border-color: var(--color-forest);
     color: var(--color-cream);
+  }
+
+  .chip:has(.chip-input:focus-visible) {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 2px;
   }
 
   select,

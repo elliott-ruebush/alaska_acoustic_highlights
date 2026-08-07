@@ -117,8 +117,7 @@ function readCardData(card: Element): CardFilterData {
 }
 
 export function initGalleryFilters(root: Document = document): void {
-  const chips = root.querySelectorAll<HTMLButtonElement>(".chip");
-  const categoryGroup = root.querySelector<HTMLElement>(".chip-group");
+  const categoryRadios = root.querySelectorAll<HTMLInputElement>('input[name="category"]');
   const parkSelect = root.querySelector<HTMLSelectElement>("#park-filter");
   const searchInput = root.querySelector<HTMLInputElement>("#search-filter");
   const clearFiltersBtn = root.querySelector<HTMLButtonElement>("#clear-filters");
@@ -127,6 +126,7 @@ export function initGalleryFilters(root: Document = document): void {
   const filterStatus = root.querySelector<HTMLParagraphElement>("#filter-status");
 
   if (
+    categoryRadios.length === 0 ||
     !parkSelect ||
     !searchInput ||
     !clearFiltersBtn ||
@@ -155,7 +155,7 @@ export function initGalleryFilters(root: Document = document): void {
   const totalClips = cards.length;
 
   const validCategories = new Set(
-    [...chips].map((chip) => chip.dataset.category ?? "all"),
+    [...categoryRadios].map((radio) => radio.value),
   );
   const validParks = new Set(
     [...ui.parkSelect.options].map((option) => option.value),
@@ -175,14 +175,14 @@ export function initGalleryFilters(root: Document = document): void {
     };
   }
 
-  function setChipActiveState(category: string) {
-    chips.forEach((chip) => {
-      const chipCategory = chip.dataset.category ?? "all";
-      const isActive = chipCategory === category;
-      chip.dataset.active = isActive ? "true" : "false";
-      chip.setAttribute("aria-checked", isActive ? "true" : "false");
-      chip.tabIndex = isActive ? 0 : -1;
-    });
+  function setCategoryRadio(category: string) {
+    for (const radio of categoryRadios) {
+      radio.checked = radio.value === category;
+    }
+  }
+
+  function getCheckedCategoryRadio(): HTMLInputElement | undefined {
+    return [...categoryRadios].find((radio) => radio.checked);
   }
 
   function updateClearButton() {
@@ -199,7 +199,7 @@ export function initGalleryFilters(root: Document = document): void {
 
   function syncUiFromState(category: string, park: string, search: string) {
     activeCategory = category;
-    setChipActiveState(category);
+    setCategoryRadio(category);
     ui.parkSelect.value = park;
     if (ui.searchInput.value !== search) {
       ui.searchInput.value = search;
@@ -294,7 +294,7 @@ export function initGalleryFilters(root: Document = document): void {
     options: { announce?: boolean } = {},
   ) {
     activeCategory = category;
-    setChipActiveState(category);
+    setCategoryRadio(category);
     applyFilters({ announce: options.announce });
     if (historyMode !== "none") {
       updateUrl(historyMode);
@@ -325,46 +325,14 @@ export function initGalleryFilters(root: Document = document): void {
     lastAnnouncement = "";
     applyFilters();
     updateUrl("push");
-    chips[0]?.focus();
+    getCheckedCategoryRadio()?.focus();
   }
 
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      selectCategory(chip.dataset.category ?? "all");
+  categoryRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (!radio.checked) return;
+      selectCategory(radio.value);
     });
-  });
-
-  categoryGroup?.addEventListener("keydown", (e) => {
-    const chipList = [...chips];
-    const currentIndex = chipList.findIndex(
-      (chip) => chip.getAttribute("aria-checked") === "true",
-    );
-    if (currentIndex < 0) return;
-
-    let nextIndex = currentIndex;
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-      e.preventDefault();
-      nextIndex = (currentIndex + 1) % chipList.length;
-    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-      e.preventDefault();
-      nextIndex = (currentIndex - 1 + chipList.length) % chipList.length;
-    } else if (e.key === "Home") {
-      e.preventDefault();
-      nextIndex = 0;
-    } else if (e.key === "End") {
-      e.preventDefault();
-      nextIndex = chipList.length - 1;
-    } else if (e.key === " " || e.key === "Spacebar") {
-      e.preventDefault();
-      selectCategory(chipList[currentIndex]!.dataset.category ?? "all");
-      return;
-    } else {
-      return;
-    }
-
-    const nextChip = chipList[nextIndex]!;
-    selectCategory(nextChip.dataset.category ?? "all", "replace", { announce: false });
-    nextChip.focus();
   });
 
   ui.parkSelect.addEventListener("change", () => {

@@ -69,7 +69,6 @@ describe("updateVolumeAria", () => {
 
     updateVolumeAria(slider, 65);
 
-    expect(slider.getAttribute("aria-valuenow")).toBe("65");
     expect(slider.getAttribute("aria-valuetext")).toBe("65%");
     expect(slider.getAttribute("aria-label")).toBe("Playback volume");
   });
@@ -79,7 +78,6 @@ describe("updateVolumeAria", () => {
 
     updateVolumeAria(slider, 0);
 
-    expect(slider.getAttribute("aria-valuenow")).toBe("0");
     expect(slider.getAttribute("aria-valuetext")).toBe("Muted");
     expect(slider.getAttribute("aria-label")).toBe("Playback volume, muted");
   });
@@ -88,11 +86,9 @@ describe("updateVolumeAria", () => {
     const slider = createVolumeSlider();
 
     updateVolumeAria(slider, -10);
-    expect(slider.getAttribute("aria-valuenow")).toBe("0");
     expect(slider.getAttribute("aria-valuetext")).toBe("Muted");
 
     updateVolumeAria(slider, 120);
-    expect(slider.getAttribute("aria-valuenow")).toBe("100");
     expect(slider.getAttribute("aria-valuetext")).toBe("100%");
   });
 });
