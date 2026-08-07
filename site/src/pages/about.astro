@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ExternalLink from "../components/ExternalLink.astro";
+import { withBase } from "../lib/paths";
+
+const guideImage = withBase("about/spectrogram-guide.png");
+const exampleClipHref = import.meta.env.BASE_URL + "clips/denawocr_20150624_202549/";
 ---
 
 <BaseLayout title="About" description="About Soundscapes of Alaska — an unofficial showcase of NPS Alaska acoustic monitoring highlights.">
@@ -8,37 +12,62 @@ import ExternalLink from "../components/ExternalLink.astro";
 
   <h2>About This Site</h2>
   <p>
-    This site was created to showcase soundscapes from across
-    National Parks in the <ExternalLink href="https://www.nps.gov/state/ak/index.htm">Alaska Region</ExternalLink>.
-    Raw audio was collected as part of National Park Service <ExternalLink href="https://www.nps.gov/orgs/1050/index.htm">Natural Sounds and Night Skies Division</ExternalLink>
-    (NSNSD) Type 1 acoustic monitoring data. <ExternalLink href="https://www.nps.gov/subjects/sound/measure.htm">How does NSNSD measure sounds?</ExternalLink>. 
-    
+    This site was created to showcase soundscapes from National Parks across the{" "}
+    <ExternalLink href="https://www.nps.gov/state/ak/index.htm">Alaska Region</ExternalLink>.
+    Raw audio was collected as part of National Park Service{" "}
+    <ExternalLink href="https://www.nps.gov/orgs/1050/index.htm">Natural Sounds and Night Skies Division</ExternalLink>{" "}
+    (NSNSD) Type 1 acoustic monitoring data.{" "}
+    <ExternalLink href="https://www.nps.gov/subjects/sound/measure.htm">How does NSNSD measure sounds?</ExternalLink>{" "}
     Specific clips were then manually selected and edited. Special thanks to Halyn Betchkal for picking out these (and many more) audio highlights over the years.
-
-    "If a tree falls in the woods, and no one is around to hear it... it may have been recorded!"
-    <br />
-    For example, at <a href={import.meta.env.BASE_URL + 'clips/denamoos_20180814_105458/'}>this Denali monitoring site!</a>.
-
+  </p>
+  <p>
+    With these recordings, we finally have the answer to the age-old question: "If a tree falls in the woods and no one is around to hear it... it may have been recorded!"
+    For example, at <a href={import.meta.env.BASE_URL + 'clips/denamoos_20180814_105458/'}>this Denali monitoring site</a>.
   </p>
 
   <h2>How to Read a Spectrogram</h2>
-  <div class="placeholder-box">
-    <!-- TODO: write spectrogram guide -->
-    <ul>
-      <li><ExternalLink href="https://www.learngala.com/cases/echoes-of-elevation/6">Introduction to reading spectrograms!</ExternalLink></li>
-
-      <li>Time on the x-axis, frequency aka pitch on the y-axis, brightness = loudness at that time/frequency band</li>
+  <p>
+    Each audio clip on this site includes a spectrogram: a picture of sound broken down over time and frequency. 
+    On a clip's page, you can click a point on the spectrogram to skip to it.
+  </p>
+  <figure class="spectrogram-guide">
+    <figcaption>Example from <a href={exampleClipHref}>Fox Sparrow Song With Thunder and Swainson's Thrush</a> (seconds 18–29)</figcaption>
+    <img
+      src={guideImage}
+      alt="Labeled spectrogram: time on the horizontal axis and frequency on the vertical axis. A bright low band shows thunder rumble; structured marks higher up show a Fox Sparrow song and two Swainson's Thrush phrases with rising pitch."
+      width="1200"
+      height="500"
+      loading="lazy"
+      decoding="async"
+    />
+    <ul class="spectrogram-guide__notes">
+      <li><strong>Time</strong> increases left to right.</li>
+      <li><strong>Frequency</strong> (pitch) increases bottom to top.</li>
+      <li><strong>Brightness</strong> shows how energetic (loud) a certain frequency is at that point in time.</li>
+      <li class="spectrogram-guide__examples-label"><em>A few examples from the above spectrogram:</em></li>
+      <li><strong>Low-frequency rumble</strong> (like thunder or wind) fills the bottom frequency bands of the spectrogram as a continuous, fuzzy area of more energetic frequencies rather than a distinct tone.</li>
+      <li><strong>Bird songs</strong> appear as clearer, structured marks at higher frequencies—for example, the Fox Sparrow and Swainson's Thrush in this image.</li>
+      <li><ExternalLink href="https://www.learngala.com/cases/echoes-of-elevation/6">More on reading spectrograms (LearnGala)</ExternalLink></li>
     </ul>
-  </div>
+  </figure>
 
   <h2>How does the National Park Service find these sounds?</h2>
-  <ul>
-    <li>As detailed above, the National Park Service collects acoustic data for monitoring and resource protection. As part
-    of these efforts, data is annotated to highlight the time periods when human noise events occur. This annotation happens visually via spectrograms of the sound data. 
-    Data annotators do NOT listen to every single minute of recorded audio as that would take many, MANY hours.</li>
-    <li>Along the way - the person annotating discovers lots of other sounds, and they may save separate audio clips 
-    of the most interesting ones to share with the world!</li>
-  </ul>
+  <p>
+    As detailed above, the National Park Service collects acoustic data for monitoring and resource protection. As part
+    of these efforts, data is annotated to highlight time periods when human noise events occur, usually by reviewing spectrograms visually.
+    Data annotators do not listen to every minute of recorded audio—that would take far too long for the small cadre of folks working in this area.
+  </p>
+  <p>
+    However, while visually analyzing acoustic data for noise impacts, annotators discover all sorts of other sounds and may save audio clips of the most interesting ones to share with the world!
+  </p>
+  <p>
+    Given the thousands of hours of acoustic data that the park service collects, spectrograms are an essential tool for efficiently analyzing the data.
+  </p>
+  <p>
+    In some cases, computer vision techniques can be used to automatically classify events from the spectrogram, although there is not yet a generalized model for this.
+    One of the most prominent examples of automated spectrogram parsing is Cornell's <ExternalLink href="https://birdnet.cornell.edu/">BirdNET</ExternalLink>,
+    which analyzes spectrograms to classify bird song and is the algorithm that enables automatic bird ID in the popular <ExternalLink href="https://merlin.allaboutbirds.org/">Merlin</ExternalLink> app.
+  </p>
 </BaseLayout>
 
 <style>
@@ -52,8 +81,33 @@ import ExternalLink from "../components/ExternalLink.astro";
     color: var(--color-forest);
   }
 
-  .placeholder-box ul {
-    margin: 0;
+  .spectrogram-guide {
+    margin: 1.25rem 0 0;
+    max-width: 48rem;
+  }
+
+  .spectrogram-guide figcaption {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-forest);
+  }
+
+  .spectrogram-guide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(27, 58, 43, 0.12);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .spectrogram-guide__notes {
+    margin: 0.75rem 0 0;
     padding-left: 1.25rem;
+  }
+
+  .spectrogram-guide__examples-label {
+    list-style: none;
+    margin-top: 0.25rem;
   }
 </style>

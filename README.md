@@ -6,7 +6,7 @@ Audio from [NPS Natural Sounds and Night Skies Division](https://www.nps.gov/sub
 
 **Site:** [freerange-elliott.com/alaska_acoustic_highlights](https://freerange-elliott.com/alaska_acoustic_highlights)  
 
-**Adding clips:** see [ADD_CLIPS.md](ADD_CLIPS.md).
+**Adding clips:** see [ADD_CLIPS.md](ADD_CLIPS.md) (development setup, filename format, ingest workflow).
 
 ## Site (local dev)
 
@@ -14,9 +14,9 @@ Audio from [NPS Natural Sounds and Night Skies Division](https://www.nps.gov/sub
 cd site && npm install && npm run dev
 ```
 
-## Python scripts (ingest, catalog, spectrograms)
+## Python environment
 
-Requires Python 3.12+ and **ffmpeg** on your PATH.
+For ingest and media scripts. Full workflow: [ADD_CLIPS.md](ADD_CLIPS.md).
 
 ```bash
 python3 -m venv .venv
@@ -24,4 +24,4 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements-lock.txt
 ```
 
-Use `requirements.txt` for the direct dependency list; `requirements-lock.txt` pins the full tree for reproducible installs.
+Requires Python 3.12+ and **ffmpeg** on your PATH. Script inventory: [scripts/README.md](scripts/README.md).
