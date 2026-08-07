@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CategoryBadge from "../components/CategoryBadge.astro";
 import ClipDuration from "../components/ClipDuration.astro";
-import { buildClipSearchText, getAllClips, getCategories, getLocationLabel, getLocationLabelSpoken, getParks } from "../lib/catalog";
+import { buildClipSearchText, getAllClips, getCardLinkDescription, getCategories, getLocationLabel, getParks } from "../lib/catalog";
 import { withBase } from "../lib/paths";
 
 const clips = getAllClips();
@@ -103,6 +103,8 @@ const parks = getParks();
       <a
         href={withBase(`clips/${clip.id}/`)}
         class="card"
+        aria-labelledby={`card-title-${clip.id}`}
+        aria-describedby={`card-desc-${clip.id}`}
         data-category={clip.category}
         data-park={clip.park_code ?? "unknown"}
         data-search={buildClipSearchText(clip)}
@@ -115,18 +117,18 @@ const parks = getParks();
           height="400"
         />
         <div class="card-body">
-          <h2>{clip.title}</h2>
-          <span class="sr-only">, </span>
-          <CategoryBadge category={clip.category} />
-          <span class="sr-only">, </span>
-          <p class="meta">
-            <span aria-label={`Location: ${getLocationLabelSpoken(clip)}`}>
-              <span aria-hidden="true">{getLocationLabel(clip)}</span>
-            </span>
-            <span class="sr-only">, </span>
-            <span aria-hidden="true"> · </span>
-            <ClipDuration durationSec={clip.duration_sec} />
+          <h2 id={`card-title-${clip.id}`}>{clip.title}</h2>
+          <p id={`card-desc-${clip.id}`} class="sr-only">
+            {getCardLinkDescription(clip)}
           </p>
+          <div class="card-meta" aria-hidden="true">
+            <CategoryBadge category={clip.category} />
+            <p class="meta">
+              <span>{getLocationLabel(clip)}</span>
+              <span> · </span>
+              <ClipDuration durationSec={clip.duration_sec} />
+            </p>
+          </div>
         </div>
       </a>
     ))}
@@ -275,6 +277,16 @@ const parks = getParks();
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+
+    .card:hover {
+      transform: none;
+    }
   }
 
   .card img {

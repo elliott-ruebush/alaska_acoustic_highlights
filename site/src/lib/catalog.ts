@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { formatDurationSpoken } from "./format";
 
 export interface Clip {
   id: string;
@@ -90,6 +91,12 @@ export function getLocationLabelDetailed(
   const park = clip.park_code ? formatParkLabel(clip.park_code) : null;
   const site = formatSiteLabel(clip);
   return [park, site].filter(Boolean).join(" · ") || "Unknown location";
+}
+
+export function getCardLinkDescription(
+  clip: Pick<Clip, "category" | "park_code" | "site_code" | "site_name" | "duration_sec">,
+): string {
+  return `${clip.category}. Location: ${getLocationLabelSpoken(clip)}. Duration: ${formatDurationSpoken(clip.duration_sec)}.`;
 }
 
 function resolveCatalogPath(): string {

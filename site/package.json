@@ -11,8 +11,11 @@
     "prebuild": "node scripts/link-public-assets.mjs",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "ci": "npm run check && npm test && npm run build",
     "astro": "astro"
   },
   "dependencies": {
@@ -20,6 +23,11 @@
     "wavesurfer.js": "^7.12.11"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^22.15.0",
+    "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   }
 }

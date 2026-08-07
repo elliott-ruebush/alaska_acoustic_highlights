@@ -136,6 +136,18 @@ export function initGalleryFilters(root: Document = document): void {
     return;
   }
 
+  const ui = {
+    parkSelect,
+    searchInput,
+    clearFiltersBtn,
+    emptyState,
+  } satisfies {
+    parkSelect: HTMLSelectElement;
+    searchInput: HTMLInputElement;
+    clearFiltersBtn: HTMLButtonElement;
+    emptyState: HTMLParagraphElement;
+  };
+
   const cards = [...cardElements].map((card) => ({
     element: card,
     data: readCardData(card),
@@ -146,7 +158,7 @@ export function initGalleryFilters(root: Document = document): void {
     [...chips].map((chip) => chip.dataset.category ?? "all"),
   );
   const validParks = new Set(
-    [...parkSelect.options].map((option) => option.value),
+    [...ui.parkSelect.options].map((option) => option.value),
   );
 
   let activeCategory = "all";
@@ -154,12 +166,12 @@ export function initGalleryFilters(root: Document = document): void {
   let lastAnnouncement = "";
 
   function getFilterState(): FilterState {
-    const selected = parkSelect.selectedOptions[0];
+    const selected = ui.parkSelect.selectedOptions[0];
     return {
       category: activeCategory,
-      parkCode: parkSelect.value,
+      parkCode: ui.parkSelect.value,
       parkName: selected?.dataset.parkName ?? null,
-      search: searchInput.value,
+      search: ui.searchInput.value,
     };
   }
 
@@ -174,7 +186,7 @@ export function initGalleryFilters(root: Document = document): void {
   }
 
   function updateClearButton() {
-    clearFiltersBtn.hidden = !hasActiveFilters(getFilterState());
+    ui.clearFiltersBtn.hidden = !hasActiveFilters(getFilterState());
   }
 
   function announceFilterResults(visible: number) {
@@ -188,9 +200,9 @@ export function initGalleryFilters(root: Document = document): void {
   function syncUiFromState(category: string, park: string, search: string) {
     activeCategory = category;
     setChipActiveState(category);
-    parkSelect.value = park;
-    if (searchInput.value !== search) {
-      searchInput.value = search;
+    ui.parkSelect.value = park;
+    if (ui.searchInput.value !== search) {
+      ui.searchInput.value = search;
     }
     updateClearButton();
   }
@@ -199,8 +211,8 @@ export function initGalleryFilters(root: Document = document): void {
     const url = buildFilterPath(
       window.location.pathname,
       activeCategory,
-      parkSelect.value,
-      searchInput.value,
+      ui.parkSelect.value,
+      ui.searchInput.value,
     );
     if (mode === "replace") {
       history.replaceState(null, "", url);
@@ -210,14 +222,14 @@ export function initGalleryFilters(root: Document = document): void {
   }
 
   function updateParkCounts() {
-    const query = searchInput.value.trim().toLowerCase();
+    const query = ui.searchInput.value.trim().toLowerCase();
     const { total, counts } = computeParkCounts(
       cards.map((card) => card.data),
       activeCategory,
       query,
     );
 
-    [...parkSelect.options].forEach((option) => {
+    [...ui.parkSelect.options].forEach((option) => {
       if (option.value === "all") {
         option.textContent = `All parks (${total})`;
         return;
@@ -229,16 +241,16 @@ export function initGalleryFilters(root: Document = document): void {
       option.disabled = count === 0;
     });
 
-    const selected = parkSelect.value;
+    const selected = ui.parkSelect.value;
     if (selected !== "all" && (counts.get(selected) ?? 0) === 0) {
-      parkSelect.value = "all";
+      ui.parkSelect.value = "all";
     }
   }
 
   function applyFilters(options: { announce?: boolean; updateParkCounts?: boolean } = {}) {
     const { announce = true, updateParkCounts: refreshParkCounts = true } = options;
-    const query = searchInput.value.trim().toLowerCase();
-    const park = parkSelect.value;
+    const query = ui.searchInput.value.trim().toLowerCase();
+    const park = ui.parkSelect.value;
 
     if (refreshParkCounts) {
       updateParkCounts();
@@ -247,6 +259,11 @@ export function initGalleryFilters(root: Document = document): void {
     for (const card of cards) {
       const show = cardIsVisible(card.data, activeCategory, park, query);
       card.element.classList.toggle("is-hidden", !show);
+      if (show) {
+        card.element.removeAttribute("hidden");
+      } else {
+        card.element.setAttribute("hidden", "");
+      }
     }
 
     const visible = countVisibleCards(
@@ -256,7 +273,12 @@ export function initGalleryFilters(root: Document = document): void {
       query,
     );
 
-    emptyState.hidden = visible > 0;
+    ui.emptyState.hidden = visible > 0;
+    if (visible === 0 && announce) {
+      ui.emptyState.setAttribute("aria-hidden", "true");
+    } else if (visible > 0) {
+      ui.emptyState.removeAttribute("aria-hidden");
+    }
     updateClearButton();
 
     if (announce) {
@@ -289,7 +311,7 @@ export function initGalleryFilters(root: Document = document): void {
     const shouldAnnounce = hasActiveFilters({
       category,
       parkCode: park,
-      parkName: parkSelect.selectedOptions[0]?.dataset.parkName ?? null,
+      parkName: ui.parkSelect.selectedOptions[0]?.dataset.parkName ?? null,
       search,
     });
     applyFilters({ announce: shouldAnnounce });
@@ -326,6 +348,12 @@ export function initGalleryFilters(root: Document = document): void {
     } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
       e.preventDefault();
       nextIndex = (currentIndex - 1 + chipList.length) % chipList.length;
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      nextIndex = 0;
+    } else if (e.key === "End") {
+      e.preventDefault();
+      nextIndex = chipList.length - 1;
     } else if (e.key === " " || e.key === "Spacebar") {
       e.preventDefault();
       selectCategory(chipList[currentIndex]!.dataset.category ?? "all");
@@ -339,12 +367,12 @@ export function initGalleryFilters(root: Document = document): void {
     nextChip.focus();
   });
 
-  parkSelect.addEventListener("change", () => {
+  ui.parkSelect.addEventListener("change", () => {
     applyFilters();
     updateUrl("push");
   });
 
-  searchInput.addEventListener("input", () => {
+  ui.searchInput.addEventListener("input", () => {
     applyFilters({ announce: false, updateParkCounts: false });
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(() => {
@@ -353,7 +381,7 @@ export function initGalleryFilters(root: Document = document): void {
     }, SEARCH_DEBOUNCE_MS);
   });
 
-  clearFiltersBtn.addEventListener("click", clearAllFilters);
+  ui.clearFiltersBtn.addEventListener("click", clearAllFilters);
 
   window.addEventListener("popstate", () => {
     setFiltersFromUrl("none");

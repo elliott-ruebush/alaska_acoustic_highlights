@@ -8,9 +8,7 @@ interface Props {
 const { durationSec } = Astro.props;
 ---
 
-<time
-  datetime={`PT${Math.round(durationSec)}S`}
-  aria-label={`Duration: ${formatDurationSpoken(durationSec)}`}
->
+<time datetime={`PT${Math.round(durationSec)}S`}>
+  <span class="sr-only">Duration: {formatDurationSpoken(durationSec)}</span>
   <span aria-hidden="true">{formatDuration(durationSec)}</span>
 </time>
