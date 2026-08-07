@@ -24,16 +24,11 @@ export function readStoredVolume(): number {
 export function initPlayer(el: HTMLElement): void {
   const audioSrc = el.dataset.audioSrc!;
   const fallbackDuration = parseFloat(el.dataset.duration || "0");
-  const specSrc = el.dataset.specSrc!;
-  const lowfreqSrc = el.dataset.lowfreqSrc || "";
-
   const statusEl = el.querySelector<HTMLElement>(".player-status")!;
   const waveformEl = el.querySelector<HTMLElement>(".waveform")!;
   const frame = el.querySelector<HTMLElement>(".spectrogram-frame")!;
-  const img = frame.querySelector("img")!;
   const cursor = el.querySelector<HTMLElement>(".cursor")!;
   const playBtn = el.querySelector<HTMLButtonElement>(".play-pause")!;
-  const lowfreqBtn = el.querySelector<HTMLButtonElement>(".toggle-lowfreq");
   const seekSlider = el.querySelector<HTMLInputElement>(".seek-slider")!;
   const timeElapsed = el.querySelector<HTMLElement>(".time-elapsed")!;
   const timeTotal = el.querySelector<HTMLElement>(".time-total")!;
@@ -269,22 +264,6 @@ export function initPlayer(el: HTMLElement): void {
       if (ws && !ws.isPlaying()) void ws.play();
     });
   });
-
-  if (lowfreqBtn && lowfreqSrc) {
-    let showingLow = false;
-    const altFull = img.dataset.altFull ?? img.alt;
-    const altLow = img.dataset.altLow ?? altFull;
-
-    lowfreqBtn.addEventListener("click", () => {
-      showingLow = !showingLow;
-      img.src = showingLow ? lowfreqSrc : specSrc;
-      img.alt = showingLow ? altLow : altFull;
-      lowfreqBtn.textContent = showingLow
-        ? "Show full-range view"
-        : "Show low-frequency view";
-      lowfreqBtn.setAttribute("aria-pressed", String(showingLow));
-    });
-  }
 
   const keyActions = {
     togglePlayPause: () => {

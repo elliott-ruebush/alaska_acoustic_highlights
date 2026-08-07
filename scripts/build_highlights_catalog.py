@@ -223,23 +223,15 @@ def get_audio_info(path: Path) -> tuple[float, int]:
     return duration, sample_rate
 
 
-def spectrogram_paths(
+def spectrogram_path(
     audio_path: Path,
     input_root: Path,
     spectrograms_root: Path,
-    category_folder: str,
-) -> tuple[str, str | None]:
+) -> str:
     rel_audio = audio_path.relative_to(input_root)
     png_rel = rel_audio.with_suffix(".png")
-    spectrogram_path = spectrograms_root / png_rel
-    spectrogram_repo = repo_relative(spectrogram_path)
-
-    lowfreq_path: str | None = None
-    if category_folder == "GEOPHONY":
-        lowfreq_file = spectrogram_path.with_name(f"{spectrogram_path.stem}_lowfreq.png")
-        lowfreq_path = repo_relative(lowfreq_file)
-
-    return spectrogram_repo, lowfreq_path
+    spectrogram_file = spectrograms_root / png_rel
+    return repo_relative(spectrogram_file)
 
 
 def load_existing_site_photos(
@@ -329,9 +321,7 @@ def build_clip(
     category, category_folder = category_from_path(path, input_root)
     cleaned_description, _ = split_processing(parsed["description"])
     duration_sec, sample_rate = get_audio_info(path)
-    spectrogram_path, spectrogram_lowfreq_path = spectrogram_paths(
-        path, input_root, spectrograms_root, category_folder
-    )
+    spectrogram_repo_path = spectrogram_path(path, input_root, spectrograms_root)
 
     return {
         "id": unique_id(parsed["prefix"] or path.stem, path, used_ids),
@@ -344,8 +334,7 @@ def build_clip(
         "recorded_time": parsed["recorded_time"] or None,
         "description": cleaned_description,
         "audio_path": repo_relative(path),
-        "spectrogram_path": spectrogram_path,
-        "spectrogram_lowfreq_path": spectrogram_lowfreq_path,
+        "spectrogram_path": spectrogram_repo_path,
         "duration_sec": round(duration_sec, 1),
         "sample_rate": sample_rate,
         "format": path.suffix.lower().lstrip("."),
@@ -372,15 +361,6 @@ def summarize_spectrograms(clips: list[dict[str, Any]]) -> tuple[int, int, list[
             present += 1
         else:
             missing.append(clip["spectrogram_path"])
-
-        lowfreq = clip.get("spectrogram_lowfreq_path")
-        if lowfreq:
-            expected += 1
-            lowfreq_path = PROJECT_ROOT / lowfreq
-            if lowfreq_path.is_file():
-                present += 1
-            else:
-                missing.append(lowfreq)
 
     return present, expected, missing
 

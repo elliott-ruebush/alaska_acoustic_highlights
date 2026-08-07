@@ -33,7 +33,6 @@ DPI = 100
 CMAP = "magma"
 DEFAULT_N_FFT = 2048
 HOP_RATIO = 4
-LOW_FREQ_MAX_HZ = 2000.0
 
 AUDIO_EXTENSIONS = {".wav", ".mp3"}
 
@@ -62,21 +61,14 @@ def discover_audio_files(input_root: Path) -> list[Path]:
     )
 
 
-def spectrogram_paths_for(
+def spectrogram_path_for(
     source: Path,
     input_root: Path,
     output_root: Path,
-) -> list[tuple[Path, float | None]]:
-    """Return (output_path, fmax) pairs for a source audio file."""
+) -> Path:
+    """Return the output PNG path for a source audio file."""
     rel = source.relative_to(input_root)
-    full_path = output_root / rel.with_suffix(".png")
-    paths: list[tuple[Path, float | None]] = [(full_path, None)]
-
-    if rel.parts and rel.parts[0].upper() == "GEOPHONY":
-        lowfreq_path = full_path.with_name(f"{full_path.stem}_lowfreq{full_path.suffix}")
-        paths.append((lowfreq_path, LOW_FREQ_MAX_HZ))
-
-    return paths
+    return output_root / rel.with_suffix(".png")
 
 
 def outputs_are_current(source: Path, output_paths: list[Path]) -> bool:
@@ -103,7 +95,6 @@ def render_spectrogram(
     out_path: Path,
     *,
     n_fft: int = DEFAULT_N_FFT,
-    fmax: float | None = None,
 ) -> float:
     """Render a log-frequency spectrogram PNG; return render seconds."""
     hop_length = max(1, n_fft // HOP_RATIO)
@@ -123,10 +114,7 @@ def render_spectrogram(
         y_axis="log",
         cmap=CMAP,
         ax=ax,
-        fmax=fmax,
     )
-    if fmax is not None:
-        ax.set_ylim(20, fmax)
     ax.axis("off")
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out_path, dpi=DPI, facecolor="white")
@@ -143,14 +131,13 @@ def process_file(
     force: bool,
     dry_run: bool,
 ) -> FileReport:
-    variants = spectrogram_paths_for(source, input_root, output_root)
-    output_paths = [path for path, _fmax in variants]
+    out_path = spectrogram_path_for(source, input_root, output_root)
 
-    if not force and outputs_are_current(source, output_paths):
-        total_kb = sum(path.stat().st_size for path in output_paths) / 1024
+    if not force and outputs_are_current(source, [out_path]):
+        total_kb = out_path.stat().st_size / 1024
         return FileReport(
             source=str(source),
-            outputs=[str(path) for path in output_paths],
+            outputs=[str(out_path)],
             png_size_kb=round(total_kb, 1),
             status="skipped",
         )
@@ -158,7 +145,7 @@ def process_file(
     if dry_run:
         return FileReport(
             source=str(source),
-            outputs=[str(path) for path, _fmax in variants],
+            outputs=[str(out_path)],
             status="dry_run",
         )
 
@@ -167,33 +154,28 @@ def process_file(
     except Exception as exc:  # noqa: BLE001
         return FileReport(
             source=str(source),
-            outputs=[str(path) for path, _fmax in variants],
+            outputs=[str(out_path)],
             status="failed",
             error=f"Load failed: {exc}",
         )
 
-    render_total_s = 0.0
-    written_outputs: list[str] = []
-
     try:
-        for out_path, fmax in variants:
-            render_total_s += render_spectrogram(y, sr, out_path, fmax=fmax)
-            written_outputs.append(str(out_path))
+        render_total_s = render_spectrogram(y, sr, out_path)
     except Exception as exc:  # noqa: BLE001
         return FileReport(
             source=str(source),
-            outputs=written_outputs,
+            outputs=[],
             duration_s=round(duration_s, 2),
             sample_rate=sr,
-            render_time_s=round(decode_s + render_total_s, 3),
+            render_time_s=round(decode_s, 3),
             status="failed",
             error=f"Render failed: {exc}",
         )
 
-    total_kb = sum(Path(path).stat().st_size for path in written_outputs) / 1024
+    total_kb = out_path.stat().st_size / 1024
     return FileReport(
         source=str(source),
-        outputs=written_outputs,
+        outputs=[str(out_path)],
         duration_s=round(duration_s, 2),
         sample_rate=sr,
         render_time_s=round(decode_s + render_total_s, 3),

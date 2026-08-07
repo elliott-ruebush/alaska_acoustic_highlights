@@ -14,7 +14,6 @@ export interface Clip {
   description: string;
   audio_path: string;
   spectrogram_path: string;
-  spectrogram_lowfreq_path: string | null;
   duration_sec: number;
   sample_rate: number;
   format: string;

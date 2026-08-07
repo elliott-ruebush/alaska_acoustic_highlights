@@ -44,7 +44,7 @@ def validate_clip(clip: dict[str, Any], index: int, errors: list[str]) -> None:
         if not file_path.is_file():
             errors.append(f"{clip_id}: {path_field} file not found: {rel}")
 
-    for optional_field in ("spectrogram_lowfreq_path", "site_photo_path"):
+    for optional_field in ("site_photo_path",):
         rel = clip.get(optional_field)
         if _is_missing(rel):
             continue

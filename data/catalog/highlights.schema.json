@@ -17,7 +17,6 @@
     "description",
     "audio_path",
     "spectrogram_path",
-    "spectrogram_lowfreq_path",
     "duration_sec",
     "sample_rate",
     "format",
@@ -68,9 +67,6 @@
     "spectrogram_path": {
       "type": "string",
       "minLength": 1
-    },
-    "spectrogram_lowfreq_path": {
-      "type": ["string", "null"]
     },
     "duration_sec": {
       "type": "number"

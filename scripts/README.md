@@ -17,7 +17,7 @@ Ingest staging lives in `ingest/` (see `ingest/README.md`). Optional per-clip me
 | `build_highlights_catalog.py` | Build site-facing JSON from `highlights/audio/` (+ spectrograms, CSV enrichment, site names, MP3 tags) → `data/catalog/highlights.json` |
 | `build_site_names.py` | Build `data/catalog/site_names.csv` from `Complete_Metadata_AKR_2001-2025.xlsx` |
 | `build_site_photos.py` | Match cardinal site photos from external drive (or manual drops); copy WebP → `highlights/site_photos/`; update catalog `site_photo_path` |
-| `generate_highlights_spectrograms.py` | Batch log-frequency spectrogram PNGs; mirror `highlights/audio/` → `highlights/spectrograms/` (extra `_lowfreq` for GEOPHONY) |
+| `generate_highlights_spectrograms.py` | Batch log-frequency spectrogram PNGs; mirror `highlights/audio/` → `highlights/spectrograms/` |
 | `transcode_highlights.py` | WAV → MP3 via ffmpeg (default dry-run); optional WAV removal after verify |
 | `fix_highlights_metadata.py` | Rewrite ID3 on highlight MP3s (title, artist, album, genre, dates, XC fields) using CSV enrichment |
 | `analyze_clip_silence.py` | QC: leading/trailing silence + internal gaps → `data/reports/clip_silence_report.csv` |

@@ -10,7 +10,6 @@ interface Props {
 const { clip } = Astro.props;
 const audioSrc = withBase(clip.audio_path);
 const specSrc = withBase(clip.spectrogram_path);
-const lowfreqSrc = clip.spectrogram_lowfreq_path ? withBase(clip.spectrogram_lowfreq_path) : null;
 const durationLabel = formatDuration(clip.duration_sec);
 ---
 
@@ -22,7 +21,6 @@ const durationLabel = formatDuration(clip.duration_sec);
   data-audio-src={audioSrc}
   data-duration={clip.duration_sec}
   data-spec-src={specSrc}
-  data-lowfreq-src={lowfreqSrc ?? ""}
 >
   <p class="sr-only player-status" aria-live="polite" aria-atomic="true"></p>
 
@@ -32,8 +30,6 @@ const durationLabel = formatDuration(clip.duration_sec);
     <img
       src={specSrc}
       alt={`Spectrogram: ${clip.description}`}
-      data-alt-full={`Spectrogram: ${clip.description}`}
-      data-alt-low={lowfreqSrc ? `Low-frequency spectrogram: ${clip.description}` : undefined}
     />
     <div class="cursor" aria-hidden="true"></div>
   </div>
@@ -69,16 +65,6 @@ const durationLabel = formatDuration(clip.duration_sec);
       </button>
 
       <div class="controls-secondary">
-        {lowfreqSrc && (
-          <button
-            type="button"
-            class="btn btn--secondary toggle-lowfreq"
-            aria-pressed="false"
-          >
-            Show low-frequency view
-          </button>
-        )}
-
         <label class="volume-control">
           <span class="volume-label">Volume</span>
           <input
