@@ -1,11 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ExternalLink from "../components/ExternalLink.astro";
+import { getClipById } from "../lib/catalog";
 import { withBase } from "../lib/paths";
 
 const guideImage = withBase("about/spectrogram-guide.png");
-const exampleClipHref = withBase("clips/denawocr_20150624_020959/");
-const denaliTreeClipHref = withBase("clips/denamoos_20180814_105458/");
+const spectrogramExampleClip = getClipById("denawocr_20150624_202549");
+const denaliTreeClip = getClipById("denamoos_20180814_105458");
+const exampleClipHref = withBase(`clips/${spectrogramExampleClip.id}/`);
+const denaliTreeClipHref = withBase(`clips/${denaliTreeClip.id}/`);
 ---
 
 <BaseLayout title="About" description="About Soundscapes of Alaska — an unofficial showcase of NPS Alaska acoustic monitoring highlights.">
@@ -15,15 +18,14 @@ const denaliTreeClipHref = withBase("clips/denamoos_20180814_105458/");
   <p>
     This site was created to showcase soundscapes from National Parks across{" "}
     <ExternalLink href="https://www.nps.gov/state/ak/index.htm" label="the Alaska Region" />.
-    Raw audio was collected as part of National Park Service{" "}
+    Raw audio was collected by the{" "}
     <ExternalLink
       href="https://www.nps.gov/orgs/1050/index.htm"
-      label="National Park Service Natural Sounds and Night Skies Division"
-    />{" "}
-    (NSNSD) Type 1 acoustic monitoring data.{" "}
+      label="National Park Service Natural Sounds and Night Skies Division (NSNSD)"
+    />{" "}as part of their Type 1 Acoustic Monitoring Data{". "} 
     <ExternalLink
       href="https://www.nps.gov/subjects/sound/measure.htm"
-      label="How does NSNSD measure sounds?"
+      label="(How does NSNSD measure sounds?)"
     />{" "}
     Specific clips were then manually selected and edited. Special thanks to Halyn Betchkal for picking out these (and many more) audio highlights over the years.
   </p>
@@ -41,7 +43,7 @@ const denaliTreeClipHref = withBase("clips/denamoos_20180814_105458/");
   </p>
   <figure class="spectrogram-guide">
     <figcaption>
-      Example recording: <a href={exampleClipHref}>Fox Sparrow Song With Thunder and Swainson's Thrush (seconds 18–29)</a>
+      Example recording: <a href={exampleClipHref}>{spectrogramExampleClip.title} (seconds 18–29)</a>
     </figcaption>
     <img
       src={guideImage}

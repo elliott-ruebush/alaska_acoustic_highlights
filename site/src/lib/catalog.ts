@@ -124,6 +124,20 @@ export function getAllClips(): Clip[] {
   return cached;
 }
 
+export function getClipById(id: string): Clip {
+  const clip = getAllClips().find((entry) => entry.id === id);
+  if (!clip) {
+    throw new Error(`Unknown clip id: ${id}`);
+  }
+  return clip;
+}
+
+/** Clips linked from the About page — kept in sync for catalog validation tests. */
+export const ABOUT_PAGE_CLIP_IDS = [
+  "denawocr_20150624_202549",
+  "denamoos_20180814_105458",
+] as const;
+
 export function getCategories(): { name: string; count: number }[] {
   const clips = getAllClips();
   const counts = new Map<string, number>();

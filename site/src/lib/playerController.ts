@@ -1,6 +1,7 @@
 import WaveSurfer from "wavesurfer.js";
 import { formatDuration, formatDurationSpoken } from "./format";
 import { handlePlayerKeydown } from "./playerKeyboard";
+import { bindPlayerSkipLink } from "./playerSkipLink";
 
 export const VOLUME_STORAGE_KEY = "soundscapes-volume-v2";
 export const DEFAULT_VOLUME = 100;
@@ -306,4 +307,6 @@ export function initPlayer(el: HTMLElement): void {
   document.addEventListener("keydown", (e) => {
     handlePlayerKeydown(e, el, keyActions);
   });
+
+  bindPlayerSkipLink(el);
 }
