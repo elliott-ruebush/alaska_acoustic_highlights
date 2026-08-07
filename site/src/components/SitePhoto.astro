@@ -39,11 +39,12 @@ const yearNote = clip.site_photo_year
     type="button"
     class="site-photo__button"
     data-site-photo-open={dialogId}
-    aria-label={`Enlarge recording site photo${clip.site_photo_year ? ` from ${clip.site_photo_year}` : ""}`}
+    aria-label={`View larger. ${altText}`}
   >
     <img
       src={withBase(photoPath)}
-      alt={altText}
+      alt=""
+      aria-hidden="true"
       width="1200"
       height="675"
       loading="lazy"
@@ -73,6 +74,7 @@ const yearNote = clip.site_photo_year
     if (!(dialog instanceof HTMLDialogElement)) return;
 
     button.addEventListener("click", () => dialog.showModal());
+    dialog.addEventListener("close", () => button.focus());
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });

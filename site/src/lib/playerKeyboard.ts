@@ -1,13 +1,6 @@
 export const SEEK_STEP_SEC = 5;
 export const SEEK_STEP_LARGE_SEC = 30;
 
-export function formatDuration(seconds: number): string {
-  const total = Math.round(seconds);
-  const mins = Math.floor(total / 60);
-  const secs = total % 60;
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
-
 export function isFormField(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
   const tag = target.tagName;
@@ -15,13 +8,16 @@ export function isFormField(target: EventTarget | null): boolean {
     tag === "INPUT" ||
     tag === "TEXTAREA" ||
     tag === "SELECT" ||
-    target.isContentEditable
+    !!target.isContentEditable
   );
 }
-
 /** Buttons and links handle Space/Enter natively — don't double-toggle play/pause. */
 function isNativeActivationTarget(target: EventTarget | null): boolean {
   return target instanceof HTMLButtonElement || target instanceof HTMLAnchorElement;
+}
+
+function isRangeInput(target: EventTarget | null): boolean {
+  return target instanceof HTMLInputElement && target.type === "range";
 }
 
 export type PlayerKeyActions = {
@@ -33,8 +29,9 @@ export type PlayerKeyActions = {
 };
 
 /**
- * Handle keyboard shortcuts for the audio player.
- * Space works page-wide (except form fields); other shortcuts require focus inside the player.
+ * Handle keyboard shortcuts for the audio player (YouTube-style).
+ * K toggles play/pause page-wide (except form fields).
+ * Space, arrows, Home/End, and M require focus inside the player.
  */
 export function handlePlayerKeydown(
   e: KeyboardEvent,
@@ -46,8 +43,7 @@ export function handlePlayerKeydown(
   const inPlayer = playerEl.contains(document.activeElement);
   const key = e.key;
 
-  if (key === " " || key === "Spacebar") {
-    if (isNativeActivationTarget(e.target)) return false;
+  if (key === "k" || key === "K") {
     e.preventDefault();
     actions.togglePlayPause();
     return true;
@@ -55,21 +51,22 @@ export function handlePlayerKeydown(
 
   if (!inPlayer) return false;
 
-  if (key === "k" || key === "K") {
+  if (key === " " || key === "Spacebar") {
+    if (isNativeActivationTarget(e.target) || isRangeInput(e.target)) return false;
     e.preventDefault();
     actions.togglePlayPause();
     return true;
   }
 
   if (key === "Enter") {
-    if (isNativeActivationTarget(e.target)) return false;
+    if (isNativeActivationTarget(e.target) || isRangeInput(e.target)) return false;
     e.preventDefault();
     actions.togglePlayPause();
     return true;
   }
 
   if (key === "ArrowLeft" || key === "ArrowRight") {
-    if (e.target instanceof HTMLInputElement && e.target.type === "range") return false;
+    if (isRangeInput(e.target)) return false;
     e.preventDefault();
     const step = e.shiftKey ? SEEK_STEP_LARGE_SEC : SEEK_STEP_SEC;
     actions.seekBy(key === "ArrowLeft" ? -step : step);

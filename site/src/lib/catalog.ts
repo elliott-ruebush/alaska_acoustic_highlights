@@ -43,6 +43,10 @@ export function getParkName(code: string): string {
   return PARK_NAMES[code] ?? code;
 }
 
+export function getParkUrl(parkCode: string): string {
+  return `https://www.nps.gov/${parkCode.toLowerCase()}`;
+}
+
 export function getSiteName(clip: Pick<Clip, "site_code" | "site_name">): string | null {
   if (clip.site_name) return clip.site_name;
   return clip.site_code;
@@ -67,6 +71,18 @@ export function getLocationLabel(clip: Pick<Clip, "park_code" | "site_code" | "s
   const park = clip.park_code ? getParkName(clip.park_code) : null;
   const site = getSiteName(clip);
   return [park, site].filter(Boolean).join(" · ") || "Unknown location";
+}
+
+/** Natural-language location for screen readers, e.g. "Denali - Birch Creek". */
+export function getLocationLabelSpoken(
+  clip: Pick<Clip, "park_code" | "site_code" | "site_name">,
+): string {
+  const park = clip.park_code ? getParkName(clip.park_code) : null;
+  const site = getSiteName(clip);
+  if (park && site) return `${park} - ${site}`;
+  if (park) return park;
+  if (site) return site;
+  return "Unknown location";
 }
 
 export function getLocationLabelDetailed(
@@ -102,11 +118,7 @@ export function getAllClips(): Clip[] {
   return cached;
 }
 
-export function getClipById(id: string): Clip | undefined {
-  return getAllClips().find((clip) => clip.id === id);
-}
-
-export function getCategories(): { name: string; slug: string; count: number }[] {
+export function getCategories(): { name: string; count: number }[] {
   const clips = getAllClips();
   const counts = new Map<string, number>();
   for (const clip of clips) {
@@ -114,9 +126,24 @@ export function getCategories(): { name: string; slug: string; count: number }[]
   }
   return CATEGORY_ORDER.filter((name) => counts.has(name)).map((name) => ({
     name,
-    slug: name.toLowerCase(),
     count: counts.get(name) ?? 0,
   }));
+}
+
+export function buildClipSearchText(clip: Clip): string {
+  return [
+    clip.title,
+    clip.description,
+    clip.park_code,
+    clip.site_code,
+    clip.site_name,
+    clip.park_code && getParkName(clip.park_code),
+    clip.category,
+    clip.id,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
 }
 
 export function getParks(): { code: string; name: string; count: number }[] {

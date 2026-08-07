@@ -1,0 +1,16 @@
+---
+import { formatDuration, formatDurationSpoken } from "../lib/format";
+
+interface Props {
+  durationSec: number;
+}
+
+const { durationSec } = Astro.props;
+---
+
+<time
+  datetime={`PT${Math.round(durationSec)}S`}
+  aria-label={`Duration: ${formatDurationSpoken(durationSec)}`}
+>
+  <span aria-hidden="true">{formatDuration(durationSec)}</span>
+</time>

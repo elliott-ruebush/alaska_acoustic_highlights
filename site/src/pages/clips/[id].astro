@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CategoryBadge from "../../components/CategoryBadge.astro";
+import ClipDuration from "../../components/ClipDuration.astro";
 import ExternalLink from "../../components/ExternalLink.astro";
 import SitePhoto from "../../components/SitePhoto.astro";
 import SpectrogramPlayer from "../../components/SpectrogramPlayer.astro";
-import { getAllClips, formatParkLabel, formatSiteLabel } from "../../lib/catalog";
-import { formatDuration, formatFileSize, categorySlug, getParkUrl } from "../../lib/format";
+import { getAllClips, formatParkLabel, formatSiteLabel, getLocationLabelSpoken, getParkUrl } from "../../lib/catalog";
+import { formatFileSize } from "../../lib/format";
 import { withBase } from "../../lib/paths";
 
 export async function getStaticPaths() {
@@ -19,26 +21,35 @@ const { clip } = Astro.props;
 
 <BaseLayout title={clip.title} description={clip.description}>
   <a href="#audio-player" class="skip-link">Skip to audio player</a>
-  <p><a href={withBase("")}>&larr; Back to all clips</a></p>
+  <p><a href={withBase("")}>&larr; Back to all recordings</a></p>
 
   <article class="clip-detail">
     <h1>{clip.title}</h1>
 
     <div class="meta-row">
-      <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
+      <CategoryBadge category={clip.category} />
       {(clip.park_code || formatSiteLabel(clip)) && (
-        <span>
-          {clip.park_code && (
-            <ExternalLink href={getParkUrl(clip.park_code)}>
-              {formatParkLabel(clip.park_code)}
-            </ExternalLink>
-          )}
-          {clip.park_code && formatSiteLabel(clip) && <> · </>}
-          {formatSiteLabel(clip)}
-        </span>
+        <>
+          <span class="sr-only">, Location: {getLocationLabelSpoken(clip)}</span>
+          <span class="meta-location">
+            {clip.park_code && (
+              <ExternalLink href={getParkUrl(clip.park_code)}>
+                {formatParkLabel(clip.park_code)}
+              </ExternalLink>
+            )}
+            {clip.park_code && formatSiteLabel(clip) && <> · </>}
+            {formatSiteLabel(clip)}
+          </span>
+        </>
       )}
-      {clip.recorded_date && <span>{clip.recorded_date}</span>}
-      <span>{formatDuration(clip.duration_sec)}</span>
+      {clip.recorded_date && (
+        <>
+          <span class="sr-only">, Recorded {clip.recorded_date}</span>
+          <span aria-hidden="true">{clip.recorded_date}</span>
+        </>
+      )}
+      <span class="sr-only">, </span>
+      <ClipDuration durationSec={clip.duration_sec} />
     </div>
 
     <p class="description">{clip.description}</p>

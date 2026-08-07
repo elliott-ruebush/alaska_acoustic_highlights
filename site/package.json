@@ -11,10 +11,15 @@
     "prebuild": "node scripts/link-public-assets.mjs",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^7.1.4",
     "wavesurfer.js": "^7.12.11"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
   }
 }

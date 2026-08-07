@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getAllClips, getCategories, getLocationLabel, getParkName, getParks } from "../lib/catalog";
-import { formatDuration, categorySlug } from "../lib/format";
+import CategoryBadge from "../components/CategoryBadge.astro";
+import ClipDuration from "../components/ClipDuration.astro";
+import { buildClipSearchText, getAllClips, getCategories, getLocationLabel, getLocationLabelSpoken, getParks } from "../lib/catalog";
 import { withBase } from "../lib/paths";
 
 const clips = getAllClips();
@@ -19,14 +20,47 @@ const parks = getParks();
     </p>
   </section>
 
-  <section class="filters" aria-label="Filter clips">
-    <div class="filter-row chips" role="group" aria-label="Category">
-      <button type="button" class="chip" data-category="all" data-active="true" aria-pressed="true">All ({clips.length})</button>
-      {categories.map((cat) => (
-        <button type="button" class="chip" data-category={cat.name} data-active="false" aria-pressed="false">
-          {cat.name} ({cat.count})
+  <section
+    id="filters"
+    class="filters"
+    aria-labelledby="filters-heading"
+    aria-controls="recordings-grid"
+  >
+    <div class="filters-header">
+      <h2 id="filters-heading" class="filters-heading">Filter recordings</h2>
+      <button type="button" id="clear-filters" class="btn btn--secondary btn--small" hidden>
+        Clear all filters
+      </button>
+    </div>
+
+    <div class="filter-row chips">
+      <span id="category-label" class="filter-label">Category</span>
+      <div class="chip-group" role="radiogroup" aria-labelledby="category-label">
+        <button
+          type="button"
+          class="chip"
+          role="radio"
+          data-category="all"
+          data-active="true"
+          aria-checked="true"
+          tabindex="0"
+        >
+          All ({clips.length})
         </button>
-      ))}
+        {categories.map((cat) => (
+          <button
+            type="button"
+            class="chip"
+            role="radio"
+            data-category={cat.name}
+            data-active="false"
+            aria-checked="false"
+            tabindex="-1"
+          >
+            {cat.name} ({cat.count})
+          </button>
+        ))}
+      </div>
     </div>
 
     <div class="filter-row">
@@ -41,47 +75,55 @@ const parks = getParks();
       </select>
     </div>
 
-    <div class="filter-row">
+    <div class="filter-row filter-row--search">
       <label for="search-filter">Search</label>
-      <input
-        id="search-filter"
-        type="search"
-        placeholder="Search titles, parks, sites, descriptions…"
-        autocomplete="off"
-      />
+      <div class="search-field">
+        <input
+          id="search-filter"
+          type="search"
+          placeholder="Search titles, parks, sites, descriptions…"
+          autocomplete="off"
+          aria-describedby="search-hint"
+        />
+        <p id="search-hint" class="filter-hint">
+          Matches title, park, site, and description.
+        </p>
+      </div>
     </div>
   </section>
 
   <p id="filter-status" class="sr-only" aria-live="polite" aria-atomic="true"></p>
 
-  <p id="empty-state" class="empty-state" hidden>No clips match your filters.</p>
+  <p id="empty-state" class="empty-state" hidden>No recordings match your filters.</p>
 
-  <section class="grid" aria-label="Clip gallery">
+  <section id="recordings-grid" class="grid" aria-label="Recordings">
     {clips.map((clip) => (
       <a
         href={withBase(`clips/${clip.id}/`)}
         class="card"
         data-category={clip.category}
         data-park={clip.park_code ?? "unknown"}
-        data-search={[clip.title, clip.description, clip.park_code, clip.site_code, clip.site_name, clip.park_code && getParkName(clip.park_code), clip.category, clip.id]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase()}
+        data-search={buildClipSearchText(clip)}
       >
         <img
           src={withBase(clip.spectrogram_path)}
-          alt={clip.description}
+          alt=""
           loading="lazy"
           width="1200"
           height="400"
         />
         <div class="card-body">
           <h2>{clip.title}</h2>
-          <span class={`badge badge--${categorySlug(clip.category)}`}>{clip.category}</span>
+          <span class="sr-only">, </span>
+          <CategoryBadge category={clip.category} />
+          <span class="sr-only">, </span>
           <p class="meta">
-            {getLocationLabel(clip) || "Unknown location"}
+            <span aria-label={`Location: ${getLocationLabelSpoken(clip)}`}>
+              <span aria-hidden="true">{getLocationLabel(clip)}</span>
+            </span>
+            <span class="sr-only">, </span>
             <span aria-hidden="true"> · </span>
-            <span>{formatDuration(clip.duration_sec)}</span>
+            <ClipDuration durationSec={clip.duration_sec} />
           </p>
         </div>
       </a>
@@ -90,198 +132,9 @@ const parks = getParks();
 </BaseLayout>
 
 <script>
-  const chips = document.querySelectorAll(".chip");
-  const parkSelect = document.querySelector("#park-filter");
-  const searchInput = document.querySelector("#search-filter");
-  const cards = document.querySelectorAll(".card");
-  const emptyState = document.querySelector("#empty-state");
-  const filterStatus = document.querySelector("#filter-status");
+  import { initGalleryFilters } from "../lib/filterController";
 
-  const PARAM_CATEGORY = "category";
-  const PARAM_PARK = "park";
-  const PARAM_SEARCH = "q";
-  const totalClips = cards.length;
-
-  const validCategories = new Set(
-    [...chips].map((chip) => chip.getAttribute("data-category") ?? "all"),
-  );
-  const validParks = new Set(
-    [...parkSelect.options].map((option) => option.value),
-  );
-
-  let activeCategory = "all";
-  let searchDebounce: ReturnType<typeof setTimeout> | undefined;
-  let announceDebounce: ReturnType<typeof setTimeout> | undefined;
-
-  function setChipActiveState(category: string) {
-    chips.forEach((chip) => {
-      const chipCategory = chip.getAttribute("data-category") ?? "all";
-      const isActive = chipCategory === category;
-      chip.setAttribute("data-active", isActive ? "true" : "false");
-      chip.setAttribute("aria-pressed", isActive ? "true" : "false");
-    });
-  }
-
-  function announceFilterResults(visible: number) {
-    if (!filterStatus) return;
-    filterStatus.textContent =
-      visible === 0
-        ? "No clips match your filters."
-        : `Showing ${visible} of ${totalClips} clips.`;
-  }
-
-  function scheduleFilterAnnouncement(visible: number) {
-    clearTimeout(announceDebounce);
-    announceDebounce = setTimeout(() => announceFilterResults(visible), 300);
-  }
-
-  function readFiltersFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get(PARAM_CATEGORY) ?? "all";
-    const park = params.get(PARAM_PARK) ?? "all";
-    return {
-      category: validCategories.has(category) ? category : "all",
-      park: validParks.has(park) ? park : "all",
-      search: params.get(PARAM_SEARCH) ?? "",
-    };
-  }
-
-  function syncUiFromState(category: string, park: string, search: string) {
-    activeCategory = category;
-    setChipActiveState(category);
-    parkSelect.value = park;
-    if (searchInput.value !== search) {
-      searchInput.value = search;
-    }
-  }
-
-  function buildUrl(category: string, park: string, search: string) {
-    const params = new URLSearchParams();
-    if (category !== "all") params.set(PARAM_CATEGORY, category);
-    if (park !== "all") params.set(PARAM_PARK, park);
-    const trimmed = search.trim();
-    if (trimmed) params.set(PARAM_SEARCH, trimmed);
-    const qs = params.toString();
-    return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
-  }
-
-  function updateUrl(mode: "push" | "replace") {
-    const url = buildUrl(activeCategory, parkSelect.value, searchInput.value);
-    if (mode === "replace") {
-      history.replaceState(null, "", url);
-    } else {
-      history.pushState(null, "", url);
-    }
-  }
-
-  function cardMatchesCategoryAndSearch(
-    card: Element,
-    category: string,
-    query: string,
-  ): boolean {
-    const cardCategory = card.getAttribute("data-category") ?? "";
-    const searchText = card.getAttribute("data-search") ?? "";
-    return (
-      (category === "all" || cardCategory === category) &&
-      (!query || searchText.includes(query))
-    );
-  }
-
-  function updateParkCounts() {
-    const query = searchInput.value.trim().toLowerCase();
-    const counts = new Map<string, number>();
-    let total = 0;
-
-    cards.forEach((card) => {
-      if (!cardMatchesCategoryAndSearch(card, activeCategory, query)) return;
-      total++;
-      const code = card.getAttribute("data-park");
-      if (code && code !== "unknown") {
-        counts.set(code, (counts.get(code) ?? 0) + 1);
-      }
-    });
-
-    [...parkSelect.options].forEach((option) => {
-      if (option.value === "all") {
-        option.textContent = `All parks (${total})`;
-        return;
-      }
-      const code = option.value;
-      const name = option.dataset.parkName ?? code;
-      const count = counts.get(code) ?? 0;
-      option.textContent = `${name} (${code}) (${count})`;
-      option.disabled = count === 0;
-    });
-
-    const selected = parkSelect.value;
-    if (selected !== "all" && (counts.get(selected) ?? 0) === 0) {
-      parkSelect.value = "all";
-    }
-  }
-
-  function applyFilters(announce: "now" | "debounce" | "none" = "now") {
-    const query = searchInput.value.trim().toLowerCase();
-    updateParkCounts();
-
-    const park = parkSelect.value;
-    let visible = 0;
-
-    cards.forEach((card) => {
-      const cardPark = card.getAttribute("data-park") ?? "";
-
-      const show =
-        cardMatchesCategoryAndSearch(card, activeCategory, query) &&
-        (park === "all" || cardPark === park);
-
-      card.classList.toggle("is-hidden", !show);
-      if (show) visible++;
-    });
-
-    emptyState.hidden = visible > 0;
-
-    if (announce === "now") {
-      announceFilterResults(visible);
-    } else if (announce === "debounce") {
-      scheduleFilterAnnouncement(visible);
-    }
-
-    return visible;
-  }
-
-  function setFiltersFromUrl(updateHistory: "push" | "replace" | "none") {
-    const { category, park, search } = readFiltersFromUrl();
-    syncUiFromState(category, park, search);
-    applyFilters();
-    if (updateHistory !== "none") {
-      updateUrl(updateHistory);
-    }
-  }
-
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      activeCategory = chip.getAttribute("data-category") ?? "all";
-      setChipActiveState(activeCategory);
-      applyFilters("now");
-      updateUrl("push");
-    });
-  });
-
-  parkSelect.addEventListener("change", () => {
-    applyFilters("now");
-    updateUrl("push");
-  });
-
-  searchInput.addEventListener("input", () => {
-    applyFilters("debounce");
-    clearTimeout(searchDebounce);
-    searchDebounce = setTimeout(() => updateUrl("replace"), 300);
-  });
-
-  window.addEventListener("popstate", () => {
-    setFiltersFromUrl("none");
-  });
-
-  setFiltersFromUrl("replace");
+  initGalleryFilters();
 </script>
 
 <style>
@@ -308,6 +161,25 @@ const parks = getParks();
     box-shadow: var(--shadow);
   }
 
+  .filters-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .filters-heading {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-forest);
+  }
+
+  .btn--small {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
   .filter-row {
     display: flex;
     flex-wrap: wrap;
@@ -315,12 +187,35 @@ const parks = getParks();
     gap: 0.5rem 0.75rem;
   }
 
-  .filter-row label {
+  .filter-row label,
+  .filter-label {
     font-weight: 600;
     min-width: 4.5rem;
+    color: var(--color-brown-dark);
+  }
+
+  .filter-row--search {
+    align-items: flex-start;
+  }
+
+  .search-field {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .filter-hint {
+    margin: 0.35rem 0 0;
+    font-size: 0.8rem;
+    color: var(--color-muted);
   }
 
   .chips {
+    gap: 0.5rem;
+  }
+
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
@@ -343,8 +238,7 @@ const parks = getParks();
 
   select,
   input[type="search"] {
-    flex: 1;
-    min-width: 200px;
+    width: 100%;
     padding: 0.45rem 0.65rem;
     border: 1px solid #c4b8a8;
     border-radius: var(--radius);

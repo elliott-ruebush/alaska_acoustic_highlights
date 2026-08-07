@@ -1,0 +1,16 @@
+---
+import { categorySlug } from "../lib/format";
+
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props;
+---
+
+<span
+  class={`badge badge--${categorySlug(category)}`}
+  aria-label={`Category: ${category}`}
+>
+  <span aria-hidden="true">{category}</span>
+</span>
