@@ -13,10 +13,10 @@ const specSrc = withBase(clip.spectrogram_path);
 const durationLabel = formatDuration(clip.duration_sec);
 ---
 
-<div
+<section
   id="audio-player"
   class="player"
-  role="region"
+  tabindex="-1"
   aria-label={`Audio player: ${clip.title}`}
   data-audio-src={audioSrc}
   data-duration={clip.duration_sec}
@@ -35,7 +35,7 @@ const durationLabel = formatDuration(clip.duration_sec);
   </div>
 
   <label class="seek-control">
-      <span class="sr-only seek-label">Position</span>
+    <span class="sr-only seek-label">Playback position</span>
     <input
       type="range"
       class="seek-slider"
@@ -44,11 +44,7 @@ const durationLabel = formatDuration(clip.duration_sec);
       value="0"
       step="any"
       disabled
-      aria-valuemin="0"
-      aria-valuemax={clip.duration_sec}
-      aria-valuenow="0"
       aria-valuetext={`0:00 of ${durationLabel}`}
-      aria-label="Playback position"
     />
   </label>
 
@@ -60,7 +56,7 @@ const durationLabel = formatDuration(clip.duration_sec);
     </span>
 
     <div class="controls">
-      <button type="button" class="btn play-pause" aria-label="Play">
+      <button type="button" class="btn play-pause">
         Play
       </button>
 
@@ -73,9 +69,7 @@ const durationLabel = formatDuration(clip.duration_sec);
             min="0"
             max="100"
             value="100"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="100"
+            aria-valuetext="100%"
             aria-label="Playback volume"
           />
         </label>
@@ -87,14 +81,15 @@ const durationLabel = formatDuration(clip.duration_sec);
     <summary>Keyboard shortcuts</summary>
     <ul>
       <li>K: play or pause from anywhere on this page</li>
-      <li>Space: play or pause when focus is in the player</li>
+      <li>Space: play or pause when focus is in the player (including after Skip to player controls)</li>
       <li>Left or right arrow: seek 5 seconds</li>
       <li>Shift + left or right arrow: seek 30 seconds</li>
       <li>Home or End: jump to start or end</li>
       <li>M: mute or unmute</li>
+      <li>Clicking the spectrogram seeks with a mouse; use the position slider for keyboard seeking</li>
     </ul>
   </details>
-</div>
+</section>
 
 <script>
   import { initPlayer } from "../lib/playerController";
@@ -105,6 +100,12 @@ const durationLabel = formatDuration(clip.duration_sec);
 <style>
   .player {
     margin: 1.5rem 0;
+    scroll-margin-top: 1rem;
+  }
+
+  .player:focus {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 4px;
   }
 
   .waveform {

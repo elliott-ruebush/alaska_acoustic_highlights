@@ -1,12 +1,26 @@
 import WaveSurfer from "wavesurfer.js";
 import { formatDuration, formatDurationSpoken } from "./format";
 import { handlePlayerKeydown } from "./playerKeyboard";
+import { bindPlayerSkipLink } from "./playerSkipLink";
 
 export const VOLUME_STORAGE_KEY = "soundscapes-volume-v2";
 export const DEFAULT_VOLUME = 100;
 
 export function clampVolume(percent: number): number {
   return Math.min(100, Math.max(0, percent));
+}
+
+export function updateVolumeAria(
+  volumeSlider: HTMLInputElement,
+  percent: number,
+): void {
+  const clamped = clampVolume(percent);
+  const muted = clamped === 0;
+  volumeSlider.setAttribute("aria-valuetext", muted ? "Muted" : `${clamped}%`);
+  volumeSlider.setAttribute(
+    "aria-label",
+    muted ? "Playback volume, muted" : "Playback volume",
+  );
 }
 
 export function readStoredVolume(): number {
@@ -39,6 +53,7 @@ export function initPlayer(el: HTMLElement): void {
   let isLoaded = false;
   let pendingPlay = false;
   let storedVolume = readStoredVolume();
+  let preMuteVolume = storedVolume;
   let isScrubbing = false;
   let lastAnnouncedSeek = -1;
 
@@ -56,7 +71,6 @@ export function initPlayer(el: HTMLElement): void {
 
   function setPlayState(playing: boolean) {
     playBtn.textContent = playing ? "Pause" : "Play";
-    playBtn.setAttribute("aria-label", playing ? "Pause" : "Play");
   }
 
   function updateTimeDisplay() {
@@ -72,7 +86,6 @@ export function initPlayer(el: HTMLElement): void {
       seekSlider.value = String(current);
       // Avoid updating slider ARIA during playback — some screen readers re-announce it.
       if (!ws?.isPlaying()) {
-        seekSlider.setAttribute("aria-valuenow", String(Math.round(current)));
         seekSlider.setAttribute("aria-valuetext", `${elapsed} of ${total}`);
       }
     }
@@ -87,9 +100,12 @@ export function initPlayer(el: HTMLElement): void {
 
   function applyVolume(percent: number) {
     const clamped = clampVolume(percent);
-    storedVolume = clamped;
+    if (clamped > 0) {
+      storedVolume = clamped;
+      preMuteVolume = clamped;
+    }
     volumeSlider.value = String(clamped);
-    volumeSlider.setAttribute("aria-valuenow", String(clamped));
+    updateVolumeAria(volumeSlider, clamped);
     if (!ws) return;
     ws.setVolume(clamped / 100);
     if (clamped === 0) {
@@ -124,7 +140,6 @@ export function initPlayer(el: HTMLElement): void {
     instance.on("ready", () => {
       const duration = getDuration();
       seekSlider.max = String(duration);
-      seekSlider.setAttribute("aria-valuemax", String(Math.round(duration)));
       timeTotal.textContent = formatDuration(duration);
       playBtn.disabled = false;
       seekSlider.disabled = false;
@@ -150,7 +165,7 @@ export function initPlayer(el: HTMLElement): void {
     if (ws) return Promise.resolve(ws);
     if (loadPromise) return loadPromise;
 
-    loadPromise = new Promise((resolve, reject) => {
+    loadPromise = new Promise<WaveSurfer>((resolve, reject) => {
       announce("Loading audio…");
       playBtn.disabled = true;
 
@@ -183,7 +198,7 @@ export function initPlayer(el: HTMLElement): void {
       throw err;
     });
 
-    return loadPromise;
+    return loadPromise!;
   }
 
   async function seekToTime(seconds: number, announceSeek = true) {
@@ -201,7 +216,7 @@ export function initPlayer(el: HTMLElement): void {
       const rounded = Math.round(clamped);
       if (rounded !== lastAnnouncedSeek) {
         lastAnnouncedSeek = rounded;
-        announce(`Seeked to ${formatDurationSpoken(clamped)}`);
+        announce(`Seek to ${formatDurationSpoken(clamped)}`);
       }
     }
   }
@@ -221,9 +236,13 @@ export function initPlayer(el: HTMLElement): void {
 
   function toggleMute() {
     if (!ws) return;
-    const muted = !ws.getMuted();
-    ws.setMuted(muted);
-    announce(muted ? "Muted" : "Unmuted");
+    const currentPercent = Number.parseInt(volumeSlider.value, 10);
+    if (ws.getMuted() || currentPercent === 0) {
+      applyVolume(preMuteVolume);
+    } else {
+      preMuteVolume = currentPercent;
+      applyVolume(0);
+    }
   }
 
   applyVolume(storedVolume);
@@ -284,4 +303,6 @@ export function initPlayer(el: HTMLElement): void {
   document.addEventListener("keydown", (e) => {
     handlePlayerKeydown(e, el, keyActions);
   });
+
+  bindPlayerSkipLink(el);
 }

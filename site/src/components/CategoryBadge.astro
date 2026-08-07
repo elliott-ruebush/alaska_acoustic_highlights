@@ -10,7 +10,7 @@ const { category } = Astro.props;
 
 <span
   class={`badge badge--${categorySlug(category)}`}
-  aria-label={`Category: ${category}`}
 >
+  <span class="sr-only">Category: {category}</span>
   <span aria-hidden="true">{category}</span>
 </span>

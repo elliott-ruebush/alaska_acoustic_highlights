@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CategoryBadge from "../components/CategoryBadge.astro";
 import ClipDuration from "../components/ClipDuration.astro";
-import { buildClipSearchText, getAllClips, getCategories, getLocationLabel, getLocationLabelSpoken, getParks } from "../lib/catalog";
+import { buildClipSearchText, getAllClips, getCardLinkDescription, getCategories, getLocationLabel, getParks } from "../lib/catalog";
 import { withBase } from "../lib/paths";
 
 const clips = getAllClips();
@@ -17,8 +17,10 @@ const parks = getParks();
       A searchable library of soundscape recordings from Alaska National Parks. These highlights were selected and labeled by Halyn Betchkal with the National Park Service. Special thanks to Halyn for making this site possible!
     </p>
     <p class="lead">
-      Continue on to hear howling wolves, surging glaciers, chorusing birds, and more—each paired with a spectrogram. Learn more about how this data is collected and how to read spectrograms on the{" "}
-      <a href={withBase("about/")}>About</a> page.
+      Continue on to hear howling wolves, surging glaciers, chorusing birds, and more—each paired with a spectrogram.
+    </p>
+    <p class="lead">
+      Learn more on the <a href={withBase("about/")}>About page (data collection and spectrograms)</a>.
     </p>
   </section>
 
@@ -26,7 +28,6 @@ const parks = getParks();
     id="filters"
     class="filters"
     aria-labelledby="filters-heading"
-    aria-controls="recordings-grid"
   >
     <div class="filters-header">
       <h2 id="filters-heading" class="filters-heading">Filter recordings</h2>
@@ -35,35 +36,32 @@ const parks = getParks();
       </button>
     </div>
 
-    <div class="filter-row chips">
-      <span id="category-label" class="filter-label">Category</span>
-      <div class="chip-group" role="radiogroup" aria-labelledby="category-label">
-        <button
-          type="button"
-          class="chip"
-          role="radio"
-          data-category="all"
-          data-active="true"
-          aria-checked="true"
-          tabindex="0"
-        >
+    <fieldset class="filter-row chips chip-fieldset">
+      <legend class="filter-label">Category</legend>
+      <div class="chip-group">
+        <label class="chip">
+          <input
+            type="radio"
+            name="category"
+            class="chip-input"
+            value="all"
+            checked
+          />
           All ({clips.length})
-        </button>
+        </label>
         {categories.map((cat) => (
-          <button
-            type="button"
-            class="chip"
-            role="radio"
-            data-category={cat.name}
-            data-active="false"
-            aria-checked="false"
-            tabindex="-1"
-          >
+          <label class="chip">
+            <input
+              type="radio"
+              name="category"
+              class="chip-input"
+              value={cat.name}
+            />
             {cat.name} ({cat.count})
-          </button>
+          </label>
         ))}
       </div>
-    </div>
+    </fieldset>
 
     <div class="filter-row">
       <label for="park-filter">Park</label>
@@ -103,6 +101,8 @@ const parks = getParks();
       <a
         href={withBase(`clips/${clip.id}/`)}
         class="card"
+        aria-labelledby={`card-title-${clip.id}`}
+        aria-describedby={`card-desc-${clip.id}`}
         data-category={clip.category}
         data-park={clip.park_code ?? "unknown"}
         data-search={buildClipSearchText(clip)}
@@ -115,18 +115,18 @@ const parks = getParks();
           height="400"
         />
         <div class="card-body">
-          <h2>{clip.title}</h2>
-          <span class="sr-only">, </span>
-          <CategoryBadge category={clip.category} />
-          <span class="sr-only">, </span>
-          <p class="meta">
-            <span aria-label={`Location: ${getLocationLabelSpoken(clip)}`}>
-              <span aria-hidden="true">{getLocationLabel(clip)}</span>
-            </span>
-            <span class="sr-only">, </span>
-            <span aria-hidden="true"> · </span>
-            <ClipDuration durationSec={clip.duration_sec} />
+          <h2 id={`card-title-${clip.id}`}>{clip.title}</h2>
+          <p id={`card-desc-${clip.id}`} class="sr-only">
+            {getCardLinkDescription(clip)}
           </p>
+          <div class="card-meta" aria-hidden="true">
+            <CategoryBadge category={clip.category} />
+            <p class="meta">
+              <span>{getLocationLabel(clip)}</span>
+              <span> · </span>
+              <ClipDuration durationSec={clip.duration_sec} />
+            </p>
+          </div>
         </div>
       </a>
     ))}
@@ -215,13 +215,43 @@ const parks = getParks();
     gap: 0.5rem;
   }
 
+  .chip-fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .chip-fieldset .filter-label {
+    padding: 0;
+    margin: 0;
+  }
+
   .chip-group {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
 
+  .chip-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .chip {
+    position: relative;
+    display: inline-block;
     border: 1px solid #c4b8a8;
     background: var(--color-white);
     color: var(--color-ink);
@@ -232,10 +262,15 @@ const parks = getParks();
     cursor: pointer;
   }
 
-  .chip[data-active="true"] {
+  .chip:has(.chip-input:checked) {
     background: var(--color-forest);
     border-color: var(--color-forest);
     color: var(--color-cream);
+  }
+
+  .chip:has(.chip-input:focus-visible) {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 2px;
   }
 
   select,
@@ -275,6 +310,16 @@ const parks = getParks();
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+
+    .card:hover {
+      transform: none;
+    }
   }
 
   .card img {

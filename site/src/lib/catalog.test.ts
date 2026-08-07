@@ -1,10 +1,31 @@
 import { describe, expect, it } from "vitest";
 import {
+  ABOUT_PAGE_CLIP_IDS,
   formatParkLabel,
+  getClipById,
   getLocationLabel,
   getLocationLabelSpoken,
   getParkName,
 } from "./catalog";
+
+describe("getClipById", () => {
+  it("returns a clip when the id exists", () => {
+    const clip = getClipById("denawocr_20150624_202549");
+    expect(clip.title).toBe("Fox Sparrow Song With Thunder and Swainson's Thrush");
+  });
+
+  it("throws when the id is missing", () => {
+    expect(() => getClipById("not-a-real-clip")).toThrow("Unknown clip id: not-a-real-clip");
+  });
+});
+
+describe("about page clip links", () => {
+  it("resolves every featured clip id from the catalog", () => {
+    for (const id of ABOUT_PAGE_CLIP_IDS) {
+      expect(getClipById(id).id).toBe(id);
+    }
+  });
+});
 
 describe("getParkName", () => {
   it("returns the full park name for known codes", () => {

@@ -20,7 +20,7 @@ const { clip } = Astro.props;
 ---
 
 <BaseLayout title={clip.title} description={clip.description}>
-  <a href="#audio-player" class="skip-link">Skip to audio player</a>
+  <a href="#audio-player" class="skip-link">Skip to player controls</a>
   <p><a href={withBase("")}>&larr; Back to all recordings</a></p>
 
   <article class="clip-detail">
@@ -33,9 +33,10 @@ const { clip } = Astro.props;
           <span class="sr-only">, Location: {getLocationLabelSpoken(clip)}</span>
           <span class="meta-location">
             {clip.park_code && (
-              <ExternalLink href={getParkUrl(clip.park_code)}>
-                {formatParkLabel(clip.park_code)}
-              </ExternalLink>
+              <ExternalLink
+                href={getParkUrl(clip.park_code)}
+                label={`${formatParkLabel(clip.park_code)} on NPS.gov`}
+              />
             )}
             {clip.park_code && formatSiteLabel(clip) && <> · </>}
             {formatSiteLabel(clip)}
@@ -58,7 +59,7 @@ const { clip } = Astro.props;
 
     <p>
       <a class="btn" href={withBase(clip.audio_path)} download>
-        Download MP3 ({formatFileSize(clip.file_size_bytes)})
+        Download MP3 for {clip.title} ({formatFileSize(clip.file_size_bytes)})
       </a>
     </p>
 

@@ -74,7 +74,9 @@ const yearNote = clip.site_photo_year
     if (!(dialog instanceof HTMLDialogElement)) return;
 
     button.addEventListener("click", () => dialog.showModal());
-    dialog.addEventListener("close", () => button.focus());
+    dialog.addEventListener("close", () => {
+      if (button instanceof HTMLElement) button.focus();
+    });
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });

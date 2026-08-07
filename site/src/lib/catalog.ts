@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { formatDurationSpoken } from "./format";
 
 export interface Clip {
   id: string;
@@ -92,6 +93,12 @@ export function getLocationLabelDetailed(
   return [park, site].filter(Boolean).join(" · ") || "Unknown location";
 }
 
+export function getCardLinkDescription(
+  clip: Pick<Clip, "category" | "park_code" | "site_code" | "site_name" | "duration_sec">,
+): string {
+  return `${clip.category}. Location: ${getLocationLabelSpoken(clip)}. Duration: ${formatDurationSpoken(clip.duration_sec)}.`;
+}
+
 function resolveCatalogPath(): string {
   let dir = path.dirname(fileURLToPath(import.meta.url));
   while (true) {
@@ -116,6 +123,20 @@ export function getAllClips(): Clip[] {
   if (!cached) cached = loadCatalog();
   return cached;
 }
+
+export function getClipById(id: string): Clip {
+  const clip = getAllClips().find((entry) => entry.id === id);
+  if (!clip) {
+    throw new Error(`Unknown clip id: ${id}`);
+  }
+  return clip;
+}
+
+/** Clips linked from the About page — kept in sync for catalog validation tests. */
+export const ABOUT_PAGE_CLIP_IDS = [
+  "denawocr_20150624_202549",
+  "denamoos_20180814_105458",
+] as const;
 
 export function getCategories(): { name: string; count: number }[] {
   const clips = getAllClips();

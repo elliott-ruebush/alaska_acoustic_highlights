@@ -117,8 +117,7 @@ function readCardData(card: Element): CardFilterData {
 }
 
 export function initGalleryFilters(root: Document = document): void {
-  const chips = root.querySelectorAll<HTMLButtonElement>(".chip");
-  const categoryGroup = root.querySelector<HTMLElement>(".chip-group");
+  const categoryRadios = root.querySelectorAll<HTMLInputElement>('input[name="category"]');
   const parkSelect = root.querySelector<HTMLSelectElement>("#park-filter");
   const searchInput = root.querySelector<HTMLInputElement>("#search-filter");
   const clearFiltersBtn = root.querySelector<HTMLButtonElement>("#clear-filters");
@@ -127,6 +126,7 @@ export function initGalleryFilters(root: Document = document): void {
   const filterStatus = root.querySelector<HTMLParagraphElement>("#filter-status");
 
   if (
+    categoryRadios.length === 0 ||
     !parkSelect ||
     !searchInput ||
     !clearFiltersBtn ||
@@ -136,6 +136,18 @@ export function initGalleryFilters(root: Document = document): void {
     return;
   }
 
+  const ui = {
+    parkSelect,
+    searchInput,
+    clearFiltersBtn,
+    emptyState,
+  } satisfies {
+    parkSelect: HTMLSelectElement;
+    searchInput: HTMLInputElement;
+    clearFiltersBtn: HTMLButtonElement;
+    emptyState: HTMLParagraphElement;
+  };
+
   const cards = [...cardElements].map((card) => ({
     element: card,
     data: readCardData(card),
@@ -143,10 +155,10 @@ export function initGalleryFilters(root: Document = document): void {
   const totalClips = cards.length;
 
   const validCategories = new Set(
-    [...chips].map((chip) => chip.dataset.category ?? "all"),
+    [...categoryRadios].map((radio) => radio.value),
   );
   const validParks = new Set(
-    [...parkSelect.options].map((option) => option.value),
+    [...ui.parkSelect.options].map((option) => option.value),
   );
 
   let activeCategory = "all";
@@ -154,27 +166,27 @@ export function initGalleryFilters(root: Document = document): void {
   let lastAnnouncement = "";
 
   function getFilterState(): FilterState {
-    const selected = parkSelect.selectedOptions[0];
+    const selected = ui.parkSelect.selectedOptions[0];
     return {
       category: activeCategory,
-      parkCode: parkSelect.value,
+      parkCode: ui.parkSelect.value,
       parkName: selected?.dataset.parkName ?? null,
-      search: searchInput.value,
+      search: ui.searchInput.value,
     };
   }
 
-  function setChipActiveState(category: string) {
-    chips.forEach((chip) => {
-      const chipCategory = chip.dataset.category ?? "all";
-      const isActive = chipCategory === category;
-      chip.dataset.active = isActive ? "true" : "false";
-      chip.setAttribute("aria-checked", isActive ? "true" : "false");
-      chip.tabIndex = isActive ? 0 : -1;
-    });
+  function setCategoryRadio(category: string) {
+    for (const radio of categoryRadios) {
+      radio.checked = radio.value === category;
+    }
+  }
+
+  function getCheckedCategoryRadio(): HTMLInputElement | undefined {
+    return [...categoryRadios].find((radio) => radio.checked);
   }
 
   function updateClearButton() {
-    clearFiltersBtn.hidden = !hasActiveFilters(getFilterState());
+    ui.clearFiltersBtn.hidden = !hasActiveFilters(getFilterState());
   }
 
   function announceFilterResults(visible: number) {
@@ -187,10 +199,10 @@ export function initGalleryFilters(root: Document = document): void {
 
   function syncUiFromState(category: string, park: string, search: string) {
     activeCategory = category;
-    setChipActiveState(category);
-    parkSelect.value = park;
-    if (searchInput.value !== search) {
-      searchInput.value = search;
+    setCategoryRadio(category);
+    ui.parkSelect.value = park;
+    if (ui.searchInput.value !== search) {
+      ui.searchInput.value = search;
     }
     updateClearButton();
   }
@@ -199,8 +211,8 @@ export function initGalleryFilters(root: Document = document): void {
     const url = buildFilterPath(
       window.location.pathname,
       activeCategory,
-      parkSelect.value,
-      searchInput.value,
+      ui.parkSelect.value,
+      ui.searchInput.value,
     );
     if (mode === "replace") {
       history.replaceState(null, "", url);
@@ -210,14 +222,14 @@ export function initGalleryFilters(root: Document = document): void {
   }
 
   function updateParkCounts() {
-    const query = searchInput.value.trim().toLowerCase();
+    const query = ui.searchInput.value.trim().toLowerCase();
     const { total, counts } = computeParkCounts(
       cards.map((card) => card.data),
       activeCategory,
       query,
     );
 
-    [...parkSelect.options].forEach((option) => {
+    [...ui.parkSelect.options].forEach((option) => {
       if (option.value === "all") {
         option.textContent = `All parks (${total})`;
         return;
@@ -229,16 +241,16 @@ export function initGalleryFilters(root: Document = document): void {
       option.disabled = count === 0;
     });
 
-    const selected = parkSelect.value;
+    const selected = ui.parkSelect.value;
     if (selected !== "all" && (counts.get(selected) ?? 0) === 0) {
-      parkSelect.value = "all";
+      ui.parkSelect.value = "all";
     }
   }
 
   function applyFilters(options: { announce?: boolean; updateParkCounts?: boolean } = {}) {
     const { announce = true, updateParkCounts: refreshParkCounts = true } = options;
-    const query = searchInput.value.trim().toLowerCase();
-    const park = parkSelect.value;
+    const query = ui.searchInput.value.trim().toLowerCase();
+    const park = ui.parkSelect.value;
 
     if (refreshParkCounts) {
       updateParkCounts();
@@ -247,6 +259,11 @@ export function initGalleryFilters(root: Document = document): void {
     for (const card of cards) {
       const show = cardIsVisible(card.data, activeCategory, park, query);
       card.element.classList.toggle("is-hidden", !show);
+      if (show) {
+        card.element.removeAttribute("hidden");
+      } else {
+        card.element.setAttribute("hidden", "");
+      }
     }
 
     const visible = countVisibleCards(
@@ -256,7 +273,12 @@ export function initGalleryFilters(root: Document = document): void {
       query,
     );
 
-    emptyState.hidden = visible > 0;
+    ui.emptyState.hidden = visible > 0;
+    if (visible === 0 && announce) {
+      ui.emptyState.setAttribute("aria-hidden", "true");
+    } else if (visible > 0) {
+      ui.emptyState.removeAttribute("aria-hidden");
+    }
     updateClearButton();
 
     if (announce) {
@@ -272,7 +294,7 @@ export function initGalleryFilters(root: Document = document): void {
     options: { announce?: boolean } = {},
   ) {
     activeCategory = category;
-    setChipActiveState(category);
+    setCategoryRadio(category);
     applyFilters({ announce: options.announce });
     if (historyMode !== "none") {
       updateUrl(historyMode);
@@ -289,7 +311,7 @@ export function initGalleryFilters(root: Document = document): void {
     const shouldAnnounce = hasActiveFilters({
       category,
       parkCode: park,
-      parkName: parkSelect.selectedOptions[0]?.dataset.parkName ?? null,
+      parkName: ui.parkSelect.selectedOptions[0]?.dataset.parkName ?? null,
       search,
     });
     applyFilters({ announce: shouldAnnounce });
@@ -303,48 +325,22 @@ export function initGalleryFilters(root: Document = document): void {
     lastAnnouncement = "";
     applyFilters();
     updateUrl("push");
-    chips[0]?.focus();
+    getCheckedCategoryRadio()?.focus();
   }
 
-  chips.forEach((chip) => {
-    chip.addEventListener("click", () => {
-      selectCategory(chip.dataset.category ?? "all");
+  categoryRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (!radio.checked) return;
+      selectCategory(radio.value);
     });
   });
 
-  categoryGroup?.addEventListener("keydown", (e) => {
-    const chipList = [...chips];
-    const currentIndex = chipList.findIndex(
-      (chip) => chip.getAttribute("aria-checked") === "true",
-    );
-    if (currentIndex < 0) return;
-
-    let nextIndex = currentIndex;
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-      e.preventDefault();
-      nextIndex = (currentIndex + 1) % chipList.length;
-    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-      e.preventDefault();
-      nextIndex = (currentIndex - 1 + chipList.length) % chipList.length;
-    } else if (e.key === " " || e.key === "Spacebar") {
-      e.preventDefault();
-      selectCategory(chipList[currentIndex]!.dataset.category ?? "all");
-      return;
-    } else {
-      return;
-    }
-
-    const nextChip = chipList[nextIndex]!;
-    selectCategory(nextChip.dataset.category ?? "all", "replace", { announce: false });
-    nextChip.focus();
-  });
-
-  parkSelect.addEventListener("change", () => {
+  ui.parkSelect.addEventListener("change", () => {
     applyFilters();
     updateUrl("push");
   });
 
-  searchInput.addEventListener("input", () => {
+  ui.searchInput.addEventListener("input", () => {
     applyFilters({ announce: false, updateParkCounts: false });
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(() => {
@@ -353,7 +349,7 @@ export function initGalleryFilters(root: Document = document): void {
     }, SEARCH_DEBOUNCE_MS);
   });
 
-  clearFiltersBtn.addEventListener("click", clearAllFilters);
+  ui.clearFiltersBtn.addEventListener("click", clearAllFilters);
 
   window.addEventListener("popstate", () => {
     setFiltersFromUrl("none");
