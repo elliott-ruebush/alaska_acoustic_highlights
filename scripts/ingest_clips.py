@@ -52,6 +52,13 @@ class PhotoPlan:
     action: str = "copy"  # copy, skip, unmatched
 
 
+@dataclass(frozen=True)
+class PipelineStep:
+    label: str
+    script: str
+    args: tuple[str, ...] = ()
+
+
 def repo_relative(path: Path) -> str:
     return path.resolve().relative_to(PROJECT_ROOT.resolve()).as_posix()
 
@@ -204,6 +211,61 @@ def print_warnings(audio_plans: list[AudioPlan], photo_plans: list[PhotoPlan]) -
         print(f"\nMetadata overrides: {repo_relative(INGEST_OVERRIDES)} (applied at catalog build)")
 
 
+def build_pipeline_steps(
+    audio_plans: list[AudioPlan],
+    *,
+    skip_photos: bool,
+    photo_source: Path | None,
+) -> list[PipelineStep]:
+    steps: list[PipelineStep] = []
+
+    spectrogram_paths = spectrogram_inputs_for(audio_plans)
+    if spectrogram_paths:
+        steps.extend(
+            [
+                PipelineStep(
+                    "Generate spectrograms",
+                    "generate_highlights_spectrograms.py",
+                    ("--files", *[str(path) for path in spectrogram_paths]),
+                ),
+                PipelineStep(
+                    "Transcode to MP3",
+                    "transcode_highlights.py",
+                    ("--execute", "--remove-wav"),
+                ),
+                PipelineStep(
+                    "Fix MP3 metadata",
+                    "fix_highlights_metadata.py",
+                ),
+            ]
+        )
+
+    if audio_plans or not skip_photos:
+        steps.append(
+            PipelineStep("Build highlights catalog", "build_highlights_catalog.py")
+        )
+
+    if not skip_photos:
+        steps.append(
+            PipelineStep(
+                "Sync site photos to catalog",
+                "build_site_photos.py",
+                ("--sync-catalog", "--execute"),
+            )
+        )
+        if photo_source is not None and photo_source.is_dir():
+            steps.append(
+                PipelineStep(
+                    "Import site photos",
+                    "build_site_photos.py",
+                    ("--execute", "--source", str(photo_source)),
+                )
+            )
+
+    steps.append(PipelineStep("Validate catalog", "validate_highlights_catalog.py"))
+    return steps
+
+
 def print_pipeline_steps(
     *,
     execute: bool,
@@ -211,31 +273,20 @@ def print_pipeline_steps(
     skip_photos: bool,
     photo_source: Path | None,
 ) -> None:
-    spectrogram_paths = spectrogram_inputs_for(audio_plans)
+    steps = build_pipeline_steps(
+        audio_plans,
+        skip_photos=skip_photos,
+        photo_source=photo_source,
+    )
     mode = "Would run" if not execute else "Running"
     print(f"\n=== Pipeline ({mode.lower()}) ===\n")
 
-    step = 1
-    if audio_plans:
-        files_arg = " ".join(repo_relative(path) for path in spectrogram_paths)
-        print(f"  {step}. generate_highlights_spectrograms.py --files {files_arg or '(none)'}")
-        step += 1
-        print(f"  {step}. transcode_highlights.py --execute --remove-wav")
-        step += 1
-        print(f"  {step}. fix_highlights_metadata.py")
-        step += 1
-        print(f"  {step}. build_highlights_catalog.py")
-        step += 1
-
-    if not skip_photos:
-        print(f"  {step}. build_site_photos.py --sync-catalog --execute")
-        step += 1
-        if photo_source is not None:
-            print(
-                f"  {step}. build_site_photos.py --execute --source {photo_source}"
-            )
-            step += 1
-    print(f"  {step}. validate_highlights_catalog.py")
+    for index, step in enumerate(steps, start=1):
+        command = step.script
+        if step.args:
+            command = f"{command} {' '.join(step.args)}"
+        print(f"  {index}. {step.label}")
+        print(f"     {command}")
 
 
 def spectrogram_inputs_for(audio_plans: list[AudioPlan]) -> list[Path]:
@@ -296,47 +347,20 @@ def run_pipeline(
     skip_photos: bool,
     photo_source: Path | None,
 ) -> int:
-    exit_code = 0
+    steps = build_pipeline_steps(
+        audio_plans,
+        skip_photos=skip_photos,
+        photo_source=photo_source,
+    )
+    total = len(steps)
 
-    spectrogram_paths = spectrogram_inputs_for(audio_plans)
-    if spectrogram_paths:
-        spectrogram_args = ["--files", *[str(path) for path in spectrogram_paths]]
-        code = run_script("generate_highlights_spectrograms.py", *spectrogram_args)
+    for index, step in enumerate(steps, start=1):
+        print(f"\n=== Step {index}/{total}: {step.label} ===\n", flush=True)
+        code = run_script(step.script, *step.args)
         if code != 0:
             return code
 
-        code = run_script("transcode_highlights.py", "--execute", "--remove-wav")
-        if code != 0:
-            return code
-
-        code = run_script("fix_highlights_metadata.py")
-        if code != 0:
-            return code
-
-    if audio_plans or not skip_photos:
-        code = run_script("build_highlights_catalog.py")
-        if code != 0:
-            return code
-
-    if not skip_photos:
-        code = run_script("build_site_photos.py", "--sync-catalog", "--execute")
-        if code != 0:
-            return code
-        if photo_source is not None and photo_source.is_dir():
-            code = run_script(
-                "build_site_photos.py",
-                "--execute",
-                "--source",
-                str(photo_source),
-            )
-            if code != 0:
-                return code
-
-    code = run_script("validate_highlights_catalog.py")
-    if code != 0:
-        exit_code = code
-
-    return exit_code
+    return 0
 
 
 def parse_args() -> argparse.Namespace:
