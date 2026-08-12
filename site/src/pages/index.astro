@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ClipCard from "../components/ClipCard.astro";
+import GalleryFilters from "../components/GalleryFilters.astro";
+import { getAllClips, getCategories, getParks } from "../lib/catalog";
+import { withBase } from "../lib/paths";
+
+const clips = getAllClips();
+const categories = getCategories();
+const parks = getParks();
+---
+
+<BaseLayout>
+  <section class="hero">
+    <h1>Soundscapes of Alaska</h1>
+    <p class="lead">
+      A searchable library of soundscape recordings from Alaska National Parks. These highlights were selected and labeled by Halyn Betchkal with the National Park Service. Special thanks to Halyn for making this site possible!
+    </p>
+    <p class="lead">
+      Continue on to hear howling wolves, surging glaciers, chorusing birds, and more—each paired with a spectrogram.
+    </p>
+    <p class="lead">
+      Learn more about how this data was collected and what a spectrogram is on the <a href={withBase("about/")}>About page</a>.
+    </p>
+  </section>
+
+  <GalleryFilters clips={clips} categories={categories} parks={parks} />
+
+  <section id="recordings-grid" class="grid" aria-label="Recordings">
+    {clips.map((clip) => <ClipCard clip={clip} />)}
+  </section>
+</BaseLayout>
+
+<style>
+  .hero h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--color-forest);
+  }
+
+  .lead {
+    margin: 0 0 1.5rem;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 60ch;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+</style>

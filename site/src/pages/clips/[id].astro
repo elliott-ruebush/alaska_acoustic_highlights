@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CategoryBadge from "../../components/CategoryBadge.astro";
+import ClipDuration from "../../components/ClipDuration.astro";
+import ExternalLink from "../../components/ExternalLink.astro";
+import SitePhoto from "../../components/SitePhoto.astro";
+import SpectrogramPlayer from "../../components/SpectrogramPlayer.astro";
+import { getAllClips, formatParkLabel, formatSiteLabel, getLocationLabelSpoken, getParkUrl } from "../../lib/catalog";
+import { formatFileSize } from "../../lib/format";
+import { withBase } from "../../lib/paths";
+
+export async function getStaticPaths() {
+  return getAllClips().map((clip) => ({
+    params: { id: clip.id },
+    props: { clip },
+  }));
+}
+
+const { clip } = Astro.props;
+---
+
+<BaseLayout title={clip.title} description={clip.description}>
+  <a href="#audio-player" class="skip-link">Skip to player controls</a>
+  <p><a href={withBase("")}>&larr; Back to all recordings</a></p>
+
+  <article class="clip-detail">
+    <h1>{clip.title}</h1>
+
+    <div class="meta-row">
+      <CategoryBadge category={clip.category} />
+      {(clip.park_code || formatSiteLabel(clip)) && (
+        <>
+          <span class="sr-only">, Location: {getLocationLabelSpoken(clip)}</span>
+          <span class="meta-location">
+            {clip.park_code && (
+              <ExternalLink
+                href={getParkUrl(clip.park_code)}
+                label={`${formatParkLabel(clip.park_code)} on NPS.gov`}
+              />
+            )}
+            {clip.park_code && formatSiteLabel(clip) && <> · </>}
+            {formatSiteLabel(clip)}
+          </span>
+        </>
+      )}
+      {clip.recorded_date && (
+        <>
+          <span class="sr-only">, Recorded {clip.recorded_date}</span>
+          <span aria-hidden="true">{clip.recorded_date}</span>
+        </>
+      )}
+      <span class="sr-only">, </span>
+      <ClipDuration durationSec={clip.duration_sec} />
+    </div>
+
+    <p class="description">{clip.description}</p>
+
+    <SpectrogramPlayer clip={clip} />
+
+    <p>
+      <a class="btn" href={withBase(clip.audio_path)} download>
+        Download MP3 for {clip.title} ({formatFileSize(clip.file_size_bytes)})
+      </a>
+    </p>
+
+    <p class="credit">
+      Recorded by {clip.artist ?? "National Park Service"}
+      {clip.species_common && (
+        <>
+          <br />
+          Species: {clip.species_common}
+          {clip.species_scientific && <> (<em>{clip.species_scientific}</em>)</>}
+        </>
+      )}
+      {clip.xc_quality && (
+        <>
+          <br />
+          Quality: {clip.xc_quality}
+        </>
+      )}
+    </p>
+
+    <SitePhoto clip={clip} />
+  </article>
+</BaseLayout>
+
+<style>
+  .clip-detail h1 {
+    margin: 0.5rem 0 0.75rem;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    color: var(--color-forest);
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .description {
+    font-size: 1.05rem;
+    max-width: 65ch;
+  }
+
+  .credit {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+</style>

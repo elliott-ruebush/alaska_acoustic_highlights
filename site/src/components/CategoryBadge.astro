@@ -1,0 +1,17 @@
+---
+import type { Clip } from "../lib/catalog";
+import { categorySlug } from "../lib/format";
+
+interface Props {
+  category: Clip["category"];
+}
+
+const { category } = Astro.props;
+---
+
+<span
+  class={`badge badge--${categorySlug(category)}`}
+>
+  <span class="sr-only">Category: {category}</span>
+  <span aria-hidden="true">{category}</span>
+</span>

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "site_photos.schema.json",
+  "title": "Site photo",
+  "description": "A cardinal-direction composite photo of an acoustic monitoring site.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "path",
+      "site_key",
+      "park_code",
+      "site_code",
+      "taken_date",
+      "source_filename"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-z0-9]+_20\\d{6}$"
+      },
+      "path": {
+        "type": "string",
+        "minLength": 1
+      },
+      "site_key": {
+        "type": "string",
+        "minLength": 1
+      },
+      "park_code": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 4
+      },
+      "site_code": {
+        "type": "string",
+        "minLength": 1
+      },
+      "taken_date": {
+        "type": "string",
+        "pattern": "^20\\d{2}-\\d{2}-\\d{2}$"
+      },
+      "source_filename": {
+        "type": ["string", "null"]
+      }
+    }
+  }
+}

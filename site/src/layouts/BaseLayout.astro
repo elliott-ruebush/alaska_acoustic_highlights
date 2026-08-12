@@ -1,0 +1,60 @@
+---
+import { withBase } from "../lib/paths";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Soundscapes of Alaska",
+  description = "A searchable library of NPS Alaska soundscape recordings with synchronized spectrograms.",
+} = Astro.props;
+
+const pageTitle = title === "Soundscapes of Alaska" ? title : `${title} · Soundscapes of Alaska`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={withBase("favicon.svg")} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="site-header">
+      <div class="container">
+        <div>
+          <p class="wordmark"><a href={withBase("")}>Soundscapes of Alaska</a></p>
+          <p class="tagline">Alaskan National Park Acoustic Highlights</p>
+        </div>
+        <nav class="site-nav" aria-label="Main">
+          <a href={withBase("")}>Home</a>
+          <a href={withBase("about/")}>About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          This is an unofficial project using data provided by the National Park Service. It is not an official nps.gov website.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

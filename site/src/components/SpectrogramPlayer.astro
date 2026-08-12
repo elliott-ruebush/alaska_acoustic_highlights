@@ -1,0 +1,217 @@
+---
+import type { Clip } from "../lib/catalog";
+import { formatDuration } from "../lib/format";
+import { withBase } from "../lib/paths";
+
+interface Props {
+  clip: Clip;
+}
+
+const { clip } = Astro.props;
+const audioSrc = withBase(clip.audio_path);
+const specSrc = withBase(clip.spectrogram_path);
+const durationLabel = formatDuration(clip.duration_sec);
+---
+
+<section
+  id="audio-player"
+  class="player"
+  tabindex="-1"
+  aria-label={`Audio player: ${clip.title}`}
+  data-audio-src={audioSrc}
+  data-duration={clip.duration_sec}
+>
+  <p class="sr-only player-status" aria-live="polite" aria-atomic="true"></p>
+
+  <div class="spectrogram-frame">
+    <img
+      src={specSrc}
+      alt={`Spectrogram: ${clip.description}`}
+    />
+    <div class="cursor" aria-hidden="true"></div>
+  </div>
+
+  <label class="seek-control">
+    <span class="sr-only seek-label">Playback position</span>
+    <input
+      type="range"
+      class="seek-slider"
+      min="0"
+      max={clip.duration_sec}
+      value="0"
+      step="any"
+      disabled
+      aria-valuetext={`0:00 of ${durationLabel}`}
+    />
+  </label>
+
+  <div class="controls-bar">
+    <span class="player-time" aria-hidden="true">
+      <span class="time-elapsed">0:00</span>
+      <span class="time-separator"> / </span>
+      <span class="time-total">{durationLabel}</span>
+    </span>
+
+    <div class="controls">
+      <button type="button" class="btn play-pause">
+        Play
+      </button>
+
+      <div class="controls-secondary">
+        <label class="volume-control">
+          <span class="volume-label">Volume</span>
+          <input
+            type="range"
+            class="volume-slider"
+            min="0"
+            max="100"
+            value="100"
+            aria-valuetext="100%"
+            aria-label="Playback volume"
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <details class="player-shortcuts">
+    <summary>Keyboard shortcuts</summary>
+    <ul>
+      <li>K: play or pause from anywhere on this page</li>
+      <li>Space: play or pause when focus is in the player (including after Skip to player controls)</li>
+      <li>Left or right arrow: seek 5 seconds</li>
+      <li>Shift + left or right arrow: seek 30 seconds</li>
+      <li>Home or End: jump to start or end</li>
+      <li>M: mute or unmute</li>
+      <li>Clicking the spectrogram seeks with a mouse; use the position slider for keyboard seeking</li>
+    </ul>
+  </details>
+</section>
+
+<script>
+  import { initPlayer } from "../lib/playerController";
+
+  document.querySelectorAll<HTMLElement>(".player").forEach(initPlayer);
+</script>
+
+<style>
+  .player {
+    margin: 1.5rem 0;
+    scroll-margin-top: 1rem;
+  }
+
+  .player:focus {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 4px;
+  }
+
+  .spectrogram-frame {
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .spectrogram-frame img {
+    width: 100%;
+    display: block;
+  }
+
+  .cursor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-brown);
+    pointer-events: none;
+    left: 0%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .seek-control {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .controls-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+  }
+
+  .player-time {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .controls-secondary {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-width: min(100%, 12rem);
+  }
+
+  .seek-slider {
+    display: block;
+    width: 100%;
+    accent-color: var(--color-brown);
+    cursor: pointer;
+  }
+
+  .volume-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    color: var(--color-brown-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .volume-label {
+    flex-shrink: 0;
+  }
+
+  .volume-slider {
+    width: 8rem;
+    max-width: 100%;
+    accent-color: var(--color-brown);
+    cursor: pointer;
+  }
+
+  .player-shortcuts {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .player-shortcuts summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-brown-dark);
+  }
+
+  .player-shortcuts ul {
+    margin: 0.35rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .play-pause:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+</style>

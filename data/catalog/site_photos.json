@@ -1,0 +1,920 @@
+[
+  {
+    "id": "denaback_20140101",
+    "path": "highlights/site_photos/denaback_20140101.webp",
+    "site_key": "DENABACK",
+    "park_code": "DENA",
+    "site_code": "BACK",
+    "taken_date": "2014-01-01",
+    "source_filename": "denaback_20140101.webp"
+  },
+  {
+    "id": "denaback_20140724",
+    "path": "highlights/site_photos/denaback_20140724.webp",
+    "site_key": "DENABACK",
+    "park_code": "DENA",
+    "site_code": "BACK",
+    "taken_date": "2014-07-24",
+    "source_filename": "denaback_20140724.webp"
+  },
+  {
+    "id": "denabicr_20130101",
+    "path": "highlights/site_photos/denabicr_20130101.webp",
+    "site_key": "DENABICR",
+    "park_code": "DENA",
+    "site_code": "BICR",
+    "taken_date": "2013-01-01",
+    "source_filename": "denabicr_20130101.webp"
+  },
+  {
+    "id": "denabicr_20130809",
+    "path": "highlights/site_photos/denabicr_20130809.webp",
+    "site_key": "DENABICR",
+    "park_code": "DENA",
+    "site_code": "BICR",
+    "taken_date": "2013-08-09",
+    "source_filename": "denabicr_20130809.webp"
+  },
+  {
+    "id": "denabmul_20210101",
+    "path": "highlights/site_photos/denabmul_20210101.webp",
+    "site_key": "DENABMUL",
+    "park_code": "DENA",
+    "site_code": "BMUL",
+    "taken_date": "2021-01-01",
+    "source_filename": "denabmul_20210101.webp"
+  },
+  {
+    "id": "denabmul_20210401",
+    "path": "highlights/site_photos/denabmul_20210401.webp",
+    "site_key": "DENABMUL",
+    "park_code": "DENA",
+    "site_code": "BMUL",
+    "taken_date": "2021-04-01",
+    "source_filename": "denabmul_20210401.webp"
+  },
+  {
+    "id": "denacabn_20130101",
+    "path": "highlights/site_photos/denacabn_20130101.webp",
+    "site_key": "DENACABN",
+    "park_code": "DENA",
+    "site_code": "CABN",
+    "taken_date": "2013-01-01",
+    "source_filename": "denacabn_20130101.webp"
+  },
+  {
+    "id": "denacath_20120101",
+    "path": "highlights/site_photos/denacath_20120101.webp",
+    "site_key": "DENACATH",
+    "park_code": "DENA",
+    "site_code": "CATH",
+    "taken_date": "2012-01-01",
+    "source_filename": "denacath_20120101.webp"
+  },
+  {
+    "id": "denacath_20170101",
+    "path": "highlights/site_photos/denacath_20170101.webp",
+    "site_key": "DENACATH",
+    "park_code": "DENA",
+    "site_code": "CATH",
+    "taken_date": "2017-01-01",
+    "source_filename": "denacath_20170101.webp"
+  },
+  {
+    "id": "denafang_20110101",
+    "path": "highlights/site_photos/denafang_20110101.webp",
+    "site_key": "DENAFANG",
+    "park_code": "DENA",
+    "site_code": "FANG",
+    "taken_date": "2011-01-01",
+    "source_filename": "denafang_20110101.webp"
+  },
+  {
+    "id": "denafang_20110708",
+    "path": "highlights/site_photos/denafang_20110708.webp",
+    "site_key": "DENAFANG",
+    "park_code": "DENA",
+    "site_code": "FANG",
+    "taken_date": "2011-07-08",
+    "source_filename": "denafang_20110708.webp"
+  },
+  {
+    "id": "denafang_20130101",
+    "path": "highlights/site_photos/denafang_20130101.webp",
+    "site_key": "DENAFANG",
+    "park_code": "DENA",
+    "site_code": "FANG",
+    "taken_date": "2013-01-01",
+    "source_filename": "denafang_20130101.webp"
+  },
+  {
+    "id": "denahauk_20140101",
+    "path": "highlights/site_photos/denahauk_20140101.webp",
+    "site_key": "DENAHAUK",
+    "park_code": "DENA",
+    "site_code": "HAUK",
+    "taken_date": "2014-01-01",
+    "source_filename": "denahauk_20140101.webp"
+  },
+  {
+    "id": "denahauk_20140607",
+    "path": "highlights/site_photos/denahauk_20140607.webp",
+    "site_key": "DENAHAUK",
+    "park_code": "DENA",
+    "site_code": "HAUK",
+    "taken_date": "2014-06-07",
+    "source_filename": "denahauk_20140607.webp"
+  },
+  {
+    "id": "denahauk_20140617",
+    "path": "highlights/site_photos/denahauk_20140617.webp",
+    "site_key": "DENAHAUK",
+    "park_code": "DENA",
+    "site_code": "HAUK",
+    "taken_date": "2014-06-17",
+    "source_filename": "denahauk_20140617.webp"
+  },
+  {
+    "id": "denahig1_20120101",
+    "path": "highlights/site_photos/denahig1_20120101.webp",
+    "site_key": "DENAHIG1",
+    "park_code": "DENA",
+    "site_code": "HIG1",
+    "taken_date": "2012-01-01",
+    "source_filename": "denahig1_20120101.webp"
+  },
+  {
+    "id": "denahig1_20120802",
+    "path": "highlights/site_photos/denahig1_20120802.webp",
+    "site_key": "DENAHIG1",
+    "park_code": "DENA",
+    "site_code": "HIG1",
+    "taken_date": "2012-08-02",
+    "source_filename": "denahig1_20120802.webp"
+  },
+  {
+    "id": "denahog3_20120101",
+    "path": "highlights/site_photos/denahog3_20120101.webp",
+    "site_key": "DENAHOG3",
+    "park_code": "DENA",
+    "site_code": "HOG3",
+    "taken_date": "2012-01-01",
+    "source_filename": "denahog3_20120101.webp"
+  },
+  {
+    "id": "denahog3_20120605",
+    "path": "highlights/site_photos/denahog3_20120605.webp",
+    "site_key": "DENAHOG3",
+    "park_code": "DENA",
+    "site_code": "HOG3",
+    "taken_date": "2012-06-05",
+    "source_filename": "denahog3_20120605.webp"
+  },
+  {
+    "id": "denahots_20140101",
+    "path": "highlights/site_photos/denahots_20140101.webp",
+    "site_key": "DENAHOTS",
+    "park_code": "DENA",
+    "site_code": "HOTS",
+    "taken_date": "2014-01-01",
+    "source_filename": "denahots_20140101.webp"
+  },
+  {
+    "id": "denahots_20140602",
+    "path": "highlights/site_photos/denahots_20140602.webp",
+    "site_key": "DENAHOTS",
+    "park_code": "DENA",
+    "site_code": "HOTS",
+    "taken_date": "2014-06-02",
+    "source_filename": "denahots_20140602.webp"
+  },
+  {
+    "id": "denakich_20120101",
+    "path": "highlights/site_photos/denakich_20120101.webp",
+    "site_key": "DENAKICH",
+    "park_code": "DENA",
+    "site_code": "KICH",
+    "taken_date": "2012-01-01",
+    "source_filename": "denakich_20120101.webp"
+  },
+  {
+    "id": "denakich_20120522",
+    "path": "highlights/site_photos/denakich_20120522.webp",
+    "site_key": "DENAKICH",
+    "park_code": "DENA",
+    "site_code": "KICH",
+    "taken_date": "2012-05-22",
+    "source_filename": "denakich_20120522.webp"
+  },
+  {
+    "id": "denakich_20120524",
+    "path": "highlights/site_photos/denakich_20120524.webp",
+    "site_key": "DENAKICH",
+    "park_code": "DENA",
+    "site_code": "KICH",
+    "taken_date": "2012-05-24",
+    "source_filename": "denakich_20120524.webp"
+  },
+  {
+    "id": "denamoos_20180101",
+    "path": "highlights/site_photos/denamoos_20180101.webp",
+    "site_key": "DENAMOOS",
+    "park_code": "DENA",
+    "site_code": "MOOS",
+    "taken_date": "2018-01-01",
+    "source_filename": "denamoos_20180101.webp"
+  },
+  {
+    "id": "denamoos_20180814",
+    "path": "highlights/site_photos/denamoos_20180814.webp",
+    "site_key": "DENAMOOS",
+    "park_code": "DENA",
+    "site_code": "MOOS",
+    "taken_date": "2018-08-14",
+    "source_filename": "denamoos_20180814.webp"
+  },
+  {
+    "id": "denamuri_20150101",
+    "path": "highlights/site_photos/denamuri_20150101.webp",
+    "site_key": "DENAMURI",
+    "park_code": "DENA",
+    "site_code": "MURI",
+    "taken_date": "2015-01-01",
+    "source_filename": "denamuri_20150101.webp"
+  },
+  {
+    "id": "denamuri_20150519",
+    "path": "highlights/site_photos/denamuri_20150519.webp",
+    "site_key": "DENAMURI",
+    "park_code": "DENA",
+    "site_code": "MURI",
+    "taken_date": "2015-05-19",
+    "source_filename": "denamuri_20150519.webp"
+  },
+  {
+    "id": "denamuri_20150523",
+    "path": "highlights/site_photos/denamuri_20150523.webp",
+    "site_key": "DENAMURI",
+    "park_code": "DENA",
+    "site_code": "MURI",
+    "taken_date": "2015-05-23",
+    "source_filename": "denamuri_20150523.webp"
+  },
+  {
+    "id": "denamuri_20150526",
+    "path": "highlights/site_photos/denamuri_20150526.webp",
+    "site_key": "DENAMURI",
+    "park_code": "DENA",
+    "site_code": "MURI",
+    "taken_date": "2015-05-26",
+    "source_filename": "denamuri_20150526.webp"
+  },
+  {
+    "id": "denapol2_20120101",
+    "path": "highlights/site_photos/denapol2_20120101.webp",
+    "site_key": "DENAPOL2",
+    "park_code": "DENA",
+    "site_code": "POL2",
+    "taken_date": "2012-01-01",
+    "source_filename": "denapol2_20120101.webp"
+  },
+  {
+    "id": "denarugl_20170101",
+    "path": "highlights/site_photos/denarugl_20170101.webp",
+    "site_key": "DENARUGL",
+    "park_code": "DENA",
+    "site_code": "RUGL",
+    "taken_date": "2017-01-01",
+    "source_filename": "denarugl_20170101.webp"
+  },
+  {
+    "id": "denaruth_20190101",
+    "path": "highlights/site_photos/denaruth_20190101.webp",
+    "site_key": "DENARUTH",
+    "park_code": "DENA",
+    "site_code": "RUTH",
+    "taken_date": "2019-01-01",
+    "source_filename": "denaruth_20190101.webp"
+  },
+  {
+    "id": "denaruth_20190529",
+    "path": "highlights/site_photos/denaruth_20190529.webp",
+    "site_key": "DENARUTH",
+    "park_code": "DENA",
+    "site_code": "RUTH",
+    "taken_date": "2019-05-29",
+    "source_filename": "denaruth_20190529.webp"
+  },
+  {
+    "id": "denasan3_20120101",
+    "path": "highlights/site_photos/denasan3_20120101.webp",
+    "site_key": "DENASAN3",
+    "park_code": "DENA",
+    "site_code": "SAN3",
+    "taken_date": "2012-01-01",
+    "source_filename": "denasan3_20120101.webp"
+  },
+  {
+    "id": "denaskgl_20210101",
+    "path": "highlights/site_photos/denaskgl_20210101.webp",
+    "site_key": "DENASKGL",
+    "park_code": "DENA",
+    "site_code": "SKGL",
+    "taken_date": "2021-01-01",
+    "source_filename": "denaskgl_20210101.webp"
+  },
+  {
+    "id": "denasush_20260101",
+    "path": "highlights/site_photos/denasush_20260101.webp",
+    "site_key": "DENASUSH",
+    "park_code": "DENA",
+    "site_code": "SUSH",
+    "taken_date": "2026-01-01",
+    "source_filename": "denasush_20260101.webp"
+  },
+  {
+    "id": "denasush_20260612",
+    "path": "highlights/site_photos/denasush_20260612.webp",
+    "site_key": "DENASUSH",
+    "park_code": "DENA",
+    "site_code": "SUSH",
+    "taken_date": "2026-06-12",
+    "source_filename": "denasush_20260612.webp"
+  },
+  {
+    "id": "denathri_20150101",
+    "path": "highlights/site_photos/denathri_20150101.webp",
+    "site_key": "DENATHRI",
+    "park_code": "DENA",
+    "site_code": "THRI",
+    "taken_date": "2015-01-01",
+    "source_filename": "denathri_20150101.webp"
+  },
+  {
+    "id": "denatoko_20160101",
+    "path": "highlights/site_photos/denatoko_20160101.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2016-01-01",
+    "source_filename": "denatoko_20160101.webp"
+  },
+  {
+    "id": "denatoko_20160507",
+    "path": "highlights/site_photos/denatoko_20160507.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2016-05-07",
+    "source_filename": "denatoko_20160507.webp"
+  },
+  {
+    "id": "denatoko_20160511",
+    "path": "highlights/site_photos/denatoko_20160511.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2016-05-11",
+    "source_filename": "denatoko_20160511.webp"
+  },
+  {
+    "id": "denatoko_20160512",
+    "path": "highlights/site_photos/denatoko_20160512.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2016-05-12",
+    "source_filename": "denatoko_20160512.webp"
+  },
+  {
+    "id": "denatoko_20160513",
+    "path": "highlights/site_photos/denatoko_20160513.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2016-05-13",
+    "source_filename": "denatoko_20160513.webp"
+  },
+  {
+    "id": "denatoko_20160616",
+    "path": "highlights/site_photos/denatoko_20160616.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2016-06-16",
+    "source_filename": "denatoko_20160616.webp"
+  },
+  {
+    "id": "denatoko_20190101",
+    "path": "highlights/site_photos/denatoko_20190101.webp",
+    "site_key": "DENATOKO",
+    "park_code": "DENA",
+    "site_code": "TOKO",
+    "taken_date": "2019-01-01",
+    "source_filename": "denatoko_20190101.webp"
+  },
+  {
+    "id": "denatrla_20170101",
+    "path": "highlights/site_photos/denatrla_20170101.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2017-01-01",
+    "source_filename": "denatrla_20170101.webp"
+  },
+  {
+    "id": "denatrla_20180101",
+    "path": "highlights/site_photos/denatrla_20180101.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2018-01-01",
+    "source_filename": "denatrla_20180101.webp"
+  },
+  {
+    "id": "denatrla_20240101",
+    "path": "highlights/site_photos/denatrla_20240101.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2024-01-01",
+    "source_filename": "denatrla_20240101.webp"
+  },
+  {
+    "id": "denatrla_20240624",
+    "path": "highlights/site_photos/denatrla_20240624.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2024-06-24",
+    "source_filename": "denatrla_20240624.webp"
+  },
+  {
+    "id": "denatrla_20240629",
+    "path": "highlights/site_photos/denatrla_20240629.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2024-06-29",
+    "source_filename": "denatrla_20240629.webp"
+  },
+  {
+    "id": "denatrla_20240719",
+    "path": "highlights/site_photos/denatrla_20240719.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2024-07-19",
+    "source_filename": "denatrla_20240719.webp"
+  },
+  {
+    "id": "denaupel_20130101",
+    "path": "highlights/site_photos/denaupel_20130101.webp",
+    "site_key": "DENAUPEL",
+    "park_code": "DENA",
+    "site_code": "UPEL",
+    "taken_date": "2013-01-01",
+    "source_filename": "denaupel_20130101.webp"
+  },
+  {
+    "id": "denautok_20190101",
+    "path": "highlights/site_photos/denautok_20190101.webp",
+    "site_key": "DENAUTOK",
+    "park_code": "DENA",
+    "site_code": "UTOK",
+    "taken_date": "2019-01-01",
+    "source_filename": "denautok_20190101.webp"
+  },
+  {
+    "id": "denauyen_20120101",
+    "path": "highlights/site_photos/denauyen_20120101.webp",
+    "site_key": "DENAUYEN",
+    "park_code": "DENA",
+    "site_code": "UYEN",
+    "taken_date": "2012-01-01",
+    "source_filename": "denauyen_20120101.webp"
+  },
+  {
+    "id": "denauyen_20120520",
+    "path": "highlights/site_photos/denauyen_20120520.webp",
+    "site_key": "DENAUYEN",
+    "park_code": "DENA",
+    "site_code": "UYEN",
+    "taken_date": "2012-05-20",
+    "source_filename": "denauyen_20120520.webp"
+  },
+  {
+    "id": "denauyen_20120521",
+    "path": "highlights/site_photos/denauyen_20120521.webp",
+    "site_key": "DENAUYEN",
+    "park_code": "DENA",
+    "site_code": "UYEN",
+    "taken_date": "2012-05-21",
+    "source_filename": "denauyen_20120521.webp"
+  },
+  {
+    "id": "denauyen_20120523",
+    "path": "highlights/site_photos/denauyen_20120523.webp",
+    "site_key": "DENAUYEN",
+    "park_code": "DENA",
+    "site_code": "UYEN",
+    "taken_date": "2012-05-23",
+    "source_filename": "denauyen_20120523.webp"
+  },
+  {
+    "id": "denauyen_20120524",
+    "path": "highlights/site_photos/denauyen_20120524.webp",
+    "site_key": "DENAUYEN",
+    "park_code": "DENA",
+    "site_code": "UYEN",
+    "taken_date": "2012-05-24",
+    "source_filename": "denauyen_20120524.webp"
+  },
+  {
+    "id": "denawocr_20150101",
+    "path": "highlights/site_photos/denawocr_20150101.webp",
+    "site_key": "DENAWOCR",
+    "park_code": "DENA",
+    "site_code": "WOCR",
+    "taken_date": "2015-01-01",
+    "source_filename": "denawocr_20150101.webp"
+  },
+  {
+    "id": "gaararri_20180101",
+    "path": "highlights/site_photos/gaararri_20180101.webp",
+    "site_key": "GAARARRI",
+    "park_code": "GAAR",
+    "site_code": "ARRI",
+    "taken_date": "2018-01-01",
+    "source_filename": "gaararri_20180101.webp"
+  },
+  {
+    "id": "gaararri_20180625",
+    "path": "highlights/site_photos/gaararri_20180625.webp",
+    "site_key": "GAARARRI",
+    "park_code": "GAAR",
+    "site_code": "ARRI",
+    "taken_date": "2018-06-25",
+    "source_filename": "gaararri_20180625.webp"
+  },
+  {
+    "id": "gaararri_20180628",
+    "path": "highlights/site_photos/gaararri_20180628.webp",
+    "site_key": "GAARARRI",
+    "park_code": "GAAR",
+    "site_code": "ARRI",
+    "taken_date": "2018-06-28",
+    "source_filename": "gaararri_20180628.webp"
+  },
+  {
+    "id": "gaararri_20180723",
+    "path": "highlights/site_photos/gaararri_20180723.webp",
+    "site_key": "GAARARRI",
+    "park_code": "GAAR",
+    "site_code": "ARRI",
+    "taken_date": "2018-07-23",
+    "source_filename": "gaararri_20180723.webp"
+  },
+  {
+    "id": "gaaritki_20190101",
+    "path": "highlights/site_photos/gaaritki_20190101.webp",
+    "site_key": "GAARITKI",
+    "park_code": "GAAR",
+    "site_code": "ITKI",
+    "taken_date": "2019-01-01",
+    "source_filename": "gaaritki_20190101.webp"
+  },
+  {
+    "id": "gaarmwal_20140101",
+    "path": "highlights/site_photos/gaarmwal_20140101.webp",
+    "site_key": "GAARMWAL",
+    "park_code": "GAAR",
+    "site_code": "MWAL",
+    "taken_date": "2014-01-01",
+    "source_filename": "gaarmwal_20140101.webp"
+  },
+  {
+    "id": "gaarnnut_20140101",
+    "path": "highlights/site_photos/gaarnnut_20140101.webp",
+    "site_key": "GAARNNUT",
+    "park_code": "GAAR",
+    "site_code": "NNUT",
+    "taken_date": "2014-01-01",
+    "source_filename": "gaarnnut_20140101.webp"
+  },
+  {
+    "id": "gaarnnut_20140705",
+    "path": "highlights/site_photos/gaarnnut_20140705.webp",
+    "site_key": "GAARNNUT",
+    "park_code": "GAAR",
+    "site_code": "NNUT",
+    "taken_date": "2014-07-05",
+    "source_filename": "gaarnnut_20140705.webp"
+  },
+  {
+    "id": "gaarnwal_20140101",
+    "path": "highlights/site_photos/gaarnwal_20140101.webp",
+    "site_key": "GAARNWAL",
+    "park_code": "GAAR",
+    "site_code": "NWAL",
+    "taken_date": "2014-01-01",
+    "source_filename": "gaarnwal_20140101.webp"
+  },
+  {
+    "id": "gaarpala_20190101",
+    "path": "highlights/site_photos/gaarpala_20190101.webp",
+    "site_key": "GAARPALA",
+    "park_code": "GAAR",
+    "site_code": "PALA",
+    "taken_date": "2019-01-01",
+    "source_filename": "gaarpala_20190101.webp"
+  },
+  {
+    "id": "gaarupno_20180101",
+    "path": "highlights/site_photos/gaarupno_20180101.webp",
+    "site_key": "GAARUPNO",
+    "park_code": "GAAR",
+    "site_code": "UPNO",
+    "taken_date": "2018-01-01",
+    "source_filename": "gaarupno_20180101.webp"
+  },
+  {
+    "id": "gaarupno_20180607",
+    "path": "highlights/site_photos/gaarupno_20180607.webp",
+    "site_key": "GAARUPNO",
+    "park_code": "GAAR",
+    "site_code": "UPNO",
+    "taken_date": "2018-06-07",
+    "source_filename": "gaarupno_20180607.webp"
+  },
+  {
+    "id": "gaarupno_20180726",
+    "path": "highlights/site_photos/gaarupno_20180726.webp",
+    "site_key": "GAARUPNO",
+    "park_code": "GAAR",
+    "site_code": "UPNO",
+    "taken_date": "2018-07-26",
+    "source_filename": "gaarupno_20180726.webp"
+  },
+  {
+    "id": "glbabartc_20200101",
+    "path": "highlights/site_photos/glbabartc_20200101.webp",
+    "site_key": "GLBABARTC",
+    "park_code": "GLBA",
+    "site_code": "BARTC",
+    "taken_date": "2020-01-01",
+    "source_filename": "glbabartc_20200101.webp"
+  },
+  {
+    "id": "glbabartc_20210101",
+    "path": "highlights/site_photos/glbabartc_20210101.webp",
+    "site_key": "GLBABARTC",
+    "park_code": "GLBA",
+    "site_code": "BARTC",
+    "taken_date": "2021-01-01",
+    "source_filename": "glbabartc_20210101.webp"
+  },
+  {
+    "id": "glbabartc_20210628",
+    "path": "highlights/site_photos/glbabartc_20210628.webp",
+    "site_key": "GLBABARTC",
+    "park_code": "GLBA",
+    "site_code": "BARTC",
+    "taken_date": "2021-06-28",
+    "source_filename": "glbabartc_20210628.webp"
+  },
+  {
+    "id": "glbamcleod_20210101",
+    "path": "highlights/site_photos/glbamcleod_20210101.webp",
+    "site_key": "GLBAMCLEOD",
+    "park_code": "GLBA",
+    "site_code": "MCLEOD",
+    "taken_date": "2021-01-01",
+    "source_filename": "glbamcleod_20210101.webp"
+  },
+  {
+    "id": "glbarendu_20220612",
+    "path": "highlights/site_photos/glbarendu_20220612.webp",
+    "site_key": "GLBARENDU",
+    "park_code": "GLBA",
+    "site_code": "RENDU",
+    "taken_date": "2022-06-12",
+    "source_filename": "glbarendu_20220612.webp"
+  },
+  {
+    "id": "glbarendu_20220613",
+    "path": "highlights/site_photos/glbarendu_20220613.webp",
+    "site_key": "GLBARENDU",
+    "park_code": "GLBA",
+    "site_code": "RENDU",
+    "taken_date": "2022-06-13",
+    "source_filename": "glbarendu_20220613.webp"
+  },
+  {
+    "id": "glbarendu_20220616",
+    "path": "highlights/site_photos/glbarendu_20220616.webp",
+    "site_key": "GLBARENDU",
+    "park_code": "GLBA",
+    "site_code": "RENDU",
+    "taken_date": "2022-06-16",
+    "source_filename": "glbarendu_20220616.webp"
+  },
+  {
+    "id": "glbarendu_20230101",
+    "path": "highlights/site_photos/glbarendu_20230101.webp",
+    "site_key": "GLBARENDU",
+    "park_code": "GLBA",
+    "site_code": "RENDU",
+    "taken_date": "2023-01-01",
+    "source_filename": "glbarendu_20230101.webp"
+  },
+  {
+    "id": "katmcros_20170101",
+    "path": "highlights/site_photos/katmcros_20170101.webp",
+    "site_key": "KATMCROS",
+    "park_code": "KATM",
+    "site_code": "CROS",
+    "taken_date": "2017-01-01",
+    "source_filename": "katmcros_20170101.webp"
+  },
+  {
+    "id": "katmdori_20160101",
+    "path": "highlights/site_photos/katmdori_20160101.webp",
+    "site_key": "KATMDORI",
+    "park_code": "KATM",
+    "site_code": "DORI",
+    "taken_date": "2016-01-01",
+    "source_filename": "katmdori_20160101.webp"
+  },
+  {
+    "id": "katmjojo_20160101",
+    "path": "highlights/site_photos/katmjojo_20160101.webp",
+    "site_key": "KATMJOJO",
+    "park_code": "KATM",
+    "site_code": "JOJO",
+    "taken_date": "2016-01-01",
+    "source_filename": "katmjojo_20160101.webp"
+  },
+  {
+    "id": "katmjojo_20160710",
+    "path": "highlights/site_photos/katmjojo_20160710.webp",
+    "site_key": "KATMJOJO",
+    "park_code": "KATM",
+    "site_code": "JOJO",
+    "taken_date": "2016-07-10",
+    "source_filename": "katmjojo_20160710.webp"
+  },
+  {
+    "id": "katmkaba_20160101",
+    "path": "highlights/site_photos/katmkaba_20160101.webp",
+    "site_key": "KATMKABA",
+    "park_code": "KATM",
+    "site_code": "KABA",
+    "taken_date": "2016-01-01",
+    "source_filename": "katmkaba_20160101.webp"
+  },
+  {
+    "id": "katmkaba_20160823",
+    "path": "highlights/site_photos/katmkaba_20160823.webp",
+    "site_key": "KATMKABA",
+    "park_code": "KATM",
+    "site_code": "KABA",
+    "taken_date": "2016-08-23",
+    "source_filename": "katmkaba_20160823.webp"
+  },
+  {
+    "id": "katmtact_20170101",
+    "path": "highlights/site_photos/katmtact_20170101.webp",
+    "site_key": "KATMTACT",
+    "park_code": "KATM",
+    "site_code": "TACT",
+    "taken_date": "2017-01-01",
+    "source_filename": "katmtact_20170101.webp"
+  },
+  {
+    "id": "laclchba_20180101",
+    "path": "highlights/site_photos/laclchba_20180101.webp",
+    "site_key": "LACLCHBA",
+    "park_code": "LACL",
+    "site_code": "CHBA",
+    "taken_date": "2018-01-01",
+    "source_filename": "laclchba_20180101.webp"
+  },
+  {
+    "id": "laclhanm_20190101",
+    "path": "highlights/site_photos/laclhanm_20190101.webp",
+    "site_key": "LACLHANM",
+    "park_code": "LACL",
+    "site_code": "HANM",
+    "taken_date": "2019-01-01",
+    "source_filename": "laclhanm_20190101.webp"
+  },
+  {
+    "id": "laclkijk_20180101",
+    "path": "highlights/site_photos/laclkijk_20180101.webp",
+    "site_key": "LACLKIJK",
+    "park_code": "LACL",
+    "site_code": "KIJK",
+    "taken_date": "2018-01-01",
+    "source_filename": "laclkijk_20180101.webp"
+  },
+  {
+    "id": "laclkijk_20180619",
+    "path": "highlights/site_photos/laclkijk_20180619.webp",
+    "site_key": "LACLKIJK",
+    "park_code": "LACL",
+    "site_code": "KIJK",
+    "taken_date": "2018-06-19",
+    "source_filename": "laclkijk_20180619.webp"
+  },
+  {
+    "id": "wrstblmt_20150101",
+    "path": "highlights/site_photos/wrstblmt_20150101.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2015-01-01",
+    "source_filename": "wrstblmt_20150101.webp"
+  },
+  {
+    "id": "wrstblmt_20150409",
+    "path": "highlights/site_photos/wrstblmt_20150409.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2015-04-09",
+    "source_filename": "wrstblmt_20150409.webp"
+  },
+  {
+    "id": "wrstblmt_20150429",
+    "path": "highlights/site_photos/wrstblmt_20150429.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2015-04-29",
+    "source_filename": "wrstblmt_20150429.webp"
+  },
+  {
+    "id": "wrstblmt_20160101",
+    "path": "highlights/site_photos/wrstblmt_20160101.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2016-01-01",
+    "source_filename": "wrstblmt_20160101.webp"
+  },
+  {
+    "id": "wrstblmt_20170204",
+    "path": "highlights/site_photos/wrstblmt_20170204.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2017-02-04",
+    "source_filename": "wrstblmt_20170204.webp"
+  },
+  {
+    "id": "wrstblmt_20170211",
+    "path": "highlights/site_photos/wrstblmt_20170211.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2017-02-11",
+    "source_filename": "wrstblmt_20170211.webp"
+  },
+  {
+    "id": "wrstblmt_20170322",
+    "path": "highlights/site_photos/wrstblmt_20170322.webp",
+    "site_key": "WRSTBLMT",
+    "park_code": "WRST",
+    "site_code": "BLMT",
+    "taken_date": "2017-03-22",
+    "source_filename": "wrstblmt_20170322.webp"
+  },
+  {
+    "id": "wrstcopa_20160101",
+    "path": "highlights/site_photos/wrstcopa_20160101.webp",
+    "site_key": "WRSTCOPA",
+    "park_code": "WRST",
+    "site_code": "COPA",
+    "taken_date": "2016-01-01",
+    "source_filename": "wrstcopa_20160101.webp"
+  },
+  {
+    "id": "wrsttala_20160101",
+    "path": "highlights/site_photos/wrsttala_20160101.webp",
+    "site_key": "WRSTTALA",
+    "park_code": "WRST",
+    "site_code": "TALA",
+    "taken_date": "2016-01-01",
+    "source_filename": "wrsttala_20160101.webp"
+  },
+  {
+    "id": "wrsttala_20160401",
+    "path": "highlights/site_photos/wrsttala_20160401.webp",
+    "site_key": "WRSTTALA",
+    "park_code": "WRST",
+    "site_code": "TALA",
+    "taken_date": "2016-04-01",
+    "source_filename": "wrsttala_20160401.webp"
+  }
+]

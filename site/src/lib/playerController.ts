@@ -1,0 +1,308 @@
+import { formatDuration, formatDurationSpoken } from "./format";
+import { handlePlayerKeydown } from "./playerKeyboard";
+import { bindPlayerSkipLink } from "./playerSkipLink";
+
+export const VOLUME_STORAGE_KEY = "soundscapes-volume-v2";
+export const DEFAULT_VOLUME = 100;
+
+export function clampVolume(percent: number): number {
+  return Math.min(100, Math.max(0, percent));
+}
+
+export function updateVolumeAria(
+  volumeSlider: HTMLInputElement,
+  percent: number,
+): void {
+  const clamped = clampVolume(percent);
+  const muted = clamped === 0;
+  volumeSlider.setAttribute("aria-valuetext", muted ? "Muted" : `${clamped}%`);
+  volumeSlider.setAttribute(
+    "aria-label",
+    muted ? "Playback volume, muted" : "Playback volume",
+  );
+}
+
+export function readStoredVolume(): number {
+  try {
+    const raw = localStorage.getItem(VOLUME_STORAGE_KEY);
+    if (raw === null) return DEFAULT_VOLUME;
+    const value = Number.parseInt(raw, 10);
+    if (Number.isNaN(value)) return DEFAULT_VOLUME;
+    return clampVolume(value);
+  } catch {
+    return DEFAULT_VOLUME;
+  }
+}
+
+export function initPlayer(el: HTMLElement): void {
+  const audioSrc = el.dataset.audioSrc!;
+  const fallbackDuration = parseFloat(el.dataset.duration || "0");
+  const statusEl = el.querySelector<HTMLElement>(".player-status")!;
+  const frame = el.querySelector<HTMLElement>(".spectrogram-frame")!;
+  const cursor = el.querySelector<HTMLElement>(".cursor")!;
+  const playBtn = el.querySelector<HTMLButtonElement>(".play-pause")!;
+  const seekSlider = el.querySelector<HTMLInputElement>(".seek-slider")!;
+  const timeElapsed = el.querySelector<HTMLElement>(".time-elapsed")!;
+  const timeTotal = el.querySelector<HTMLElement>(".time-total")!;
+  const volumeSlider = el.querySelector<HTMLInputElement>(".volume-slider")!;
+
+  let audio: HTMLAudioElement | null = null;
+  let loadPromise: Promise<HTMLAudioElement> | null = null;
+  let isLoaded = false;
+  let pendingPlay = false;
+  let storedVolume = readStoredVolume();
+  let preMuteVolume = storedVolume;
+  let isScrubbing = false;
+  let lastAnnouncedSeek = -1;
+
+  function getDuration(): number {
+    if (audio && Number.isFinite(audio.duration) && audio.duration > 0) {
+      return audio.duration;
+    }
+    return fallbackDuration;
+  }
+
+  function getCurrentTime(): number {
+    return audio?.currentTime ?? 0;
+  }
+
+  function isPlaying(): boolean {
+    return !!audio && !audio.paused;
+  }
+
+  function announce(message: string) {
+    statusEl.textContent = message;
+  }
+
+  function setPlayState(playing: boolean) {
+    playBtn.textContent = playing ? "Pause" : "Play";
+  }
+
+  function updateTimeDisplay() {
+    const duration = getDuration();
+    const current = Math.min(duration, Math.max(0, getCurrentTime()));
+    const elapsed = formatDuration(current);
+    const total = formatDuration(duration);
+
+    timeElapsed.textContent = elapsed;
+    timeTotal.textContent = total;
+
+    if (!isScrubbing) {
+      seekSlider.value = String(current);
+      // Avoid updating slider ARIA during playback — some screen readers re-announce it.
+      if (!isPlaying()) {
+        seekSlider.setAttribute("aria-valuetext", `${elapsed} of ${total}`);
+      }
+    }
+  }
+
+  function updateCursor() {
+    const duration = getDuration();
+    const pct = duration ? (getCurrentTime() / duration) * 100 : 0;
+    cursor.style.left = `${Math.min(100, Math.max(0, pct))}%`;
+    updateTimeDisplay();
+  }
+
+  function applyVolume(percent: number) {
+    const clamped = clampVolume(percent);
+    if (clamped > 0) {
+      storedVolume = clamped;
+      preMuteVolume = clamped;
+    }
+    volumeSlider.value = String(clamped);
+    updateVolumeAria(volumeSlider, clamped);
+    if (!audio) return;
+    audio.volume = clamped / 100;
+    audio.muted = clamped === 0;
+  }
+
+  function bindAudioEvents(
+    instance: HTMLAudioElement,
+    onReady: () => void,
+    onError: () => void,
+  ) {
+    instance.addEventListener("timeupdate", updateCursor);
+    instance.addEventListener("seeking", updateCursor);
+    instance.addEventListener("ended", () => {
+      updateCursor();
+      setPlayState(false);
+      announce("Finished");
+    });
+    instance.addEventListener("play", () => {
+      setPlayState(true);
+      statusEl.textContent = "";
+    });
+    instance.addEventListener("pause", () => {
+      setPlayState(false);
+      updateTimeDisplay();
+      announce("Paused");
+    });
+    instance.addEventListener("loadedmetadata", () => {
+      const duration = getDuration();
+      seekSlider.max = String(duration);
+      timeTotal.textContent = formatDuration(duration);
+      playBtn.disabled = false;
+      seekSlider.disabled = false;
+      statusEl.textContent = "";
+      updateTimeDisplay();
+      if (pendingPlay) {
+        pendingPlay = false;
+        void instance.play();
+      }
+      onReady();
+    });
+    instance.addEventListener("error", () => {
+      pendingPlay = false;
+      playBtn.disabled = false;
+      seekSlider.disabled = true;
+      announce("Unable to load audio");
+      onError();
+    });
+  }
+
+  function ensureLoaded(): Promise<HTMLAudioElement> {
+    if (audio) return Promise.resolve(audio);
+    if (loadPromise) return loadPromise;
+
+    loadPromise = new Promise<HTMLAudioElement>((resolve, reject) => {
+      announce("Loading audio…");
+      playBtn.disabled = true;
+
+      const instance = document.createElement("audio");
+      instance.preload = "metadata";
+      instance.src = audioSrc;
+      instance.hidden = true;
+      el.appendChild(instance);
+
+      audio = instance;
+      bindAudioEvents(
+        instance,
+        () => {
+          isLoaded = true;
+          resolve(instance);
+        },
+        () => {
+          loadPromise = null;
+          audio = null;
+          reject(new Error("audio load failed"));
+        },
+      );
+      applyVolume(storedVolume);
+      instance.load();
+    }).catch((err) => {
+      loadPromise = null;
+      throw err;
+    });
+
+    return loadPromise!;
+  }
+
+  async function seekToTime(seconds: number, announceSeek = true) {
+    if (!isLoaded) {
+      await ensureLoaded();
+    }
+    if (!audio) return;
+
+    const duration = getDuration();
+    const clamped = Math.min(duration, Math.max(0, seconds));
+    audio.currentTime = clamped;
+    updateCursor();
+
+    if (announceSeek && !isPlaying()) {
+      const rounded = Math.round(clamped);
+      if (rounded !== lastAnnouncedSeek) {
+        lastAnnouncedSeek = rounded;
+        announce(`Seek to ${formatDurationSpoken(clamped)}`);
+      }
+    }
+  }
+
+  async function togglePlayPause() {
+    if (!isLoaded) {
+      pendingPlay = true;
+      try {
+        await ensureLoaded();
+      } catch {
+        pendingPlay = false;
+      }
+      return;
+    }
+    if (!audio) return;
+    if (audio.paused) {
+      void audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+
+  function toggleMute() {
+    if (!audio) return;
+    const currentPercent = Number.parseInt(volumeSlider.value, 10);
+    if (audio.muted || currentPercent === 0) {
+      applyVolume(preMuteVolume);
+    } else {
+      preMuteVolume = currentPercent;
+      applyVolume(0);
+    }
+  }
+
+  applyVolume(storedVolume);
+  seekSlider.disabled = true;
+
+  volumeSlider.addEventListener("input", () => {
+    const percent = Number.parseInt(volumeSlider.value, 10);
+    applyVolume(percent);
+    try {
+      localStorage.setItem(VOLUME_STORAGE_KEY, String(percent));
+    } catch {
+      // ignore private browsing / storage errors
+    }
+  });
+
+  seekSlider.addEventListener("pointerdown", () => {
+    isScrubbing = true;
+  });
+  seekSlider.addEventListener("pointerup", () => {
+    isScrubbing = false;
+  });
+  seekSlider.addEventListener("change", () => {
+    isScrubbing = false;
+  });
+  seekSlider.addEventListener("input", () => {
+    void seekToTime(Number.parseFloat(seekSlider.value), true);
+  });
+
+  playBtn.addEventListener("click", () => {
+    void togglePlayPause();
+  });
+
+  frame.addEventListener("click", (e) => {
+    const rect = frame.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    void seekToTime(pct * getDuration()).then(() => {
+      if (audio && !isPlaying()) void audio.play();
+    });
+  });
+
+  const keyActions = {
+    togglePlayPause: () => {
+      void togglePlayPause();
+    },
+    seekBy: (deltaSec: number) => {
+      void seekToTime(getCurrentTime() + deltaSec);
+    },
+    seekToStart: () => {
+      void seekToTime(0);
+    },
+    seekToEnd: () => {
+      void seekToTime(getDuration());
+    },
+    toggleMute,
+  };
+
+  document.addEventListener("keydown", (e) => {
+    handlePlayerKeydown(e, el, keyActions);
+  });
+
+  bindPlayerSkipLink(el);
+}

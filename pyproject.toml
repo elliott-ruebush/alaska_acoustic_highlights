@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nps-acoustic-highlights"
+version = "0.0.0"
+description = "Scripts and tooling for the NPS Soundscapes of Alaska highlights site"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "librosa",
+    "soundfile",
+    "mutagen",
+    "matplotlib",
+    "numpy",
+    "Pillow",
+    "jsonschema",
+    "openpyxl",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = []
+
+[tool.pytest.ini_options]
+testpaths = ["scripts/tests"]
+pythonpath = ["scripts"]

@@ -1,0 +1,108 @@
+---
+import {
+  buildClipSearchText,
+  getCardLinkDescription,
+  getLocationLabel,
+  type Clip,
+} from "../lib/catalog";
+import { withBase } from "../lib/paths";
+import CategoryBadge from "./CategoryBadge.astro";
+import ClipDuration from "./ClipDuration.astro";
+
+interface Props {
+  clip: Clip;
+}
+
+const { clip } = Astro.props;
+---
+
+<a
+  href={withBase(`clips/${clip.id}/`)}
+  class="card"
+  aria-labelledby={`card-title-${clip.id}`}
+  aria-describedby={`card-desc-${clip.id}`}
+  data-category={clip.category}
+  data-park={clip.park_code ?? "unknown"}
+  data-search={buildClipSearchText(clip)}
+>
+  <img
+    src={withBase(clip.spectrogram_thumb_path)}
+    alt=""
+    loading="lazy"
+    decoding="async"
+    width="480"
+    height="160"
+  />
+  <div class="card-body">
+    <h2 id={`card-title-${clip.id}`}>{clip.title}</h2>
+    <p id={`card-desc-${clip.id}`} class="sr-only">
+      {getCardLinkDescription(clip)}
+    </p>
+    <div aria-hidden="true">
+      <CategoryBadge category={clip.category} />
+      <p class="meta">
+        <span>{getLocationLabel(clip)}</span>
+        <span> · </span>
+        <ClipDuration durationSec={clip.duration_sec} />
+      </p>
+    </div>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card.is-hidden,
+  .card[hidden] {
+    display: none !important;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+
+    .card:hover {
+      transform: none;
+    }
+  }
+
+  .card img {
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    object-fit: cover;
+    background: #1a1a1a;
+  }
+
+  .card-body {
+    padding: 0.85rem 1rem 1rem;
+  }
+
+  .card h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .meta {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+</style>
