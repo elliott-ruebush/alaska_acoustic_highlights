@@ -4,23 +4,11 @@ Searchable library of Alaskan National Park acoustic highlights — audio clips 
 
 Audio from [NPS Natural Sounds and Night Skies Division](https://www.nps.gov/subjects/sound/measure.htm).
 
-**Clone size:** on the order of **~300 MB** today (mostly media under `highlights/` — audio, spectrograms, gallery thumbs, site photos — and grows as clips are added). A fresh clone is usually quick; older clones may need a reset after history is rewritten (see below).
+**Clone size:** on the order of **~300 MB** today (mostly media under `highlights/` — audio, spectrograms, gallery thumbs, site photos — and grows as clips are added).
 
 **Site:** [freerange-elliott.com/alaska_acoustic_highlights](https://freerange-elliott.com/alaska_acoustic_highlights)  
 
 **Adding clips:** see [ADD_CLIPS.md](ADD_CLIPS.md) (development setup, filename format, ingest workflow).
-
-### Already cloned? After a history rewrite
-
-If `git pull` fails with unrelated histories, either **re-clone** or reset your local `main` to match GitHub:
-
-```bash
-git fetch origin
-git checkout main
-git reset --hard origin/main
-```
-
-Discard any unpushed local commits first, or stash/copy work elsewhere.
 
 ## Site (local dev)
 
