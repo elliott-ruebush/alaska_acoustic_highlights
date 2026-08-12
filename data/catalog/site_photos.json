@@ -45,6 +45,15 @@
     "source_filename": "denabmul_20210101.webp"
   },
   {
+    "id": "denabmul_20210328",
+    "path": "highlights/site_photos/denabmul_20210328.webp",
+    "site_key": "DENABMUL",
+    "park_code": "DENA",
+    "site_code": "BMUL",
+    "taken_date": "2021-03-28",
+    "source_filename": "denabmul_20210328.webp"
+  },
+  {
     "id": "denabmul_20210401",
     "path": "highlights/site_photos/denabmul_20210401.webp",
     "site_key": "DENABMUL",
@@ -466,6 +475,15 @@
     "site_code": "TRLA",
     "taken_date": "2024-07-19",
     "source_filename": "denatrla_20240719.webp"
+  },
+  {
+    "id": "denatrla_20260521",
+    "path": "highlights/site_photos/denatrla_20260521.webp",
+    "site_key": "DENATRLA",
+    "park_code": "DENA",
+    "site_code": "TRLA",
+    "taken_date": "2026-05-21",
+    "source_filename": "denatrla_20260521.webp"
   },
   {
     "id": "denaupel_20130101",
