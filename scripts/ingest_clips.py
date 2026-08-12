@@ -63,8 +63,68 @@ def repo_relative(path: Path) -> str:
     return path.resolve().relative_to(PROJECT_ROOT.resolve()).as_posix()
 
 
+def display_path(path: Path, audio_plans: list[AudioPlan]) -> str:
+    for plan in audio_plans:
+        if plan.dest.resolve() == path.resolve():
+            path = plan.source
+            break
+    try:
+        return repo_relative(path)
+    except ValueError:
+        return path.as_posix()
+
+
 def clip_id_from_audio(path: Path) -> str:
     return file_prefix(path.name).lower() or path.stem.lower()
+
+
+def is_wav_mp3_transcode_pair(paths: list[Path]) -> bool:
+    if len(paths) != 2:
+        return False
+    if {path.suffix.lower() for path in paths} != {".wav", ".mp3"}:
+        return False
+    return paths[0].stem == paths[1].stem
+
+
+def projected_audio_by_clip_id(audio_plans: list[AudioPlan]) -> dict[str, list[Path]]:
+    existing: list[Path] = []
+    if HIGHLIGHTS_AUDIO.is_dir():
+        existing = [
+            path
+            for path in HIGHLIGHTS_AUDIO.rglob("*")
+            if path.is_file()
+            and path.suffix.lower() in AUDIO_EXTENSIONS
+            and path.name != ".gitkeep"
+        ]
+
+    copy_dests = {plan.dest.resolve() for plan in audio_plans if plan.action == "copy"}
+    retained = [path for path in existing if path.resolve() not in copy_dests]
+    projected = retained + [plan.dest for plan in audio_plans if plan.action == "copy"]
+
+    by_id: dict[str, list[Path]] = {}
+    for path in projected:
+        clip_id = clip_id_from_audio(path)
+        if not clip_id:
+            continue
+        by_id.setdefault(clip_id, []).append(path)
+    return by_id
+
+
+def clip_id_collision_messages(audio_plans: list[AudioPlan]) -> list[str]:
+    messages: list[str] = []
+    for clip_id, paths in sorted(projected_audio_by_clip_id(audio_plans).items()):
+        unique_paths = list({path.name: path for path in paths}.values())
+        if len(unique_paths) < 2 or is_wav_mp3_transcode_pair(unique_paths):
+            continue
+        messages.append(
+            f"clip id {clip_id}: {len(unique_paths)} files share the same NPS prefix; "
+            "only one will appear in the catalog"
+        )
+        for path in sorted(unique_paths, key=lambda item: item.name):
+            description = parse_filename(path.name)["description"]
+            detail = f" ({description})" if description else ""
+            messages.append(f"  {display_path(path, audio_plans)}{detail}")
+    return messages
 
 
 def discover_audio() -> list[Path]:
@@ -193,9 +253,18 @@ def print_copy_table(audio_plans: list[AudioPlan], photo_plans: list[PhotoPlan])
         print(f"   → {repo_relative(plan.dest)}\n")
 
 
-def print_warnings(audio_plans: list[AudioPlan], photo_plans: list[PhotoPlan]) -> None:
+def print_warnings(
+    audio_plans: list[AudioPlan],
+    photo_plans: list[PhotoPlan],
+    *,
+    clip_id_conflicts: list[str] | None = None,
+) -> None:
     warnings = [plan for plan in audio_plans if plan.warning]
     unmatched = [plan for plan in photo_plans if plan.action == "unmatched"]
+    if clip_id_conflicts:
+        print("\n=== Clip id conflicts ===\n")
+        for line in clip_id_conflicts:
+            print(f"  {line}")
     if warnings:
         print("\n=== Warnings ===\n")
         for plan in warnings:
@@ -435,9 +504,23 @@ def main() -> int:
 
     audio_plans = plan_audio(audio_files, force=args.force)
     photo_plans = plan_photos(photo_files, force=args.force) if photo_files else []
+    clip_id_conflicts = clip_id_collision_messages(audio_plans)
 
     print_copy_table(audio_plans, photo_plans)
-    print_warnings(audio_plans, photo_plans)
+    print_warnings(audio_plans, photo_plans, clip_id_conflicts=clip_id_conflicts)
+
+    if clip_id_conflicts:
+        print(
+            "\nFix clip id conflicts (unique NPS date/time per clip) before running with --execute.",
+            file=sys.stderr,
+        )
+        print_summary(
+            audio_plans,
+            photo_plans,
+            execute=args.execute,
+            pipeline_code=None,
+        )
+        return 1
 
     photo_source = args.photo_source.resolve() if args.photo_source else None
     if photo_source is not None and not photo_source.is_dir():
