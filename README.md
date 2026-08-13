@@ -6,7 +6,7 @@ Audio from [NPS Natural Sounds and Night Skies Division](https://www.nps.gov/sub
 
 **Clone size:** on the order of **~300 MB** today (mostly media under `highlights/` — audio, spectrograms, gallery thumbs, site photos — and grows as clips are added).
 
-**Site:** [freerange-elliott.com/alaska_acoustic_highlights](https://freerange-elliott.com/alaska_acoustic_highlights)  
+**Site:** [mertensia.github.io/alaska_acoustic_highlights](https://mertensia.github.io/alaska_acoustic_highlights)  
 
 **Adding clips:** see [ADD_CLIPS.md](ADD_CLIPS.md) (development setup, filename format, ingest workflow).
 
